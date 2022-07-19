@@ -1,12 +1,14 @@
-import React, { FC } from 'react'
+import React, { FC, useContext } from 'react'
 import { SafeAreaView, Text, TouchableOpacity } from 'react-native'
 import { HomeNavigationProps, HomeRouteProps } from '../types/navigation'
 import { useTailwind } from 'tailwind-rn'
+import RootStoreContext from '../stores/rootStore'
 
 const Home: FC<{ navigation: HomeNavigationProps; route: HomeRouteProps }> = ({
   navigation,
   route,
 }) => {
+  const { uiStore } = useContext(RootStoreContext)
   const tailwind = useTailwind()
 
   return (
