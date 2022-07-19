@@ -1,0 +1,13 @@
+{
+  "git.ignoreLimitWarning": true,
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.formatOnType": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "files.associations": {
+    "*.jsx": "javascriptreact",
+    "*.js": "javascriptreact",
+    "*.graphql": "graphql"
+  }
+}
