@@ -3,6 +3,7 @@ import { SafeAreaView, Text, TouchableOpacity } from 'react-native'
 import { HomeNavigationProps, HomeRouteProps } from '../types/navigation'
 import { useTailwind } from 'tailwind-rn'
 import RootStoreContext from '../stores/rootStore'
+import JLBButton from '../components/JLBButton'
 
 const Home: FC<{ navigation: HomeNavigationProps; route: HomeRouteProps }> = ({
   navigation,
@@ -14,9 +15,12 @@ const Home: FC<{ navigation: HomeNavigationProps; route: HomeRouteProps }> = ({
   return (
     <SafeAreaView>
       <Text style={tailwind('text-blue-600')}>EnumeDate</Text>
-      <TouchableOpacity onPress={() => navigation.push('Settings')}>
-        <Text>Settings</Text>
-      </TouchableOpacity>
+      <JLBButton
+        type="solid"
+        color="primary"
+        onPress={() => navigation.push('Settings')}>
+        Settings
+      </JLBButton>
     </SafeAreaView>
   )
 }
