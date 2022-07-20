@@ -7,8 +7,11 @@ import utilities from './tailwind.json'
 import Home from './src/screens/home'
 import Settings from './src/screens/settings'
 import RootStoreContext, { rootStore } from './src/stores/rootStore'
+import { uiStorePersist } from './src/config/mstPersist'
 
 const Stack = createNativeStackNavigator()
+
+uiStorePersist()
 
 const App: FC<{}> = () => {
   return (
