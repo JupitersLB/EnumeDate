@@ -18,3 +18,11 @@ export const eventStorePersist = () => {
     whitelist: ['events'],
   })
 }
+
+export const userStorePersist = () => {
+  persist('userStore', rootStore.userStore, {
+    storage: AsyncStorage,
+    jsonify: true,
+    whitelist: ['user'],
+  }).then(() => rootStore.userStore.createAnonUser())
+}
