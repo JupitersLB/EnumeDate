@@ -22,6 +22,7 @@
     "mobx-state-tree": "^5.1.5",
     "mst-persist": "^0.1.3",
     "react": "17.0.2",
+    "react-hook-form": "^7.33.1",
     "react-native": "0.68.2",
     "react-native-get-random-values": "^1.8.0",
     "react-native-localize": "^2.2.2",
