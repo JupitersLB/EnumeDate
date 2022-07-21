@@ -6,12 +6,12 @@ import { useTailwind } from 'tailwind-rn/dist'
 
 const JLBButton: FC<{
   type: 'solid' | 'outline'
-  className?: string
+  style?: string
   disabled?: boolean
   color?: 'primary' | 'secondary' | 'danger'
   onPress?: () => void
   children: ReactNode
-}> = ({ type, className, onPress, disabled, color, children }) => {
+}> = ({ type, style, onPress, disabled, color, children }) => {
   const tailwind = useTailwind()
 
   const bgColor = clsx({
@@ -52,11 +52,13 @@ const JLBButton: FC<{
       onPress={onPress}
       disabled={disabled}
       style={tailwind(
-        `flex items-center rounded-xl ${opacity} px-5 py-3 ${bgColor} ${
-          className ? className : ''
+        `flex items-center rounded-xl ${opacity} px-5 py-4 ${bgColor} ${
+          style ? style : ''
         }`
       )}>
-      <Text style={tailwind(`font-semibold ${textColor}`)}>{children}</Text>
+      <Text style={tailwind(`font-semibold text-lg ${textColor}`)}>
+        {children}
+      </Text>
     </TouchableOpacity>
   )
 }

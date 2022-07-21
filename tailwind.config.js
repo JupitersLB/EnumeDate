@@ -15,6 +15,9 @@ module.exports = {
         danger: {
           DEFAULT: '#F4899E',
         },
+        gray: {
+          DEFAULT: '#868383',
+        },
       },
     },
   },
