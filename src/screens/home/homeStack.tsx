@@ -7,6 +7,7 @@ import {
   HomeStackScreenNavigationProps,
   HomeStackScreenRouteProps,
 } from '../../types/navigation'
+import eventForm from './eventForm'
 
 const HomeStack = createStackNavigator()
 
@@ -35,6 +36,13 @@ const HomeStackScreen: FC<{
         options={{
           title: 'Home',
           headerLeft: () => null,
+        }}
+      />
+      <HomeStack.Screen
+        name="EventForm"
+        component={eventForm}
+        options={{
+          title: 'Add Event',
         }}
       />
     </HomeStack.Navigator>
