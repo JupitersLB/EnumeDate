@@ -25,10 +25,10 @@ const App: FC<{}> = () => {
     <RootStoreContext.Provider value={rootStore}>
       <TailwindProvider utilities={utilities}>
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="Main">
+          <Stack.Navigator
+            screenOptions={{ headerShown: false }}
+            initialRouteName="Main">
             <Stack.Screen name="Main" component={main} />
-            {/* <Stack.Screen name="Home" component={Home} />
-            <Stack.Screen name="Settings" component={Settings} /> */}
           </Stack.Navigator>
         </NavigationContainer>
       </TailwindProvider>

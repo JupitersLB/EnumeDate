@@ -17,7 +17,13 @@ const Main: FC<{
   const iconSize = iOS ? 36 : 30
 
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={{
+        headerShown: false,
+        tabBarStyle: {
+          paddingBottom: 16,
+        },
+      }}>
       <Tab.Screen
         name="HomeStack"
         component={HomeStackScreen}
