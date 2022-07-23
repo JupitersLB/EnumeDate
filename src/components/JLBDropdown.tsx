@@ -13,15 +13,24 @@ const JLBDropdown: FC<{
   placeholder: string
   control: any
   setValue: any
-}> = ({ control, label, placeholder, setValue }) => {
+  data?: { label: string; value: string }[]
+  calendar?: boolean
+}> = ({ control, label, placeholder, setValue, calendar, data }) => {
   const [isVisible, setVisible] = useState(false)
-  const [selectedValue, setSelectedValue] = useState(null)
+  const [selectedValue, setSelectedValue] = useState<{
+    label: string
+    value: string
+  } | null>(null)
   const tailwind = useTailwind()
   const textViewRef = createRef<View>()
 
   useEffect(() => {
     setValue(label, selectedValue)
   }, [selectedValue])
+
+  const onClear = () => {
+    setValue(label, null), setSelectedValue(null)
+  }
 
   return (
     <>
@@ -37,7 +46,7 @@ const JLBDropdown: FC<{
           }}>
           <Controller
             control={control}
-            render={({ field: { onChange, value } }) => (
+            render={({ field: { value } }) => (
               <TouchableOpacity
                 style={tailwind('flex-row items-center w-full')}
                 onPress={() => setVisible(true)}>
@@ -50,7 +59,7 @@ const JLBDropdown: FC<{
                   {value?.label || placeholder}
                 </JLBText>
                 {value ? (
-                  <TouchableOpacity onPress={() => setValue(label, null)}>
+                  <TouchableOpacity onPress={onClear}>
                     <Icon
                       name="close-circle-outline"
                       size={32}
@@ -70,13 +79,12 @@ const JLBDropdown: FC<{
       </View>
       <JLBModal isVisible={isVisible}>
         <DropdownModal
-          data={[
-            { label: 'English', value: 'en' },
-            { label: 'Japanese', value: 'ja' },
-          ]}
+          data={data}
           placeholder="search list"
+          selectedValue={selectedValue}
           setSelectedValue={setSelectedValue}
           setVisible={setVisible}
+          calendar={calendar}
         />
       </JLBModal>
     </>

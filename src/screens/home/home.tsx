@@ -37,6 +37,18 @@ const Home: FC<{ navigation: HomeNavigationProps; route: HomeRouteProps }> = ({
         control={control}
         placeholder="select a language"
         setValue={setValue}
+        data={[
+          { label: 'English', value: 'en' },
+          { label: 'Japanese', value: 'ja' },
+        ]}
+      />
+
+      <JLBDropdown
+        label="date"
+        control={control}
+        placeholder="select a date"
+        setValue={setValue}
+        calendar
       />
       <View>
         <JLBInput
