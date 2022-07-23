@@ -28,9 +28,9 @@ const JLBInput: FC<{
         <Controller
           control={control}
           render={({ field: { onChange, value } }) => (
-            <View style={tailwind('flex items-center')}>
+            <View style={tailwind('flex-row items-center')}>
               <TextInput
-                style={tailwind('text-lg py-2 w-11/12 leading-6')}
+                style={tailwind('text-lg py-2 w-full leading-6')}
                 onChangeText={(val) => onChange(val)}
                 value={value}
                 multiline
