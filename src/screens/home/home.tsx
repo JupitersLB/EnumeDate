@@ -1,11 +1,11 @@
 import React, { FC, useContext } from 'react'
 import { SafeAreaView, View } from 'react-native'
-import { HomeNavigationProps, HomeRouteProps } from '../types/navigation'
+import { HomeNavigationProps, HomeRouteProps } from '../../types/navigation'
 import { useTailwind } from 'tailwind-rn'
-import RootStoreContext from '../stores/rootStore'
-import JLBButton from '../components/JLBButton'
-import { P } from '../components/texts'
-import JLBInput from '../components/JLBInput'
+import RootStoreContext from '../../stores/rootStore'
+import JLBButton from '../../components/JLBButton'
+import { P } from '../../components/texts'
+import JLBInput from '../../components/JLBInput'
 import { useForm } from 'react-hook-form'
 
 const Home: FC<{ navigation: HomeNavigationProps; route: HomeRouteProps }> = ({

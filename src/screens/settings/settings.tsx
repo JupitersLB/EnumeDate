@@ -3,7 +3,7 @@ import { SafeAreaView, Text } from 'react-native'
 import {
   SettingsNavigationProps,
   SettingsRouteProps,
-} from '../types/navigation'
+} from '../../types/navigation'
 
 const Settings: FC<{
   navigation: SettingsNavigationProps
