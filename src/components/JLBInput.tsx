@@ -58,7 +58,7 @@ const JLBInput: FC<{
           defaultValue=""
         />
       </View>
-      {errors[label] && <ErrorText> Too Long! </ErrorText>}
+      {errors[label]?.maxLength && <ErrorText> Too Long! </ErrorText>}
     </View>
   )
 }

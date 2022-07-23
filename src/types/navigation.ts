@@ -3,14 +3,24 @@ import { RouteProp } from '@react-navigation/native'
 
 export type StackParamList = {
   Main: undefined
-  Home: undefined
   Settings: undefined
   HomeStackScreen: undefined
   SettingsStackScreen: undefined
 }
 
-export type HomeNavigationProps = StackNavigationProp<StackParamList, 'Home'>
-export type HomeRouteProps = RouteProp<StackParamList, 'Home'>
+export type HomeParamList = {
+  Home: undefined
+  EventForm: { id?: string }
+}
+
+export type HomeNavigationProps = StackNavigationProp<HomeParamList, 'Home'>
+export type HomeRouteProps = RouteProp<HomeParamList, 'Home'>
+
+export type EventFormNavigationProps = StackNavigationProp<
+  HomeParamList,
+  'EventForm'
+>
+export type EventFormRouteProps = RouteProp<HomeParamList, 'EventForm'>
 
 export type SettingsNavigationProps = StackNavigationProp<
   StackParamList,

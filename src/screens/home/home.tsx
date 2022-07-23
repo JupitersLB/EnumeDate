@@ -1,38 +1,26 @@
-import React, { FC, useContext } from 'react'
+import React, { FC, useContext, useEffect } from 'react'
 import { SafeAreaView, View } from 'react-native'
 import { HomeNavigationProps, HomeRouteProps } from '../../types/navigation'
 import { useTailwind } from 'tailwind-rn'
-import RootStoreContext from '../../stores/rootStore'
 import JLBButton from '../../components/JLBButton'
-import { P } from '../../components/texts'
-import JLBInput from '../../components/JLBInput'
-import { useForm } from 'react-hook-form'
-import JLBDropdown from '../../components/JLBDropdown'
+import { ErrorText, JLBText, P } from '../../components/texts'
+import RootStoreContext from '../../stores/rootStore'
+import { useIsFocused } from '@react-navigation/native'
 
 const Home: FC<{ navigation: HomeNavigationProps; route: HomeRouteProps }> = ({
   navigation,
   route,
 }) => {
-  const {
-    control,
-    handleSubmit,
-    formState: { errors },
-    setValue,
-  } = useForm<{ name: string; language: { label: string; value: string } }>()
-  const { userStore } = useContext(RootStoreContext)
+  const { eventStore, uiStore } = useContext(RootStoreContext)
+  const isFocused = useIsFocused()
   const tailwind = useTailwind()
 
-  const onSubmit = (data: {
-    name: string
-    language: { label: string; value: string }
-  }) => {
-    console.log('form input: ', data)
-  }
+  useEffect(() => {}, [isFocused])
 
   return (
     <SafeAreaView style={tailwind('flex-1 mx-10 justify-between')}>
       <P style={tailwind('text-blue-600')}>EnumeDate</P>
-      <JLBDropdown
+      {/* <JLBDropdown
         label="language"
         control={control}
         placeholder="select a language"
@@ -41,38 +29,22 @@ const Home: FC<{ navigation: HomeNavigationProps; route: HomeRouteProps }> = ({
           { label: 'English', value: 'en' },
           { label: 'Japanese', value: 'ja' },
         ]}
-      />
-
-      <JLBDropdown
-        label="date"
-        control={control}
-        placeholder="select a date"
-        setValue={setValue}
-        calendar
-      />
-      <View>
-        <JLBInput
-          label="name"
-          control={control}
-          errors={errors}
-          placeholder="enter name"
-        />
-
+      /> */}
+      {eventStore.events.map((e) => (
+        <JLBText key={`event-${e.id}`}>{e.name}</JLBText>
+      ))}
+      <View style={tailwind('mb-10')}>
         <JLBButton
+          disabled={uiStore.addEventDisabled}
           type="solid"
           color="primary"
-          style={'mt-6'}
-          onPress={handleSubmit(onSubmit)}>
-          Submit
+          onPress={() => navigation.push('EventForm', {})}>
+          Add New Event
         </JLBButton>
+        {uiStore.addEventDisabled && (
+          <ErrorText>Create an account to add more events</ErrorText>
+        )}
       </View>
-
-      <JLBButton
-        type="solid"
-        color="primary"
-        onPress={() => navigation.push('Settings')}>
-        Settings
-      </JLBButton>
     </SafeAreaView>
   )
 }
