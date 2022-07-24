@@ -1,4 +1,4 @@
-import React, { FC, useContext } from 'react'
+import React, { FC } from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 import { observer } from 'mobx-react-lite'
 
@@ -8,6 +8,7 @@ import {
   HomeStackScreenRouteProps,
 } from '../../types/navigation'
 import eventForm from './eventForm'
+import { useTranslation } from 'react-i18next'
 
 const HomeStack = createStackNavigator()
 
@@ -15,6 +16,7 @@ const HomeStackScreen: FC<{
   navigation: HomeStackScreenNavigationProps
   route: HomeStackScreenRouteProps
 }> = ({ navigation, route }) => {
+  const { t } = useTranslation()
   return (
     <HomeStack.Navigator
       screenOptions={{
@@ -34,7 +36,7 @@ const HomeStackScreen: FC<{
         name="Home"
         component={home}
         options={{
-          title: 'Home',
+          title: t('Home'),
           headerLeft: () => null,
         }}
       />
@@ -42,7 +44,7 @@ const HomeStackScreen: FC<{
         name="EventForm"
         component={eventForm}
         options={{
-          title: 'Add Event',
+          title: t('Add Event'),
         }}
       />
     </HomeStack.Navigator>

@@ -4,6 +4,7 @@ import { View, TextInput } from 'react-native'
 import { Controller } from 'react-hook-form'
 import { useTailwind } from 'tailwind-rn/dist'
 import { ErrorText, Label } from './texts'
+import { useTranslation } from 'react-i18next'
 
 const JLBInput: FC<{
   label: string
@@ -12,12 +13,13 @@ const JLBInput: FC<{
   errors: any
   required?: boolean
 }> = ({ control, errors, label, placeholder, required }) => {
+  const { t } = useTranslation()
   const tailwind = useTailwind()
   const textViewRef = createRef<View>()
 
   return (
     <View style={tailwind('flex-col justify-start')}>
-      <Label style={tailwind('mt-5 mb-2')}>{label}</Label>
+      <Label style={tailwind('mt-5 mb-2')}>{t(label)}</Label>
       <View
         ref={textViewRef}
         style={{
@@ -59,7 +61,7 @@ const JLBInput: FC<{
           defaultValue=""
         />
       </View>
-      {errors[label]?.maxLength && <ErrorText> Too Long! </ErrorText>}
+      {errors[label]?.maxLength && <ErrorText> {t('Too Long')}</ErrorText>}
     </View>
   )
 }

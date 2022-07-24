@@ -4,8 +4,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { TailwindProvider } from 'tailwind-rn'
 
 import utilities from './tailwind.json'
-import Home from './src/screens/home/home'
-import Settings from './src/screens/settings/settings'
 import RootStoreContext, { rootStore } from './src/stores/rootStore'
 import {
   eventStorePersist,

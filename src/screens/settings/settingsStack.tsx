@@ -7,6 +7,7 @@ import {
   SettingsStackScreenNavigationProps,
   SettingsStackScreenRouteProps,
 } from '../../types/navigation'
+import { useTranslation } from 'react-i18next'
 
 const SettingsStack = createStackNavigator()
 
@@ -14,6 +15,8 @@ const SettingsStackScreen: FC<{
   navigation: SettingsStackScreenNavigationProps
   route: SettingsStackScreenRouteProps
 }> = ({ navigation, route }) => {
+  const { t } = useTranslation()
+
   return (
     <SettingsStack.Navigator
       screenOptions={{
@@ -33,7 +36,7 @@ const SettingsStackScreen: FC<{
         name="Settings"
         component={settings}
         options={{
-          title: 'Settings',
+          title: t('Settings'),
           headerLeft: () => null,
         }}
       />

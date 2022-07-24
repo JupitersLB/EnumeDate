@@ -1,0 +1,21 @@
+{
+  "hello": "Hello in English",
+  "Add New Event": "Add New Event",
+  "Create Account Error": "Create an account to add more events",
+  "Home": "Home",
+  "Add Event": "Add Event",
+  "Edit Event": "Edit Event",
+  "name": "Name",
+  "enter name": "Enter Name",
+  "date": "Date",
+  "select a date": "Select a Date",
+  "Required": "You need to add a {{field}}",
+  "Save": "Save",
+  "Change language": "Change language",
+  "Settings": "Settings",
+  "Too long": "Too Long",
+  "Date of Event": "Date of Event",
+  "Confirm": "Confirm",
+  "language": "Language",
+  "select a language": "Select a Language"
+}

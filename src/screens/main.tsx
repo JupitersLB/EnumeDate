@@ -6,6 +6,7 @@ import { MainNavigationProps, MainRouteProps } from '../types/navigation'
 import HomeStackScreen from './home/homeStack'
 import SettingsStackScreen from './settings/settingsStack'
 import Icon from 'react-native-vector-icons/Ionicons'
+import { useTranslation } from 'react-i18next'
 
 const Tab = createBottomTabNavigator()
 
@@ -13,6 +14,7 @@ const Main: FC<{
   navigation: MainNavigationProps
   route: MainRouteProps
 }> = () => {
+  const { t } = useTranslation()
   const iOS = Platform.OS === 'ios'
   const iconSize = iOS ? 36 : 30
 
@@ -28,7 +30,7 @@ const Main: FC<{
         name="HomeStack"
         component={HomeStackScreen}
         options={{
-          tabBarLabel: 'Home',
+          tabBarLabel: t('Home'),
           tabBarIcon: ({ focused }) => (
             <Icon
               name="home"
@@ -42,7 +44,7 @@ const Main: FC<{
         name="SettingsStack"
         component={SettingsStackScreen}
         options={{
-          tabBarLabel: 'settings',
+          tabBarLabel: t('Settings'),
           tabBarIcon: ({ focused }) => (
             <Icon
               name="settings"
