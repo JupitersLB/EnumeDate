@@ -15,7 +15,8 @@ const JLBDropdown: FC<{
   setValue: any
   data?: { label: string; value: string }[]
   calendar?: boolean
-}> = ({ control, label, placeholder, setValue, calendar, data }) => {
+  required?: boolean
+}> = ({ control, label, placeholder, setValue, calendar, data, required }) => {
   const [isVisible, setVisible] = useState(false)
   const [selectedValue, setSelectedValue] = useState<{
     label: string
@@ -72,7 +73,7 @@ const JLBDropdown: FC<{
               </TouchableOpacity>
             )}
             name={label}
-            rules={{ maxLength: 300 }}
+            rules={{ required: required }}
             defaultValue=""
           />
         </View>

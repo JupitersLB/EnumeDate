@@ -10,7 +10,8 @@ const JLBInput: FC<{
   placeholder: string
   control: any
   errors: any
-}> = ({ control, errors, label, placeholder }) => {
+  required?: boolean
+}> = ({ control, errors, label, placeholder, required }) => {
   const tailwind = useTailwind()
   const textViewRef = createRef<View>()
 
@@ -54,7 +55,7 @@ const JLBInput: FC<{
             </View>
           )}
           name={label}
-          rules={{ maxLength: 300 }}
+          rules={{ maxLength: 300, required: required }}
           defaultValue=""
         />
       </View>

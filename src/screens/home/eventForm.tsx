@@ -54,34 +54,22 @@ const EventForm: FC<{
   return (
     <SafeAreaView style={tailwind('flex-1 mx-10 justify-between')}>
       <View>
-        <Controller
-          name="name"
-          rules={{ required: true }}
+        <JLBInput
+          label="name"
           control={control}
-          render={({ field: { value } }) => (
-            <JLBInput
-              label="name"
-              control={control}
-              errors={errors}
-              placeholder="enter name"
-            />
-          )}
+          errors={errors}
+          placeholder="enter name"
+          required
         />
         {errors.name && <ErrorText>An Event needs a name</ErrorText>}
 
-        <Controller
-          name="date"
-          rules={{ required: true }}
+        <JLBDropdown
+          label="date"
           control={control}
-          render={({ field: { value } }) => (
-            <JLBDropdown
-              label="date"
-              control={control}
-              placeholder="select a date"
-              setValue={setValue}
-              calendar
-            />
-          )}
+          placeholder="select a date"
+          setValue={setValue}
+          calendar
+          required
         />
         {errors.date && <ErrorText>An Event needs a date</ErrorText>}
       </View>
