@@ -63,7 +63,7 @@ const EventForm: FC<{
           required
         />
         {errors.name && (
-          <ErrorText>{t('Required', { field: 'name' })}</ErrorText>
+          <ErrorText>{t('Required', { field: t('name') })}</ErrorText>
         )}
 
         <JLBDropdown
@@ -75,7 +75,7 @@ const EventForm: FC<{
           required
         />
         {errors.date && (
-          <ErrorText>{t('Required', { field: 'date' })}</ErrorText>
+          <ErrorText>{t('Required', { field: t('date') })}</ErrorText>
         )}
       </View>
 

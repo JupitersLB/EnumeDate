@@ -51,7 +51,7 @@ const JLBInput: FC<{
                     })
                 }}
                 autoCorrect
-                placeholder={placeholder}
+                placeholder={t(placeholder)}
                 placeholderTextColor={'#868383'}
               />
             </View>
