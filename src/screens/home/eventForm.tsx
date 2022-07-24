@@ -8,6 +8,7 @@ import JLBButton from '../../components/JLBButton'
 import JLBDropdown from '../../components/JLBDropdown'
 import JLBInput from '../../components/JLBInput'
 import { ErrorText } from '../../components/texts'
+import { SupportedUnits, UnitList } from '../../config/i18n'
 import RootStoreContext from '../../stores/rootStore'
 import {
   EventFormNavigationProps,
@@ -24,13 +25,18 @@ const EventForm: FC<{
     handleSubmit,
     formState: { errors },
     setValue,
-  } = useForm<{ name: string; date: { label: string; value: string } }>()
+  } = useForm<{
+    name: string
+    unit: { label: SupportedUnits; value: SupportedUnits }
+    date: { label: string; value: string }
+  }>()
   const tailwind = useTailwind()
 
   const id = route?.params?.id
 
   useEffect(() => {
     eventStore.setSelectedEvent(null)
+    setValue('unit', { label: SupportedUnits.DAYS, value: SupportedUnits.DAYS })
     if (id) {
       eventStore.setSelectedEvent(id)
       if (eventStore.selectedEvent) {
@@ -47,8 +53,13 @@ const EventForm: FC<{
   const onSubmit = (data: {
     name: string
     date: { label: string; value: string }
+    unit: { label: SupportedUnits; value: SupportedUnits }
   }) => {
-    eventStore.pushToEvents({ name: data.name, datetime: data.date.value })
+    eventStore.pushToEvents({
+      name: data.name,
+      datetime: data.date.value,
+      unit: data.unit.value,
+    })
     navigation.goBack()
   }
 
@@ -77,6 +88,18 @@ const EventForm: FC<{
         {errors.date && (
           <ErrorText>{t('Required', { field: t('date') })}</ErrorText>
         )}
+
+        <JLBDropdown
+          label="unit"
+          control={control}
+          placeholder="select a unit"
+          defaultValue={{
+            label: SupportedUnits.DAYS,
+            value: SupportedUnits.DAYS,
+          }}
+          setValue={setValue}
+          data={UnitList}
+        />
       </View>
 
       <JLBButton

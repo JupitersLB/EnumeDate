@@ -4,9 +4,32 @@ import i18n from 'i18next'
 import enTrans from '../public/static/locales/en/common.json'
 import hkTrans from '../public/static/locales/zh-HK/common.json'
 
+export enum SupportedUnits {
+  MINUTES = 'minutes',
+  HOURS = 'hours',
+  DAYS = 'days',
+  WEEKS = 'weeks',
+  MONTHS = 'months',
+  YEARS = 'years',
+}
+
+export enum SupportedLangs {
+  EN = 'en',
+  ZHHK = 'zh-hk',
+}
+
 export const LangList = [
   { label: '🇬🇧 English', value: 'en' },
   { label: '🇭🇰 繁體中文', value: 'zh-HK' },
+]
+
+export const UnitList = [
+  { label: 'minutes', value: 'minutes' },
+  { label: 'hours', value: 'hours' },
+  { label: 'days', value: 'days' },
+  { label: 'weeks', value: 'weeks' },
+  { label: 'months', value: 'months' },
+  { label: 'years', value: 'years' },
 ]
 
 const bundledResources = {

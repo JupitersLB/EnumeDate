@@ -16,5 +16,12 @@
   "Date of Event": "Date of Event",
   "Confirm": "Confirm",
   "language": "Language",
-  "select a language": "Select a Language"
+  "select a language": "Select a Language",
+  "days since": "{{diff}} <bold>{{unit}}</bold> since {{start}}",
+  "days": "Days",
+  "minutes": "Minutes",
+  "hours": "Hours",
+  "weeks": "Weeks",
+  "months": "Months",
+  "years": "Years"
 }

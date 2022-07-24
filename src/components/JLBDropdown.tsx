@@ -14,10 +14,20 @@ const JLBDropdown: FC<{
   placeholder: string
   control: any
   setValue: any
+  defaultValue?: { label: string; value: string }
   data?: { label: string; value: string }[]
   calendar?: boolean
   required?: boolean
-}> = ({ control, label, placeholder, setValue, calendar, data, required }) => {
+}> = ({
+  control,
+  label,
+  placeholder,
+  setValue,
+  calendar,
+  data,
+  required,
+  defaultValue,
+}) => {
   const [isVisible, setVisible] = useState(false)
   const [selectedValue, setSelectedValue] = useState<{
     label: string
@@ -26,6 +36,10 @@ const JLBDropdown: FC<{
   const tailwind = useTailwind()
   const { t } = useTranslation()
   const textViewRef = createRef<View>()
+
+  useEffect(() => {
+    if (defaultValue) setSelectedValue(defaultValue)
+  }, [defaultValue])
 
   useEffect(() => {
     setValue(label, selectedValue)

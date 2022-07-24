@@ -3,10 +3,12 @@ import { SafeAreaView, View } from 'react-native'
 import { HomeNavigationProps, HomeRouteProps } from '../../types/navigation'
 import { useTailwind } from 'tailwind-rn'
 import JLBButton from '../../components/JLBButton'
-import { ErrorText, JLBText, P } from '../../components/texts'
+import { ErrorText, P } from '../../components/texts'
 import RootStoreContext from '../../stores/rootStore'
 import { useIsFocused } from '@react-navigation/native'
 import { useTranslation } from 'react-i18next'
+import EventCard from '../../components/cards/eventCard'
+import EventList from '../../components/home/eventList'
 
 const Home: FC<{ navigation: HomeNavigationProps; route: HomeRouteProps }> = ({
   navigation,
@@ -22,16 +24,14 @@ const Home: FC<{ navigation: HomeNavigationProps; route: HomeRouteProps }> = ({
   return (
     <SafeAreaView style={tailwind('flex-1 mx-10 justify-between')}>
       <P style={tailwind('text-blue-600')}>EnumeDate</P>
-      <View>
-        {eventStore.events.map((e) => (
-          <JLBText key={`event-${e.id}`}>{e.name}</JLBText>
-        ))}
+      <View style={tailwind('flex flex-grow my-10')}>
+        <EventList events={eventStore.events} />
       </View>
 
       <View style={tailwind('mb-10')}>
         <JLBButton
-          // disabled={uiStore.addEventDisabled}
-          type="solid"
+          disabled={uiStore.addEventDisabled}
+          type="outline"
           color="primary"
           onPress={() => navigation.push('EventForm', {})}>
           {t('Add New Event')}
