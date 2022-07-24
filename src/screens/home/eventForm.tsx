@@ -16,6 +16,12 @@ import {
 } from '../../types/navigation'
 import HeaderDelete from '../../components/header/headerDelete'
 
+interface FormData {
+  name: string
+  unit: { label: SupportedUnits; value: SupportedUnits }
+  date: { label: string; value: string }
+}
+
 const EventForm: FC<{
   navigation: EventFormNavigationProps
   route: EventFormRouteProps
@@ -26,11 +32,7 @@ const EventForm: FC<{
     handleSubmit,
     formState: { errors },
     setValue,
-  } = useForm<{
-    name: string
-    unit: { label: SupportedUnits; value: SupportedUnits }
-    date: { label: string; value: string }
-  }>()
+  } = useForm<FormData>()
   const tailwind = useTailwind()
 
   const id = route?.params?.id
@@ -55,17 +57,25 @@ const EventForm: FC<{
     }
   }, [id])
 
-  const onSubmit = (data: {
-    name: string
-    date: { label: string; value: string }
-    unit: { label: SupportedUnits; value: SupportedUnits }
-  }) => {
+  const onSubmit = (data: FormData) => {
+    eventStore.selectedEvent ? updateEvent(data) : addEvent(data)
+    navigation.goBack()
+  }
+
+  const addEvent = (data: FormData) => {
     eventStore.pushToEvents({
       name: data.name,
       datetime: data.date.value,
       unit: data.unit.value,
     })
-    navigation.goBack()
+  }
+
+  const updateEvent = (data: FormData) => {
+    eventStore.selectedEvent?.update({
+      name: data.name,
+      datetime: data.date.value,
+      unit: data.unit.value,
+    })
   }
 
   const defaultDate = eventStore.selectedEvent
@@ -74,6 +84,16 @@ const EventForm: FC<{
         value: eventStore.selectedEvent.datetime,
       }
     : null
+
+  const defaultUnit = eventStore.selectedEvent
+    ? {
+        label: eventStore.selectedEvent?.eventUnit,
+        value: eventStore.selectedEvent?.eventUnit,
+      }
+    : {
+        label: SupportedUnits.DAYS,
+        value: SupportedUnits.DAYS,
+      }
 
   return (
     <SafeAreaView style={tailwind('flex-1 mx-10 justify-between')}>
@@ -106,10 +126,7 @@ const EventForm: FC<{
           label="unit"
           control={control}
           placeholder="select a unit"
-          defaultValue={{
-            label: SupportedUnits.DAYS,
-            value: SupportedUnits.DAYS,
-          }}
+          defaultValue={defaultUnit}
           setValue={setValue}
           data={UnitList}
         />
