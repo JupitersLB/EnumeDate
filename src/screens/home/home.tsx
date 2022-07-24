@@ -30,9 +30,12 @@ const Home: FC<{ navigation: HomeNavigationProps; route: HomeRouteProps }> = ({
           { label: 'Japanese', value: 'ja' },
         ]}
       /> */}
-      {eventStore.events.map((e) => (
-        <JLBText key={`event-${e.id}`}>{e.name}</JLBText>
-      ))}
+      <View>
+        {eventStore.events.map((e) => (
+          <JLBText key={`event-${e.id}`}>{e.name}</JLBText>
+        ))}
+      </View>
+
       <View style={tailwind('mb-10')}>
         <JLBButton
           disabled={uiStore.addEventDisabled}
