@@ -15,6 +15,11 @@ export const Event = types
     setDatetime(newDate: string) {
       self.datetime = newDate
     },
+    update(event: IEventSnapshotIn) {
+      self.name = event.name
+      self.datetime = event.datetime
+      self.unit = event.unit
+    },
   }))
   .views((self) => ({
     get eventUnit() {
