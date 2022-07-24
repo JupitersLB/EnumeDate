@@ -1,5 +1,6 @@
 import { types, Instance, SnapshotIn } from 'mobx-state-tree'
 import * as RNLocalize from 'react-native-localize'
+import { SupportedUnits } from '../config/i18n'
 
 import { IUser, User } from './models/user'
 
@@ -19,7 +20,7 @@ export const UserStore = types
     createAnonUser() {
       if (!self.user) {
         self.user = User.create({
-          settings: { lang: deviceLanguage, unit: 'default' },
+          settings: { lang: deviceLanguage, unit: SupportedUnits.DAYS },
         })
       }
     },

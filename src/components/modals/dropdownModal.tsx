@@ -44,6 +44,7 @@ const DropdownModal: FC<{
             <DropdownList
               data={data}
               placeholder={placeholder}
+              selectedValue={selectedValue}
               setSelectedValue={setSelectedValue}
               setVisible={setVisible}
             />

@@ -11,6 +11,7 @@ import {
   userStorePersist,
 } from './src/config/mstPersist'
 import main from './src/screens/main'
+import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
 const Stack = createNativeStackNavigator()
 
@@ -20,17 +21,19 @@ userStorePersist()
 
 const App: FC<{}> = () => {
   return (
-    <RootStoreContext.Provider value={rootStore}>
-      <TailwindProvider utilities={utilities}>
-        <NavigationContainer>
-          <Stack.Navigator
-            screenOptions={{ headerShown: false }}
-            initialRouteName="Main">
-            <Stack.Screen name="Main" component={main} />
-          </Stack.Navigator>
-        </NavigationContainer>
-      </TailwindProvider>
-    </RootStoreContext.Provider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <RootStoreContext.Provider value={rootStore}>
+        <TailwindProvider utilities={utilities}>
+          <NavigationContainer>
+            <Stack.Navigator
+              screenOptions={{ headerShown: false }}
+              initialRouteName="Main">
+              <Stack.Screen name="Main" component={main} />
+            </Stack.Navigator>
+          </NavigationContainer>
+        </TailwindProvider>
+      </RootStoreContext.Provider>
+    </GestureHandlerRootView>
   )
 }
 

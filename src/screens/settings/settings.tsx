@@ -5,7 +5,7 @@ import { SafeAreaView, View } from 'react-native'
 import { useTailwind } from 'tailwind-rn/dist'
 import JLBButton from '../../components/JLBButton'
 import JLBDropdown from '../../components/JLBDropdown'
-import { LangList } from '../../config/i18n'
+import { LangList, SupportedLangs } from '../../config/i18n'
 import RootStoreContext from '../../stores/rootStore'
 import {
   SettingsNavigationProps,
@@ -18,13 +18,13 @@ const Settings: FC<{
 }> = ({ navigation, route }) => {
   const { userStore } = useContext(RootStoreContext)
   const { control, handleSubmit, setValue } = useForm<{
-    language: { label: string; value: 'en' | 'zh-HK' }
+    language: { label: string; value: SupportedLangs }
   }>()
   const tailwind = useTailwind()
   const { t } = useTranslation()
 
   const onSubmit = (data: {
-    language: { label: string; value: 'en' | 'zh-HK' }
+    language: { label: string; value: SupportedLangs }
   }) => {
     userStore.user?.setLanguage(data.language.value)
   }
