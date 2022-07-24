@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native'
 import { observer } from 'mobx-react-lite'
 import React, { FC } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
@@ -5,6 +6,7 @@ import { TouchableOpacity, View } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { useTailwind } from 'tailwind-rn/dist'
 import { IEvent } from '../../stores/models/event'
+import { HomeNavigationProps } from '../../types/navigation'
 import { JLBText } from '../texts'
 
 const EventCard: FC<{ event: IEvent; drag: () => void; isActive: boolean }> = ({
@@ -14,9 +16,11 @@ const EventCard: FC<{ event: IEvent; drag: () => void; isActive: boolean }> = ({
 }) => {
   const tailwind = useTailwind()
   const { t } = useTranslation()
+  const navigation: HomeNavigationProps = useNavigation()
 
   return (
     <TouchableOpacity
+      onPress={() => navigation.push('EventForm', { id: event.id })}
       disabled={isActive}
       style={tailwind(
         `border-b border-secondary py-4 ${isActive ? 'bg-primary-light' : ''}`
