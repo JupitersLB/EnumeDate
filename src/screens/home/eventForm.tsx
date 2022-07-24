@@ -14,6 +14,7 @@ import {
   EventFormNavigationProps,
   EventFormRouteProps,
 } from '../../types/navigation'
+import HeaderDelete from '../../components/header/headerDelete'
 
 const EventForm: FC<{
   navigation: EventFormNavigationProps
@@ -40,7 +41,11 @@ const EventForm: FC<{
     if (id) {
       eventStore.setSelectedEvent(id)
       if (eventStore.selectedEvent) {
-        navigation.setOptions({ title: t('Edit Event') })
+        navigation.setOptions({
+          title: t('Edit Event'),
+          // @ts-ignore
+          headerRight: () => <HeaderDelete event={eventStore.selectedEvent} />,
+        })
         setValue('name', eventStore.selectedEvent?.name)
         setValue('date', {
           label: eventStore.selectedEvent?.dateLabel,
@@ -63,6 +68,13 @@ const EventForm: FC<{
     navigation.goBack()
   }
 
+  const defaultDate = eventStore.selectedEvent
+    ? {
+        label: eventStore.selectedEvent.dateLabel,
+        value: eventStore.selectedEvent.datetime,
+      }
+    : null
+
   return (
     <SafeAreaView style={tailwind('flex-1 mx-10 justify-between')}>
       <View>
@@ -80,6 +92,7 @@ const EventForm: FC<{
         <JLBDropdown
           label="date"
           control={control}
+          defaultValue={defaultDate}
           placeholder="select a date"
           setValue={setValue}
           calendar

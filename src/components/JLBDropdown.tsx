@@ -14,7 +14,7 @@ const JLBDropdown: FC<{
   placeholder: string
   control: any
   setValue: any
-  defaultValue?: { label: string; value: string }
+  defaultValue?: { label: string; value: string } | null
   data?: { label: string; value: string }[]
   calendar?: boolean
   required?: boolean

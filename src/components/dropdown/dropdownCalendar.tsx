@@ -20,7 +20,7 @@ const Day: FC<{
 }> = ({ datetime, width, maxWidth, isSelected, setSelectedDate }) => {
   const tailwind = useTailwind()
 
-  const isToday = datetime.equals(DateTime.now().startOf('month'))
+  const isToday = datetime.equals(DateTime.now().startOf('day'))
 
   const dayWidth = datetime.day === 1 ? maxWidth : 'w-full'
 
@@ -103,10 +103,7 @@ const DayDates: FC<{
                   7: 'w-7/7',
                 }[firstDay]
               }
-              datetime={DateTime.fromFormat(
-                `${year} ${d} ${month}`,
-                'y d M'
-              ).setLocale(userStore?.user?.settings.lang || 'en')}
+              datetime={DateTime.fromFormat(`${year} ${d} ${month}`, 'y d M')}
             />
           )
       )}
