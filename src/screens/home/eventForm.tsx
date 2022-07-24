@@ -1,6 +1,7 @@
+import { t } from 'i18next'
 import { observer } from 'mobx-react-lite'
 import React, { FC, useContext, useEffect } from 'react'
-import { Controller, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { SafeAreaView, View } from 'react-native'
 import { useTailwind } from 'tailwind-rn/dist'
 import JLBButton from '../../components/JLBButton'
@@ -17,7 +18,7 @@ const EventForm: FC<{
   navigation: EventFormNavigationProps
   route: EventFormRouteProps
 }> = ({ navigation, route }) => {
-  const { uiStore, eventStore } = useContext(RootStoreContext)
+  const { eventStore } = useContext(RootStoreContext)
   const {
     control,
     handleSubmit,
@@ -33,7 +34,7 @@ const EventForm: FC<{
     if (id) {
       eventStore.setSelectedEvent(id)
       if (eventStore.selectedEvent) {
-        navigation.setOptions({ title: 'Edit Event' })
+        navigation.setOptions({ title: t('Edit Event') })
         setValue('name', eventStore.selectedEvent?.name)
         setValue('date', {
           label: eventStore.selectedEvent?.dateLabel,
@@ -61,7 +62,9 @@ const EventForm: FC<{
           placeholder="enter name"
           required
         />
-        {errors.name && <ErrorText>An Event needs a name</ErrorText>}
+        {errors.name && (
+          <ErrorText>{t('Required', { field: 'name' })}</ErrorText>
+        )}
 
         <JLBDropdown
           label="date"
@@ -71,7 +74,9 @@ const EventForm: FC<{
           calendar
           required
         />
-        {errors.date && <ErrorText>An Event needs a date</ErrorText>}
+        {errors.date && (
+          <ErrorText>{t('Required', { field: 'date' })}</ErrorText>
+        )}
       </View>
 
       <JLBButton
@@ -79,7 +84,7 @@ const EventForm: FC<{
         color="primary"
         style={'mt-6 mb-12'}
         onPress={handleSubmit(onSubmit)}>
-        Add
+        {t('Save')}
       </JLBButton>
     </SafeAreaView>
   )

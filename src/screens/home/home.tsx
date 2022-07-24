@@ -6,6 +6,7 @@ import JLBButton from '../../components/JLBButton'
 import { ErrorText, JLBText, P } from '../../components/texts'
 import RootStoreContext from '../../stores/rootStore'
 import { useIsFocused } from '@react-navigation/native'
+import { useTranslation } from 'react-i18next'
 
 const Home: FC<{ navigation: HomeNavigationProps; route: HomeRouteProps }> = ({
   navigation,
@@ -14,22 +15,13 @@ const Home: FC<{ navigation: HomeNavigationProps; route: HomeRouteProps }> = ({
   const { eventStore, uiStore } = useContext(RootStoreContext)
   const isFocused = useIsFocused()
   const tailwind = useTailwind()
+  const { t } = useTranslation()
 
   useEffect(() => {}, [isFocused])
 
   return (
     <SafeAreaView style={tailwind('flex-1 mx-10 justify-between')}>
       <P style={tailwind('text-blue-600')}>EnumeDate</P>
-      {/* <JLBDropdown
-        label="language"
-        control={control}
-        placeholder="select a language"
-        setValue={setValue}
-        data={[
-          { label: 'English', value: 'en' },
-          { label: 'Japanese', value: 'ja' },
-        ]}
-      /> */}
       <View>
         {eventStore.events.map((e) => (
           <JLBText key={`event-${e.id}`}>{e.name}</JLBText>
@@ -38,14 +30,14 @@ const Home: FC<{ navigation: HomeNavigationProps; route: HomeRouteProps }> = ({
 
       <View style={tailwind('mb-10')}>
         <JLBButton
-          disabled={uiStore.addEventDisabled}
+          // disabled={uiStore.addEventDisabled}
           type="solid"
           color="primary"
           onPress={() => navigation.push('EventForm', {})}>
-          Add New Event
+          {t('Add New Event')}
         </JLBButton>
         {uiStore.addEventDisabled && (
-          <ErrorText>Create an account to add more events</ErrorText>
+          <ErrorText>{t('Create Account Error')}</ErrorText>
         )}
       </View>
     </SafeAreaView>

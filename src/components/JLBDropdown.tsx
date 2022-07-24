@@ -7,6 +7,7 @@ import { JLBText, Label } from './texts'
 import Icon from 'react-native-vector-icons/Ionicons'
 import JLBModal from './JLBModal'
 import DropdownModal from './modals/dropdownModal'
+import { useTranslation } from 'react-i18next'
 
 const JLBDropdown: FC<{
   label: string
@@ -23,6 +24,7 @@ const JLBDropdown: FC<{
     value: string
   } | null>(null)
   const tailwind = useTailwind()
+  const { t } = useTranslation()
   const textViewRef = createRef<View>()
 
   useEffect(() => {
@@ -36,7 +38,7 @@ const JLBDropdown: FC<{
   return (
     <>
       <View style={tailwind('flex-col justify-start')}>
-        <Label style={tailwind('mt-5 mb-2')}>{label}</Label>
+        <Label style={tailwind('mt-5 mb-2')}>{t(label)}</Label>
         <View
           ref={textViewRef}
           style={{
@@ -57,7 +59,7 @@ const JLBDropdown: FC<{
                       value ? '' : 'text-gray'
                     } leading-6`
                   )}>
-                  {value?.label || placeholder}
+                  {t(value?.label || placeholder)}
                 </JLBText>
                 {value ? (
                   <TouchableOpacity onPress={onClear}>

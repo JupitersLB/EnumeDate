@@ -9,6 +9,7 @@ import { DateTime } from 'luxon'
 import RootStoreContext from '../../stores/rootStore'
 import JLBButton from '../JLBButton'
 import { tailwindPx } from '../../utilities/arbitraryPxWorkaround'
+import { useTranslation } from 'react-i18next'
 
 const Day: FC<{
   datetime: DateTime
@@ -45,11 +46,15 @@ const Day: FC<{
 
 const DayHeaders: FC = ({}) => {
   const tailwind = useTailwind()
+  const { userStore } = useContext(RootStoreContext)
+
   return (
     <View style={tailwind('flex-row w-full justify-between pt-4')}>
       {[...Array(7).keys()].map((k) => (
         <Label key={`day-${k}`} style={tailwind('text-center w-1/7')}>
-          {DateTime.fromFormat((k + 1).toString(), 'c').toFormat('ccc')}
+          {DateTime.fromFormat((k + 1).toString(), 'c')
+            .setLocale(userStore?.user?.settings.lang || 'en')
+            .toFormat('ccc')}
         </Label>
       ))}
     </View>
@@ -64,6 +69,8 @@ const DayDates: FC<{
   setSelectedDate: (date: DateTime) => void
 }> = ({ month, year, maxWidth, selectedDate, setSelectedDate }) => {
   const tailwind = useTailwind()
+  const { userStore } = useContext(RootStoreContext)
+
   const date = DateTime.fromFormat(`${year} ${month}`, 'y M')
   const daysInMonth = date.daysInMonth
   const firstDay = date.startOf('month').weekday
@@ -96,7 +103,10 @@ const DayDates: FC<{
                   7: 'w-7/7',
                 }[firstDay]
               }
-              datetime={DateTime.fromFormat(`${year} ${d} ${month}`, 'y d M')}
+              datetime={DateTime.fromFormat(
+                `${year} ${d} ${month}`,
+                'y d M'
+              ).setLocale(userStore?.user?.settings.lang || 'en')}
             />
           )
       )}
@@ -110,6 +120,7 @@ const DropdownCalendar: FC<{
   setSelectedValue: (value: { label: string; value: string }) => void
 }> = ({ setVisible, setSelectedValue, selectedDate }) => {
   const { userStore } = useContext(RootStoreContext)
+  const { t } = useTranslation()
   const [date, setDate] = useState<DateTime | null>(null)
   const [month, setMonth] = useState(DateTime.now().month)
   const [year, setYear] = useState(DateTime.now().year)
@@ -162,7 +173,9 @@ const DropdownCalendar: FC<{
           <Icon name="chevron-back" size={32} />
         </TouchableOpacity>
         <JLBText style={tailwind('flex flex-grow text-center text-2xl')}>
-          {DateTime.fromFormat(`${year} ${month}`, 'y M').toFormat('MMMM y')}
+          {DateTime.fromFormat(`${year} ${month}`, 'y M')
+            .setLocale(userStore?.user?.settings.lang || 'en')
+            .toLocaleString({ month: 'long', year: 'numeric' })}
         </JLBText>
         <TouchableOpacity onPress={onUpMonth}>
           <Icon name="chevron-forward" size={32} />
@@ -181,7 +194,7 @@ const DropdownCalendar: FC<{
       </View>
 
       <View style={tailwind('flex-row justify-center my-8')}>
-        <JLBText style={tailwind('pr-4 text-lg')}>Date of Event:</JLBText>
+        <JLBText style={tailwind('pr-4 text-lg')}>{t('Date of Event')}</JLBText>
         <JLBText style={tailwind('text-lg')}>
           {date
             ?.setLocale(userStore?.user?.settings.lang || 'en')
@@ -193,7 +206,7 @@ const DropdownCalendar: FC<{
         type="solid"
         color="primary"
         onPress={onConfirm}>
-        Confirm
+        {t('Confirm')}
       </JLBButton>
     </View>
   )

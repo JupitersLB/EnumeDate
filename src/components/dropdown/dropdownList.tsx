@@ -4,6 +4,7 @@ import { FlatList, TextInput, TouchableOpacity, View } from 'react-native'
 import { useTailwind } from 'tailwind-rn/dist'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { JLBText } from '../texts'
+import { useTranslation } from 'react-i18next'
 
 const DropdownList: FC<{
   data: { label: string; value: string }[]
@@ -12,6 +13,7 @@ const DropdownList: FC<{
   setVisible: (isVisible: boolean) => void
 }> = ({ data, placeholder, setSelectedValue, setVisible }) => {
   const tailwind = useTailwind()
+  const { t } = useTranslation()
   const textInputRef = createRef<TextInput>()
   const [filteredData, setFilteredData] = useState<
     { label: string; value: string }[] | null
@@ -67,7 +69,7 @@ const DropdownList: FC<{
         <TouchableOpacity
           style={tailwind('py-3')}
           onPress={() => onListItem(data.item)}>
-          <JLBText style={tailwind('text-xl')}>{data.item.label}</JLBText>
+          <JLBText style={tailwind('text-xl')}>{t(data.item.label)}</JLBText>
         </TouchableOpacity>
       )}
       ListEmptyComponent={
