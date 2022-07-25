@@ -20,6 +20,8 @@ jobs:
         run: cd android && bundle install && cd ..
       - name: Install packages
         run: yarn install
+      - name: Build tailwind
+        run: yarn build:tailwind
       - name: Prebuild
         run: make build_android_debug
       - name: Execute Fastlane command
