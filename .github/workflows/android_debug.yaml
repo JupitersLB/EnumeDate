@@ -9,6 +9,8 @@ jobs:
     name: Build Android Debug
     runs-on: ubuntu-latest
     steps:
+      env:
+        GPG_PASSHPRASE: ${{ secrets.SuperSecret }}
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
@@ -23,7 +25,7 @@ jobs:
       - name: Build tailwind
         run: yarn build:tailwind
       - name: Make secrets
-        run: GPG_PASSPHRASE={{secrets.GPG_PASSPHRASE}} make secrets
+        run: GPG_PASSPHRASE=${GPG_PASSPHRASE} make secrets
       - name: Prebuild
         run: mkdir android/app/src/main/assets && make build_android_debug
       - name: Execute Fastlane command
