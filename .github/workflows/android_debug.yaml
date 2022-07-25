@@ -4,13 +4,14 @@ on:
   push:
     branches:
       - '*'
+env:
+  GPG_PASSHPRASE: ${{ secrets.GPG_PASSPHRASE }}
+
 jobs:
   android-debug:
     name: Build Android Debug
     runs-on: ubuntu-latest
     steps:
-      env:
-        GPG_PASSHPRASE: ${{ secrets.SuperSecret }}
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
