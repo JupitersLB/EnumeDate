@@ -3,7 +3,7 @@ name: Android Debug
 on:
   push:
     branches:
-      - '*'
+      - 'master'
 env:
   GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
 
