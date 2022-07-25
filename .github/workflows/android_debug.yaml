@@ -5,7 +5,7 @@ on:
     branches:
       - '*'
 env:
-  GPG_PASSHPRASE: ${{ secrets.GPG_PASSPHRASE }}
+  GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
 
 jobs:
   android-debug:
