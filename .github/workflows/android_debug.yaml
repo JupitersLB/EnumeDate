@@ -3,7 +3,7 @@ name: Android Debug
 on:
   push:
     branches:
-      - 'master'
+      - '*'
 jobs:
   android-debug:
     name: Build Android Debug
@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: '10.x'
+          node-version: '12.x'
       - uses: actions/setup-ruby@v1
         with:
           ruby-version: '2.x'
