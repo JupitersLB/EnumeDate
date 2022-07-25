@@ -1,0 +1,31 @@
+name: Android Debug
+
+on:
+  push:
+    branches:
+      - 'master'
+jobs:
+  android-debug:
+    name: Build Android Debug
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.x'
+      - name: Install Fastlane
+        run: cd android && bundle install && cd ..
+      - name: Install packages
+        run: yarn install
+      - name: Prebuild
+        run: make build_android_staging
+      - name: Execute Fastlane command
+        run: cd android && fastlane debug_build
+      - name: Upload APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: apk
+          path: app/build/outputs/apk/debug/app-debug.apk
