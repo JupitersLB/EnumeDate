@@ -22,6 +22,8 @@ jobs:
         run: yarn install
       - name: Build tailwind
         run: yarn build:tailwind
+      - name: Make secrets
+        run: GPG_PASSPHRASE={{secrets.GPG_PASSPHRASE}} make secrets
       - name: Prebuild
         run: mkdir android/app/src/main/assets && make build_android_debug
       - name: Execute Fastlane command
