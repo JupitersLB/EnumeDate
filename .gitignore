@@ -30,6 +30,7 @@ local.properties
 *.iml
 *.hprof
 /android/gradle.properties
+/android/app/src/main/assets/index.android.bundle
 
 # node.js
 #
