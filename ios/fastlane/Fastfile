@@ -31,8 +31,4 @@ platform :ios do
       api_key: api_key
     )
   end
-  lane :test do
-    puts ENV["KEY_ID"]
-    puts ENV["ISSUER_ID"]
-  end
 end
