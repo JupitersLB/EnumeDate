@@ -31,4 +31,8 @@ platform :ios do
       api_key: api_key
     )
   end
+
+  lane :test do
+    
+  end
 end
