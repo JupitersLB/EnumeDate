@@ -30,14 +30,9 @@ platform :ios do
     get_provisioning_profile(
       api_key: api_key
     )   # invokes sigh
-   
-    # build_app(workspace: "EnumeDate.xcworkspace", scheme: "EnumeDate")
-    # upload_to_testflight(
-    #   api_key: api_key
-    # )
-  end
-
-  lane :test do
-    
+    build_app(workspace: "EnumeDate.xcworkspace", scheme: "EnumeDate")
+    upload_to_testflight(
+      api_key: api_key
+    )
   end
 end
