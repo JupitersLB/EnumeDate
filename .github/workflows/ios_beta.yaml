@@ -1,0 +1,33 @@
+name: iOS Beta
+
+on:
+  push:
+    branches:
+      - '*'
+env:
+  GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+
+jobs:
+  ios-beta:
+    name: Build and Deploy Beta
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.x'
+      - name: Install Fastlane
+        run: cd ios && bundle install && cd ..
+      - name: Install packages
+        run: yarn install
+      - name: Build tailwind
+        run: yarn build:tailwind
+      - name: Make secrets
+        run: GPG_PASSPHRASE=${GPG_PASSPHRASE} make secrets
+      - name: Install pods
+        run: cd ios && pod install && cd ..
+      - name: Execute Fastlane command
+        run: cd ios && fastlane beta

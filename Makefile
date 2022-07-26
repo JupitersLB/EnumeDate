@@ -13,14 +13,22 @@ ios/2K5N3DUFRL.cer.gpg: ios/2K5N3DUFRL.cer gpg_key
 ios/2K5N3DUFRL.p12.gpg: ios/2K5N3DUFRL.p12 gpg_key
 	gpg --yes --batch --passphrase="${GPG_PASSPHRASE}" -c ios/2K5N3DUFRL.p12 > ios/2K5N3DUFRL.p12.gpg
 
+ios/distribution.p8.gpg: ios/distribution.p8 gpg_key
+	gpg --yes --batch --passphrase="${GPG_PASSPHRASE}" -c ios/distribution.p8 > ios/distribution.p8.gpg
+
 ios/AppStore_com.EnumeDate.mobileprovision.gpg: ios/AppStore_com.EnumeDate.mobileprovision gpg_key
 	gpg --yes --batch --passphrase="${GPG_PASSPHRASE}" -c ios/AppStore_com.EnumeDate.mobileprovision > ios/AppStore_com.EnumeDate.mobileprovision.gpg
+
+ios/fastlane/.env.default.gpg: ios/fastlane/.env.default gpg_key
+	gpg --yes --batch --passphrase="${GPG_PASSPHRASE}" -c ios/fastlane/.env.default > ios/fastlane/.env.default.gpg
 
 encrypt_secrets: android/app/enumedate.keystore.gpg \
 	android/gradle.properties.gpg \
 	ios/2K5N3DUFRL.cer.gpg \
 	ios/2K5N3DUFRL.p12.gpg \
-	ios/AppStore_com.EnumeDate.mobileprovision.gpg
+	ios/AppStore_com.EnumeDate.mobileprovision.gpg \
+	ios/distribution.p8.gpg \
+	ios/fastlane/.env.default.gpg
 
 
 secrets: gpg_key
@@ -28,7 +36,9 @@ secrets: gpg_key
 	gpg --yes --batch --passphrase="${GPG_PASSPHRASE}" -d < android/gradle.properties.gpg > android/gradle.properties
 	gpg --yes --batch --passphrase="${GPG_PASSPHRASE}" -d < ios/2K5N3DUFRL.cer.gpg > ios/2K5N3DUFRL.cer
 	gpg --yes --batch --passphrase="${GPG_PASSPHRASE}" -d < ios/2K5N3DUFRL.p12.gpg > ios/2K5N3DUFRL.p12
+	gpg --yes --batch --passphrase="${GPG_PASSPHRASE}" -d < ios/distribution.p8.gpg > ios/distribution.p8
 	gpg --yes --batch --passphrase="${GPG_PASSPHRASE}" -d < ios/AppStore_com.EnumeDate.mobileprovision.gpg > ios/AppStore_com.EnumeDate.mobileprovision
+	gpg --yes --batch --passphrase="${GPG_PASSPHRASE}" -d < ios/fastlane/.env.default.gpg > ios/fastlane/.env.default
 
 
 build_android_debug:
