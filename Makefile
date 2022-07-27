@@ -30,8 +30,8 @@ ios/fastlane/.env.default.gpg: ios/fastlane/.env.default gpg_key
 
 encrypt_secrets: android/app/enumedate.keystore.gpg \
 	android/gradle.properties.gpg \
-	ios/H9Y76D7587.certSigningRequest \
 	ios/H9Y76D7587.cer.gpg \
+	ios/H9Y76D7587.certSigningRequest.gpg \
 	ios/H9Y76D7587.p12.gpg \
 	ios/AppStore_com.EnumeDate.mobileprovision.gpg \
 	ios/distribution.p8.gpg \
