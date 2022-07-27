@@ -18,7 +18,6 @@ default_platform(:ios)
 platform :ios do
   desc "Push a new beta build to TestFlight"
   lane :beta do
-    setup_ci(force: true)
     increment_build_number(xcodeproj: "EnumeDate.xcodeproj")
     api_key = app_store_connect_api_key(
       key_id: ENV["KEY_ID"],
@@ -36,4 +35,40 @@ platform :ios do
       api_key: api_key
     )
   end
+
+  lane :github_beta do
+    create_keychain(
+      name: "ios_keychain",
+      password: FASTLANE_PASSWORD,
+      default_keychain: true,
+      unlock: true,
+      timeout: 3600,
+      add_to_search_list: true
+    )
+    sync_code_signing(
+      readonly: true,
+      keychain_name: "ios_keychain",
+      keychain_password: FASTLANE_PASSWORD
+    )
+
+    increment_build_number(xcodeproj: "EnumeDate.xcodeproj")
+    api_key = app_store_connect_api_key(
+      key_id: ENV["KEY_ID"],
+      issuer_id: ENV["ISSUER_ID"],
+      key_filepath: 'distribution.p8'
+    )
+    get_certificates(
+      api_key: api_key
+    )           # invokes cert
+    get_provisioning_profile(
+      api_key: api_key
+    )   # invokes sigh
+    build_app(workspace: "EnumeDate.xcworkspace", scheme: "EnumeDate", xcargs: "-allowProvisioningUpdates")
+    upload_to_testflight(
+      api_key: api_key
+    )
+    delete_keychain
+  end
+
+  
 end
