@@ -27,6 +27,7 @@ jobs:
       APPLE_KEY_ID: '${{ secrets.APPLE_KEY_ID }}'
       APPLE_ISSUER_ID: '${{ secrets.APPLE_ISSUER_ID }}'
       APPLE_KEY_CONTENT: '${{ secrets.APPLE_KEY_CONTENT }}'
+      SSH_GIT_URL: '${{secerts.SSH_GIT_URL}}'
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
@@ -37,8 +38,6 @@ jobs:
           ruby-version: '2.x'
       - name: Install Fastlane
         run: cd ios && bundle install && cd ..
-      - name: Make secrets
-        run: GPG_PASSPHRASE=${GPG_PASSPHRASE} make secrets
       - name: Install packages
         run: yarn install
       - name: Build tailwind
