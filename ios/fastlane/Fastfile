@@ -46,7 +46,7 @@ platform :ios do
       in_house: false
     )
     
-    increment_build_number(xcodeproj: "EnumeDate.xcodeproj")
+    increment_build_number
 
     match(
       type: 'appstore',
