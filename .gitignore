@@ -54,6 +54,16 @@ buck-out/
 */fastlane/report.xml
 */fastlane/Preview.html
 */fastlane/screenshots
+.env.default
+
+# fastlane generated ios
+*.cer
+*.zip
+*.mobileprovision
+*.p12
+*.certSigningRequest
+*.p8
+
 
 # Bundle artifact
 *.jsbundle
