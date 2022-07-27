@@ -1,261 +1,88 @@
-# This file contains the fastlane.tools configuration
-# You can find the documentation at https://docs.fastlane.tools
-#
-# For a list of all available actions, check out
-#
-#     https://docs.fastlane.tools/actions
-#
-# For a list of all available plugins, check out
-#
-#     https://docs.fastlane.tools/plugins/available-plugins
-#
-
-# Uncomment the line if you want fastlane to automatically update itself
-# update_fastlane
 
 default_platform(:ios)
 
+DEVELOPER_APP_ID = ENV["DEVELOPER_APP_ID"]
+DEVELOPER_APP_IDENTIFIER = ENV["DEVELOPER_APP_IDENTIFIER"]
+PROVISIONING_PROFILE_SPECIFIER = ENV["PROVISIONING_PROFILE_SPECIFIER"]
+TEMP_KEYCHAIN_USER = ENV["TEMP_KEYCHAIN_USER"]
+TEMP_KEYCHAIN_PASSWORD = ENV["TEMP_KEYCHAIN_PASSWORD"]
+APPLE_ISSUER_ID = ENV["APPLE_ISSUER_ID"]
+APPLE_KEY_ID = ENV["APPLE_KEY_ID"]
+APPLE_KEY_CONTENT = ENV["APPLE_KEY_CONTENT"]
+GIT_AUTHORIZATION = ENV["GIT_AUTHORIZATION"]
+
+def delete_temp_keychain(name)
+  delete_keychain(
+    name: name
+  ) if File.exist? File.expand_path("~/Library/Keychains/#{name}-db")
+end
+
+def create_temp_keychain(name, password)
+  create_keychain(
+    name: name,
+    password: password,
+    unlock: false,
+    timeout: 0
+  )
+end
+
+def ensure_temp_keychain(name, password)
+  delete_temp_keychain(name)
+  create_temp_keychain(name, password)
+end
+
 platform :ios do
-  desc "Push a new beta build to TestFlight"
-  lane :beta do
-    increment_build_number(xcodeproj: "EnumeDate.xcodeproj")
-    api_key = app_store_connect_api_key(
-      key_id: ENV["KEY_ID"],
-      issuer_id: ENV["ISSUER_ID"],
-      key_filepath: 'distribution.p8'
-    )
-    get_certificates(
-      api_key: api_key
-    )           # invokes cert
-    get_provisioning_profile(
-      api_key: api_key
-    )   # invokes sigh
-    build_app(workspace: "EnumeDate.xcworkspace", scheme: "EnumeDate", xcargs: "-allowProvisioningUpdates")
-    upload_to_testflight(
-      api_key: api_key
-    )
-  end
-
   lane :github_beta do
-    create_keychain(
-      name: "ios_keychain",
-      password: ENV["FASTLANE_PASSWORD"],
-      default_keychain: true,
-      unlock: true,
-      timeout: 3600,
-      add_to_search_list: true
-    )
-    import_certificate(
-      certificate_path: 'H9Y76D7587.p12',
-      certificate_password: ENV["FASTLANE_PASSWORD"],
-      keychain_name: 'ios_keychain',
-      keychain_password: ENV["FASTLANE_PASSWORD"]
-    )
-    install_provisioning_profile(path: 'comEnumeDate_AppStore.mobileprovision')
-    update_project_provisioning(
-      xcodeproj: 'EnumeDate.xcodeproj',
-      profile: 'comEnumeDate_AppStore.mobileprovision',
-      build_configuration: 'Release'
-    )
-    increment_build_number(xcodeproj: "EnumeDate.xcodeproj")
-    api_key = app_store_connect_api_key(
-      key_id: ENV["KEY_ID"],
-      issuer_id: ENV["ISSUER_ID"],
-      key_filepath: 'distribution.p8'
-    )
-    # get_certificates(
-    #   api_key: api_key
-    # )           # invokes cert
-    # get_provisioning_profile(
-    #   api_key: api_key
-    # )   # invokes sigh
-    build_app(workspace: "EnumeDate.xcworkspace", export_method: "app-store", scheme: "EnumeDate", xcargs: "-allowProvisioningUpdates")
-    upload_to_testflight(
-      api_key: api_key
-    )
-    delete_keychain
-  end
+    keychain_name = TEMP_KEYCHAIN_USER
+    keychain_password = TEMP_KEYCHAIN_PASSWORD
+    ensure_temp_keychain(keychain_name, keychain_password)
 
-  lane :github_beta_new do
-    create_keychain(
-      name: "ios_keychain",
-      password: ENV["FASTLANE_PASSWORD"],
-      default_keychain: true,
-      unlock: true,
-      timeout: 3600,
-      add_to_search_list: true
-    )
-    import_certificate(
-      certificate_path: 'distribution.p12',
-      certificate_password: ENV["FASTLANE_PASSWORD"],
-      keychain_name: 'ios_keychain',
-      keychain_password: ENV["FASTLANE_PASSWORD"]
-    )
-    install_provisioning_profile(path: 'comEnumeDate_AppStore.mobileprovision')
-    update_project_provisioning(
-      xcodeproj: 'EnumeDate.xcodeproj',
-      profile: 'comEnumeDate_AppStore.mobileprovision',
-      build_configuration: 'Release'
-    )
-    increment_build_number(xcodeproj: "EnumeDate.xcodeproj")
     api_key = app_store_connect_api_key(
-      key_id: ENV["KEY_ID"],
-      issuer_id: ENV["ISSUER_ID"],
-      key_filepath: 'distribution.p8'
+      key_id: APPLE_KEY_ID,
+      issuer_id: APPLE_ISSUER_ID,
+      key_content: APPLE_KEY_CONTENT,            
+      duration: 1200,            
+      in_house: false
     )
-    # get_certificates(
-    #   api_key: api_key
-    # )           # invokes cert
-    # get_provisioning_profile(
-    #   api_key: api_key
-    # )   # invokes sigh
-    build_app(workspace: "EnumeDate.xcworkspace", export_method: "app-store", scheme: "EnumeDate", xcargs: "-allowProvisioningUpdates")
-    upload_to_testflight(
-      api_key: api_key
-    )
-    delete_keychain
-  end
-
-  lane :github_beta_new_test do
-    create_keychain(
-      name: "ios_keychain",
-      password: ENV["FASTLANE_PASSWORD"],
-      default_keychain: true,
-      unlock: true,
-      timeout: 3600,
-      add_to_search_list: true
-    )
-    import_certificate(
-      certificate_path: 'distribution-new.p12',
-      certificate_password: ENV["FASTLANE_PASSWORD"],
-      keychain_name: 'ios_keychain',
-      keychain_password: ENV["FASTLANE_PASSWORD"]
-    )
-    install_provisioning_profile(path: 'comEnumeDate_AppStore.mobileprovision')
-    update_project_provisioning(
-      xcodeproj: 'EnumeDate.xcodeproj',
-      profile: 'comEnumeDate_AppStore.mobileprovision',
-      build_configuration: 'Release'
-    )
+    
     increment_build_number(xcodeproj: "EnumeDate.xcodeproj")
-    api_key = app_store_connect_api_key(
-      key_id: ENV["KEY_ID"],
-      issuer_id: ENV["ISSUER_ID"],
-      key_filepath: 'distribution.p8'
+    
+    cocoapods(
+      clean_install: true
     )
-    # get_certificates(
-    #   api_key: api_key
-    # )           # invokes cert
-    # get_provisioning_profile(
-    #   api_key: api_key
-    # )   # invokes sigh
-    build_app(workspace: "EnumeDate.xcworkspace", export_method: "app-store", scheme: "EnumeDate", xcargs: "-allowProvisioningUpdates")
-    upload_to_testflight(
-      api_key: api_key
-    )
-    delete_keychain
-  end
 
-  lane :github_beta_new_with_setup do
-    setup_ci(force: true)
-    create_keychain(
-      name: "ios_keychain",
-      password: ENV["FASTLANE_PASSWORD"],
-      default_keychain: true,
-      unlock: true,
-      timeout: 3600,
-      add_to_search_list: true
-    )
-    import_certificate(
-      certificate_path: 'distribution.p12',
-      certificate_password: ENV["FASTLANE_PASSWORD"],
-      keychain_name: 'ios_keychain',
-      keychain_password: ENV["FASTLANE_PASSWORD"]
-    )
-    install_provisioning_profile(path: 'comEnumeDate_AppStore.mobileprovision')
-    update_project_provisioning(
-      xcodeproj: 'EnumeDate.xcodeproj',
-      profile: 'comEnumeDate_AppStore.mobileprovision',
-      build_configuration: 'Release'
-    )
-    increment_build_number(xcodeproj: "EnumeDate.xcodeproj")
-    api_key = app_store_connect_api_key(
-      key_id: ENV["KEY_ID"],
-      issuer_id: ENV["ISSUER_ID"],
-      key_filepath: 'distribution.p8'
-    )
-    # get_certificates(
-    #   api_key: api_key
-    # )           # invokes cert
-    # get_provisioning_profile(
-    #   api_key: api_key
-    # )   # invokes sigh
-    build_app(workspace: "EnumeDate.xcworkspace", export_method: "app-store", scheme: "EnumeDate", xcargs: "-allowProvisioningUpdates")
-    upload_to_testflight(
+    match(
+      type: 'appstore',
+      app_identifier: "#{DEVELOPER_APP_IDENTIFIER}",
+      git_basic_authorization: Base64.strict_encode64(GIT_AUTHORIZATION),
+      readonly: true,
+      keychain_name: keychain_name,
+      keychain_password: keychain_password,
       api_key: api_key
     )
-    delete_keychain
-  end
 
-  lane :github_beta_new_test_with_setup do
-    setup_ci(force: true)
-    create_keychain(
-      name: "ios_keychain",
-      password: ENV["FASTLANE_PASSWORD"],
-      default_keychain: true,
-      unlock: true,
-      timeout: 3600,
-      add_to_search_list: true
+    gym(
+      configuration: "Release",
+      workspace: "EnumeDate.xcworkspace",
+      scheme: "EnumeDate",
+      export_method: "app-store",
+      export_options: {
+        provisioningProfiles: { 
+            DEVELOPER_APP_ID => PROVISIONING_PROFILE_SPECIFIER
+        }
+      }
     )
-    import_certificate(
-      certificate_path: 'distribution-new.p12',
-      certificate_password: ENV["FASTLANE_PASSWORD"],
-      keychain_name: 'ios_keychain',
-      keychain_password: ENV["FASTLANE_PASSWORD"]
-    )
-    install_provisioning_profile(path: 'comEnumeDate_AppStore.mobileprovision')
-    update_project_provisioning(
-      xcodeproj: 'EnumeDate.xcodeproj',
-      profile: 'comEnumeDate_AppStore.mobileprovision',
-      build_configuration: 'Release'
-    )
-    increment_build_number(xcodeproj: "EnumeDate.xcodeproj")
-    api_key = app_store_connect_api_key(
-      key_id: ENV["KEY_ID"],
-      issuer_id: ENV["ISSUER_ID"],
-      key_filepath: 'distribution.p8'
-    )
-    # get_certificates(
-    #   api_key: api_key
-    # )           # invokes cert
-    # get_provisioning_profile(
-    #   api_key: api_key
-    # )   # invokes sigh
-    build_app(workspace: "EnumeDate.xcworkspace", export_method: "app-store", scheme: "EnumeDate", xcargs: "-allowProvisioningUpdates")
-    upload_to_testflight(
-      api_key: api_key
-    )
-    delete_keychain
-  end
 
-  lane :github_beta_basic do
-    increment_build_number(xcodeproj: "EnumeDate.xcodeproj")
-    api_key = app_store_connect_api_key(
-      key_id: ENV["KEY_ID"],
-      issuer_id: ENV["ISSUER_ID"],
-      key_filepath: 'distribution.p8'
+    pilot(
+      apple_id: "#{DEVELOPER_APP_ID}",
+      app_identifier: "#{DEVELOPER_APP_IDENTIFIER}",
+      skip_waiting_for_build_processing: true,
+      skip_submission: true,
+      distribute_external: false,
+      notify_external_testers: false,
+      ipa: "./EnumeDate.ipa"
     )
-    get_certificates(
-      api_key: api_key
-    )           # invokes cert
-    get_provisioning_profile(
-      api_key: api_key
-    )   # invokes sigh
-    build_app(workspace: "EnumeDate.xcworkspace", scheme: "EnumeDate", xcargs: "-allowProvisioningUpdates")
-    upload_to_testflight(
-      api_key: api_key
-    )
-  end
 
-  
+    delete_temp_keychain(keychain_name)
+  end
 end

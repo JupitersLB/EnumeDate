@@ -9,9 +9,24 @@ env:
   FASTLANE_IOS_SECRET: ${{ secrets.FASTLANE_IOS_SECRET}}
 
 jobs:
-  ios-beta:
+  github-beta:
     name: Build and Deploy Beta
     runs-on: macos-latest
+    env:
+      APP_STORE_CONNECT_TEAM_ID: '${{ secrets.APP_STORE_CONNECT_TEAM_ID }}'
+      DEVELOPER_APP_ID: '${{ secrets.DEVELOPER_APP_ID }}'
+      DEVELOPER_APP_IDENTIFIER: '${{ secrets.DEVELOPER_APP_IDENTIFIER }}'
+      DEVELOPER_PORTAL_TEAM_ID: '${{ secrets.DEVELOPER_PORTAL_TEAM_ID }}'
+      FASTLANE_APPLE_ID: '${{ secrets.FASTLANE_APPLE_ID }}'
+      FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: '${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}'
+      MATCH_PASSWORD: '${{ secrets.MATCH_PASSWORD }}'
+      GIT_AUTHORIZATION: '${{ secrets.GIT_AUTHORIZATION }}'
+      PROVISIONING_PROFILE_SPECIFIER: '${{ secrets.PROVISIONING_PROFILE_SPECIFIER }}'
+      TEMP_KEYCHAIN_PASSWORD: '${{ secrets.TEMP_KEYCHAIN_PASSWORD }}'
+      TEMP_KEYCHAIN_USER: '${{ secrets.TEMP_KEYCHAIN_USER }}'
+      APPLE_KEY_ID: '${{ secrets.APPLE_KEY_ID }}'
+      APPLE_ISSUER_ID: '${{ secrets.APPLE_ISSUER_ID }}'
+      APPLE_KEY_CONTENT: '${{ secrets.APPLE_KEY_CONTENT }}'
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
@@ -31,119 +46,4 @@ jobs:
       - name: Install pods
         run: cd ios && pod install && cd ..
       - name: Execute Fastlane command
-        run: cd ios && FASTLANE_PASSWORD=${FASTLANE_IOS_SECRET} fastlane github_beta
-  ios-beta-new:
-    name: Build and Deploy Beta New
-    runs-on: macos-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '14.x'
-      - uses: actions/setup-ruby@v1
-        with:
-          ruby-version: '2.x'
-      - name: Install Fastlane
-        run: cd ios && bundle install && cd ..
-      - name: Make secrets
-        run: GPG_PASSPHRASE=${GPG_PASSPHRASE} make secrets
-      - name: Install packages
-        run: yarn install
-      - name: Build tailwind
-        run: yarn build:tailwind
-      - name: Install pods
-        run: cd ios && pod install && cd ..
-      - name: Execute Fastlane command
-        run: cd ios && FASTLANE_PASSWORD=${FASTLANE_IOS_SECRET} fastlane github_beta_new
-  ios-beta-new-test:
-    name: Build and Deploy Beta New Test
-    runs-on: macos-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '14.x'
-      - uses: actions/setup-ruby@v1
-        with:
-          ruby-version: '2.x'
-      - name: Install Fastlane
-        run: cd ios && bundle install && cd ..
-      - name: Make secrets
-        run: GPG_PASSPHRASE=${GPG_PASSPHRASE} make secrets
-      - name: Install packages
-        run: yarn install
-      - name: Build tailwind
-        run: yarn build:tailwind
-      - name: Install pods
-        run: cd ios && pod install && cd ..
-      - name: Execute Fastlane command
-        run: cd ios && FASTLANE_PASSWORD=${FASTLANE_IOS_SECRET} fastlane github_beta_new_test
-  ios-beta-new-with-setup:
-    name: Build and Deploy Beta New With Setup
-    runs-on: macos-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '14.x'
-      - uses: actions/setup-ruby@v1
-        with:
-          ruby-version: '2.x'
-      - name: Install Fastlane
-        run: cd ios && bundle install && cd ..
-      - name: Make secrets
-        run: GPG_PASSPHRASE=${GPG_PASSPHRASE} make secrets
-      - name: Install packages
-        run: yarn install
-      - name: Build tailwind
-        run: yarn build:tailwind
-      - name: Install pods
-        run: cd ios && pod install && cd ..
-      - name: Execute Fastlane command
-        run: cd ios && FASTLANE_PASSWORD=${FASTLANE_IOS_SECRET} fastlane github_beta_new_with_setup
-  ios-beta-new-test-With-Setup:
-    name: Build and Deploy Beta New Test
-    runs-on: macos-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '14.x'
-      - uses: actions/setup-ruby@v1
-        with:
-          ruby-version: '2.x'
-      - name: Install Fastlane
-        run: cd ios && bundle install && cd ..
-      - name: Make secrets
-        run: GPG_PASSPHRASE=${GPG_PASSPHRASE} make secrets
-      - name: Install packages
-        run: yarn install
-      - name: Build tailwind
-        run: yarn build:tailwind
-      - name: Install pods
-        run: cd ios && pod install && cd ..
-      - name: Execute Fastlane command
-        run: cd ios && FASTLANE_PASSWORD=${FASTLANE_IOS_SECRET} fastlane github_beta_new_test_with_setup
-  ios-beta-basic:
-    name: Build and Deploy Beta Basic
-    runs-on: macos-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '14.x'
-      - uses: actions/setup-ruby@v1
-        with:
-          ruby-version: '2.x'
-      - name: Install Fastlane
-        run: cd ios && bundle install && cd ..
-      - name: Make secrets
-        run: GPG_PASSPHRASE=${GPG_PASSPHRASE} make secrets
-      - name: Install packages
-        run: yarn install
-      - name: Build tailwind
-        run: yarn build:tailwind
-      - name: Install pods
-        run: cd ios && pod install && cd ..
-      - name: Execute Fastlane command
-        run: cd ios && FASTLANE_PASSWORD=${FASTLANE_IOS_SECRET} fastlane github_beta_basic
+        run: cd ios && fastlane github_beta
