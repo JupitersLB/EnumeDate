@@ -52,6 +52,12 @@ platform :ios do
       keychain_password: ENV["FASTLANE_PASSWORD"]
     )
     install_provisioning_profile(path: 'comEnumeDate_AppStore.mobileprovision')
+    update_project_provisioning(
+      xcodeproj: 'com.EnumeDate.xcodeproj',
+      target_filter: 'github',
+      profile: 'comEnumeDate_AppStore.mobileprovision',
+      build_configuration: 'Release'
+    )
     increment_build_number(xcodeproj: "EnumeDate.xcodeproj")
     api_key = app_store_connect_api_key(
       key_id: ENV["KEY_ID"],
