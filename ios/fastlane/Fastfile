@@ -10,6 +10,7 @@ APPLE_ISSUER_ID = ENV["APPLE_ISSUER_ID"]
 APPLE_KEY_ID = ENV["APPLE_KEY_ID"]
 APPLE_KEY_CONTENT = ENV["APPLE_KEY_CONTENT"]
 GIT_AUTHORIZATION = ENV["GIT_AUTHORIZATION"]
+SSH_GIT_URL = ENV["SSH_GIT_URL"]
 
 def delete_temp_keychain(name)
   delete_keychain(
@@ -49,35 +50,37 @@ platform :ios do
 
     match(
       type: 'appstore',
+      clone_branch_directly: true,
       app_identifier: "#{DEVELOPER_APP_IDENTIFIER}",
       git_basic_authorization: Base64.strict_encode64(GIT_AUTHORIZATION),
       readonly: true,
       keychain_name: keychain_name,
       keychain_password: keychain_password,
-      api_key: api_key
+      api_key: api_key,
+      verbose: true
     )
 
-    gym(
-      configuration: "Release",
-      workspace: "EnumeDate.xcworkspace",
-      scheme: "EnumeDate",
-      export_method: "app-store",
-      export_options: {
-        provisioningProfiles: { 
-            DEVELOPER_APP_ID => PROVISIONING_PROFILE_SPECIFIER
-        }
-      }
-    )
+    # gym(
+    #   configuration: "Release",
+    #   workspace: "EnumeDate.xcworkspace",
+    #   scheme: "EnumeDate",
+    #   export_method: "app-store",
+    #   export_options: {
+    #     provisioningProfiles: { 
+    #         DEVELOPER_APP_ID => PROVISIONING_PROFILE_SPECIFIER
+    #     }
+    #   }
+    # )
 
-    pilot(
-      apple_id: "#{DEVELOPER_APP_ID}",
-      app_identifier: "#{DEVELOPER_APP_IDENTIFIER}",
-      skip_waiting_for_build_processing: true,
-      skip_submission: true,
-      distribute_external: false,
-      notify_external_testers: false,
-      ipa: "./EnumeDate.ipa"
-    )
+    # pilot(
+    #   apple_id: "#{DEVELOPER_APP_ID}",
+    #   app_identifier: "#{DEVELOPER_APP_IDENTIFIER}",
+    #   skip_waiting_for_build_processing: true,
+    #   skip_submission: true,
+    #   distribute_external: false,
+    #   notify_external_testers: false,
+    #   ipa: "./EnumeDate.ipa"
+    # )
 
     delete_temp_keychain(keychain_name)
   end
