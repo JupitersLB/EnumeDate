@@ -10,6 +10,9 @@ android/gradle.properties.gpg: android/gradle.properties gpg_key
 ios/H9Y76D7587.cer.gpg: ios/H9Y76D7587.cer gpg_key
 	gpg --yes --batch --passphrase="${GPG_PASSPHRASE}" -c ios/H9Y76D7587.cer > ios/H9Y76D7587.cer.gpg
 
+ios/H9Y76D7587.certSigningRequest.gpg: ios/H9Y76D7587.certSigningRequest gpg_key
+	gpg --yes --batch --passphrase="${GPG_PASSPHRASE}" -c ios/H9Y76D7587.certSigningRequest > ios/H9Y76D7587.certSigningRequest.gpg
+
 ios/H9Y76D7587.p12.gpg: ios/H9Y76D7587.p12 gpg_key
 	gpg --yes --batch --passphrase="${GPG_PASSPHRASE}" -c ios/H9Y76D7587.p12 > ios/H9Y76D7587.p12.gpg
 
@@ -27,6 +30,7 @@ ios/fastlane/.env.default.gpg: ios/fastlane/.env.default gpg_key
 
 encrypt_secrets: android/app/enumedate.keystore.gpg \
 	android/gradle.properties.gpg \
+	ios/H9Y76D7587.certSigningRequest \
 	ios/H9Y76D7587.cer.gpg \
 	ios/H9Y76D7587.p12.gpg \
 	ios/AppStore_com.EnumeDate.mobileprovision.gpg \
@@ -39,6 +43,7 @@ secrets: gpg_key
 	gpg --yes --batch --passphrase="${GPG_PASSPHRASE}" -d < android/app/enumedate.keystore.gpg > android/app/enumedate.keystore
 	gpg --yes --batch --passphrase="${GPG_PASSPHRASE}" -d < android/gradle.properties.gpg > android/gradle.properties
 	gpg --yes --batch --passphrase="${GPG_PASSPHRASE}" -d < ios/H9Y76D7587.cer.gpg > ios/H9Y76D7587.cer
+	gpg --yes --batch --passphrase="${GPG_PASSPHRASE}" -d < ios/H9Y76D7587.certSigningRequest.gpg > ios/H9Y76D7587.certSigningRequest
 	gpg --yes --batch --passphrase="${GPG_PASSPHRASE}" -d < ios/H9Y76D7587.p12.gpg > ios/H9Y76D7587.p12
 	gpg --yes --batch --passphrase="${GPG_PASSPHRASE}" -d < ios/distribution.p8.gpg > ios/distribution.p8
 	gpg --yes --batch --passphrase="${GPG_PASSPHRASE}" -d < ios/AppStore_com.EnumeDate.mobileprovision.gpg > ios/AppStore_com.EnumeDate.mobileprovision
