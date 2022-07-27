@@ -19,6 +19,9 @@ ios/distribution.p8.gpg: ios/distribution.p8 gpg_key
 ios/AppStore_com.EnumeDate.mobileprovision.gpg: ios/AppStore_com.EnumeDate.mobileprovision gpg_key
 	gpg --yes --batch --passphrase="${GPG_PASSPHRASE}" -c ios/AppStore_com.EnumeDate.mobileprovision > ios/AppStore_com.EnumeDate.mobileprovision.gpg
 
+ios/comEnumeDate_AppStore.mobileprovision.gpg: ios/comEnumeDate_AppStore.mobileprovision gpg_key
+	gpg --yes --batch --passphrase="${GPG_PASSPHRASE}" -c ios/comEnumeDate_AppStore.mobileprovision > ios/comEnumeDate_AppStore.mobileprovision.gpg
+
 ios/fastlane/.env.default.gpg: ios/fastlane/.env.default gpg_key
 	gpg --yes --batch --passphrase="${GPG_PASSPHRASE}" -c ios/fastlane/.env.default > ios/fastlane/.env.default.gpg
 
@@ -28,7 +31,8 @@ encrypt_secrets: android/app/enumedate.keystore.gpg \
 	ios/H9Y76D7587.p12.gpg \
 	ios/AppStore_com.EnumeDate.mobileprovision.gpg \
 	ios/distribution.p8.gpg \
-	ios/fastlane/.env.default.gpg
+	ios/fastlane/.env.default.gpg \
+	ios/comEnumeDate_AppStore.mobileprovision.gpg
 
 
 secrets: gpg_key
@@ -38,6 +42,7 @@ secrets: gpg_key
 	gpg --yes --batch --passphrase="${GPG_PASSPHRASE}" -d < ios/H9Y76D7587.p12.gpg > ios/H9Y76D7587.p12
 	gpg --yes --batch --passphrase="${GPG_PASSPHRASE}" -d < ios/distribution.p8.gpg > ios/distribution.p8
 	gpg --yes --batch --passphrase="${GPG_PASSPHRASE}" -d < ios/AppStore_com.EnumeDate.mobileprovision.gpg > ios/AppStore_com.EnumeDate.mobileprovision
+	gpg --yes --batch --passphrase="${GPG_PASSPHRASE}" -d < ios/comEnumeDate_AppStore.mobileprovision.gpg > ios/comEnumeDate_AppStore.mobileprovision
 	gpg --yes --batch --passphrase="${GPG_PASSPHRASE}" -d < ios/fastlane/.env.default.gpg > ios/fastlane/.env.default
 
 
