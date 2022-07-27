@@ -18,6 +18,7 @@ default_platform(:ios)
 platform :ios do
   desc "Push a new beta build to TestFlight"
   lane :beta do
+    setup_ci(force: true)
     increment_build_number(xcodeproj: "EnumeDate.xcodeproj")
     api_key = app_store_connect_api_key(
       key_id: ENV["KEY_ID"],
