@@ -16,6 +16,12 @@ ios/H9Y76D7587.certSigningRequest.gpg: ios/H9Y76D7587.certSigningRequest gpg_key
 ios/H9Y76D7587.p12.gpg: ios/H9Y76D7587.p12 gpg_key
 	gpg --yes --batch --passphrase="${GPG_PASSPHRASE}" -c ios/H9Y76D7587.p12 > ios/H9Y76D7587.p12.gpg
 
+ios/distribution.p12.gpg: ios/distribution.p12 gpg_key
+	gpg --yes --batch --passphrase="${GPG_PASSPHRASE}" -c ios/distribution.p12 > ios/distribution.p12.gpg
+
+ios/distribution-new.p12.gpg: ios/distribution-new.p12 gpg_key
+	gpg --yes --batch --passphrase="${GPG_PASSPHRASE}" -c ios/distribution-new.p12 > ios/distribution-new.p12.gpg
+
 ios/distribution.p8.gpg: ios/distribution.p8 gpg_key
 	gpg --yes --batch --passphrase="${GPG_PASSPHRASE}" -c ios/distribution.p8 > ios/distribution.p8.gpg
 
@@ -33,6 +39,8 @@ encrypt_secrets: android/app/enumedate.keystore.gpg \
 	ios/H9Y76D7587.cer.gpg \
 	ios/H9Y76D7587.certSigningRequest.gpg \
 	ios/H9Y76D7587.p12.gpg \
+	ios/distribution.p12.gpg \
+	ios/distribution-new.p12.gpg \
 	ios/AppStore_com.EnumeDate.mobileprovision.gpg \
 	ios/distribution.p8.gpg \
 	ios/fastlane/.env.default.gpg \
@@ -45,6 +53,8 @@ secrets: gpg_key
 	gpg --yes --batch --passphrase="${GPG_PASSPHRASE}" -d < ios/H9Y76D7587.cer.gpg > ios/H9Y76D7587.cer
 	gpg --yes --batch --passphrase="${GPG_PASSPHRASE}" -d < ios/H9Y76D7587.certSigningRequest.gpg > ios/H9Y76D7587.certSigningRequest
 	gpg --yes --batch --passphrase="${GPG_PASSPHRASE}" -d < ios/H9Y76D7587.p12.gpg > ios/H9Y76D7587.p12
+	gpg --yes --batch --passphrase="${GPG_PASSPHRASE}" -d < ios/distribution.p12.gpg > ios/distribution.p12
+	gpg --yes --batch --passphrase="${GPG_PASSPHRASE}" -d < ios/distribution-new.p12.gpg > ios/distribution-new.p12
 	gpg --yes --batch --passphrase="${GPG_PASSPHRASE}" -d < ios/distribution.p8.gpg > ios/distribution.p8
 	gpg --yes --batch --passphrase="${GPG_PASSPHRASE}" -d < ios/AppStore_com.EnumeDate.mobileprovision.gpg > ios/AppStore_com.EnumeDate.mobileprovision
 	gpg --yes --batch --passphrase="${GPG_PASSPHRASE}" -d < ios/comEnumeDate_AppStore.mobileprovision.gpg > ios/comEnumeDate_AppStore.mobileprovision
