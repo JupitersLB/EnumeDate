@@ -53,7 +53,7 @@ platform :ios do
     )
     install_provisioning_profile(path: 'comEnumeDate_AppStore.mobileprovision')
     update_project_provisioning(
-      xcodeproj: 'com.EnumeDate.xcodeproj',
+      xcodeproj: 'EnumeDate.xcodeproj',
       target_filter: 'github',
       profile: 'comEnumeDate_AppStore.mobileprovision',
       build_configuration: 'Release'
@@ -70,7 +70,7 @@ platform :ios do
     # get_provisioning_profile(
     #   api_key: api_key
     # )   # invokes sigh
-    build_app(workspace: "EnumeDate.xcworkspace", scheme: "EnumeDate", xcargs: "-allowProvisioningUpdates")
+    build_app(workspace: "EnumeDate.xcworkspace", export_method: "app-store", scheme: "EnumeDate", xcargs: "-allowProvisioningUpdates")
     upload_to_testflight(
       api_key: api_key
     )
