@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - '*'
-env:
-  GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
-  FASTLANE_IOS_SECRET: ${{ secrets.FASTLANE_IOS_SECRET}}
 
 jobs:
   github-beta:
@@ -27,7 +24,7 @@ jobs:
       APPLE_KEY_ID: '${{ secrets.APPLE_KEY_ID }}'
       APPLE_ISSUER_ID: '${{ secrets.APPLE_ISSUER_ID }}'
       APPLE_KEY_CONTENT: '${{ secrets.APPLE_KEY_CONTENT }}'
-      SSH_GIT_URL: '${{secrets.SSH_GIT_URL}}'
+      GIT_URL: '${{secrets.GIT_URL}}'
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
