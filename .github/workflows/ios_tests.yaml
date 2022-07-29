@@ -42,7 +42,6 @@ jobs:
       - name: Install pods
         run: cd ios && pod install && cd ..
       - name: Setup detox
-        run: brew tap wix/brew
-        run: brew install applesimutils
+        run: brew tap wix/brew && brew install applesimutils
       - name: Build and test
         run: yarn detox build --configuration ios && detox test --configuration ios
