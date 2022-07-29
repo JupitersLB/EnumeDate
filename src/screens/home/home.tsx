@@ -22,7 +22,9 @@ const Home: FC<{ navigation: HomeNavigationProps; route: HomeRouteProps }> = ({
   useEffect(() => {}, [isFocused])
 
   return (
-    <SafeAreaView style={tailwind('flex-1 mx-10 justify-between')}>
+    <SafeAreaView
+      testID="home_screen"
+      style={tailwind('flex-1 mx-10 justify-between')}>
       <P style={tailwind('text-blue-600')}>EnumeDate</P>
       <View style={tailwind('flex flex-grow my-10')}>
         <EventList events={eventStore.events} />
@@ -31,6 +33,7 @@ const Home: FC<{ navigation: HomeNavigationProps; route: HomeRouteProps }> = ({
       <View style={tailwind('mb-10')}>
         <JLBButton
           disabled={uiStore.addEventDisabled}
+          testID="add_new_event_button"
           type="outline"
           color="primary"
           onPress={() => navigation.push('EventForm', {})}>

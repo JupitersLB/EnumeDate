@@ -10,8 +10,9 @@ const JLBButton: FC<{
   disabled?: boolean
   color?: 'primary' | 'secondary' | 'danger'
   onPress?: () => void
+  testID?: string
   children: ReactNode
-}> = ({ type, style, onPress, disabled, color, children }) => {
+}> = ({ type, style, onPress, disabled, color, children, testID }) => {
   const tailwind = useTailwind()
 
   const bgColor = clsx({
@@ -49,6 +50,7 @@ const JLBButton: FC<{
 
   return (
     <TouchableOpacity
+      testID={testID}
       onPress={onPress}
       disabled={disabled}
       style={tailwind(
