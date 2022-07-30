@@ -10,7 +10,7 @@ env:
 jobs:
   android-tests:
     name: Build Android Tests
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
@@ -19,6 +19,10 @@ jobs:
       - uses: actions/setup-ruby@v1
         with:
           ruby-version: '2.x'
+          bundler-cache: true
+      - uses: actions/setup-java@v2
+        with:
+          java-version: '11'
       - name: Install Fastlane
         run: cd android && bundle install && cd ..
       - name: Install packages
