@@ -3,7 +3,7 @@ name: iOS Tetss
 on:
   push:
     branches:
-      - '*'
+      - 'master'
 
 jobs:
   github-beta:
@@ -43,5 +43,7 @@ jobs:
         run: cd ios && pod install && cd ..
       - name: Setup detox
         run: brew tap wix/brew && brew install applesimutils
-      - name: Build and test
-        run: yarn detox build --configuration ios && yarn detox test --configuration ios
+      - name: Build Test Version
+        run: yarn detox build --configuration ios
+      - name: Test Build
+        run: yarn detox test --configuration ios
