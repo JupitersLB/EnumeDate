@@ -24,7 +24,6 @@
     },
     "emulator": {
       "type": "android.emulator",
-      "forceAdbInstall": true,
       "device": {
         "avdName": "Pixel_4_XL_API_30"
       }
