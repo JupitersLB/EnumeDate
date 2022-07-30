@@ -32,4 +32,10 @@ jobs:
       - name: Build Test Version
         run: yarn detox build --configuration android
       - name: Test Build
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 30
+          target: default
+          profile: pixel 4 xl
+          avd-name: Pixel_4_XL_API_30
         run: yarn detox test --configuration android
