@@ -23,6 +23,12 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '11'
+      - uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+      - name: Install dependencies
+        run: yarn install
       - name: Install Fastlane
         run: cd android && bundle install && cd ..
       - name: Install packages
@@ -38,9 +44,10 @@ jobs:
       - name: Test Build
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 29
+          api-level: 30
           target: google_apis
           arch: x86_64
+          profile: Pixel
           emulator-build: 7425822
           avd-name: Pixel_4_XL_API_30
           script: yarn detox test --configuration android
