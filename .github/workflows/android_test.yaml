@@ -38,4 +38,4 @@ jobs:
           target: default
           profile: pixel 4 xl
           avd-name: Pixel_4_XL_API_30
-        run: yarn detox test --configuration android
+          script: yarn detox test --configuration android
