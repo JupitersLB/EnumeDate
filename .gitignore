@@ -64,7 +64,6 @@ buck-out/
 *.certSigningRequest
 *.p8
 
-
 # Bundle artifact
 *.jsbundle
 
@@ -74,3 +73,5 @@ buck-out/
 
 tailwind.css
 tailwind.json
+
+/artifacts
