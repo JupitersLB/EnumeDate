@@ -1,0 +1,435 @@
+--------- beginning of main
+07-30 14:03:56.986 15361 15361 W com.enumedate: Unexpected CPU variant for X86 using defaults: x86
+--------- beginning of system
+07-30 14:03:57.024 15361 15361 W ActivityThread: Package uses different ABI(s) than its instrumentation: package[com.enumedate]: x86, null instrumentation[com.enumedate.test]: null, null
+07-30 14:03:57.026 15361 15361 I com.enumedate: The ClassLoaderContext is a special shared library.
+07-30 14:03:57.027 15361 15361 I chatty  : uid=10182(com.enumedate) identical 1 line
+07-30 14:03:57.028 15361 15361 I com.enumedate: The ClassLoaderContext is a special shared library.
+07-30 14:03:57.029 15361 15361 W com.enumedate: ClassLoaderContext classpath size mismatch. expected=0, found=3 (PCL[]{PCL[/system/framework/android.test.base.jar*315452938]#PCL[/system/framework/android.test.mock.jar*239297726]{PCL[/system/framework/android.test.base.jar*315452938]}#PCL[/system/framework/android.test.runner.jar*2931394026]{PCL[/system/framework/android.test.base.jar*315452938]#PCL[/system/framework/android.test.mock.jar*239297726]{PCL[/system/framework/android.test.base.jar*315452938]}}} | PCL[/system/framework/android.test.runner.jar*2931394026:/system/framework/android.test.mock.jar*239297726:/system/framework/android.test.base.jar*315452938])
+07-30 14:03:57.030 15361 15361 W com.enumedate: Found duplicate classes, falling back to extracting from APK : /data/app/~~yyzCQymb3prQ8slsLHJFGA==/com.enumedate.test-VC8FyMPak5gWAPucoeDpZg==/base.apk
+07-30 14:03:57.030 15361 15361 W com.enumedate: NOTE: This wastes RAM and hurts startup performance.
+07-30 14:03:57.030 15361 15361 W com.enumedate: Found duplicated class when checking oat files: 'Ljunit/framework/Assert;' in /system/framework/android.test.base.jar and /data/app/~~yyzCQymb3prQ8slsLHJFGA==/com.enumedate.test-VC8FyMPak5gWAPucoeDpZg==/base.apk
+07-30 14:03:57.061 15361 15361 W com.enumedate: ClassLoaderContext classpath size mismatch. expected=0, found=4 (PCL[] | PCL[/system/framework/android.test.runner.jar*2931394026:/system/framework/android.test.mock.jar*239297726:/system/framework/android.test.base.jar*315452938:/data/app/~~yyzCQymb3prQ8slsLHJFGA==/com.enumedate.test-VC8FyMPak5gWAPucoeDpZg==/base.apk*4029732008])
+07-30 14:03:57.069 15361 15361 D ApplicationLoaders: Returning zygote-cached class loader: /system/framework/android.test.base.jar
+07-30 14:03:57.069 15361 15361 D ApplicationLoaders: Returning zygote-cached class loader: /system/framework/android.test.base.jar
+07-30 14:03:57.070 15361 15361 I com.enumedate: The ClassLoaderContext is a special shared library.
+07-30 14:03:57.070 15361 15361 D ApplicationLoaders: Returning zygote-cached class loader: /system/framework/android.test.base.jar
+07-30 14:03:57.070 15361 15361 D ApplicationLoaders: Returning zygote-cached class loader: /system/framework/android.test.base.jar
+07-30 14:03:57.071 15361 15361 I com.enumedate: The ClassLoaderContext is a special shared library.
+07-30 14:03:57.073 15361 15361 I chatty  : uid=10182(com.enumedate) identical 2 lines
+07-30 14:03:57.074 15361 15361 I com.enumedate: The ClassLoaderContext is a special shared library.
+07-30 14:03:57.075 15361 15361 W com.enumedate: ClassLoaderContext classpath size mismatch. expected=0, found=3 (PCL[]{PCL[/system/framework/android.test.base.jar*315452938]#PCL[/system/framework/android.test.mock.jar*239297726]{PCL[/system/framework/android.test.base.jar*315452938]}#PCL[/system/framework/android.test.runner.jar*2931394026]{PCL[/system/framework/android.test.base.jar*315452938]#PCL[/system/framework/android.test.mock.jar*239297726]{PCL[/system/framework/android.test.base.jar*315452938]}}} | PCL[/system/framework/android.test.runner.jar*2931394026:/system/framework/android.test.mock.jar*239297726:/system/framework/android.test.base.jar*315452938]{PCL[/system/framework/android.test.base.jar*315452938]#PCL[/system/framework/android.test.mock.jar*239297726]{PCL[/system/framework/android.test.base.jar*315452938]}#PCL[/system/framework/android.test.runner.jar*2931394026]{PCL[/system/framework/android.test.base.jar*315452938]#PCL[/system/framework/android.test.mock.jar*239297726]{PCL[/system/framework/android.test.base.jar*315452938]}}};PCL[/system/framework/android.test.runner.jar*2931394026:/system/framework/android.test.mock.jar*239297726:/system/framework/android.test.base.jar*315452938:/data/app/~~yyzCQymb3prQ8slsLHJFGA==/com.enumedate.test-VC8FyMPak5gWAPucoeDpZg==/base.apk*4029732008:/data/app/~~3zHotpAIRceqc6XDriSdGw==/com.enumedate-CNkryRUewAYW8BhxO7k9Iw==/base.apk*2283142149])
+07-30 14:03:57.075 15361 15361 W com.enumedate: Found duplicate classes, falling back to extracting from APK : /data/app/~~yyzCQymb3prQ8slsLHJFGA==/com.enumedate.test-VC8FyMPak5gWAPucoeDpZg==/base.apk
+07-30 14:03:57.076 15361 15361 W com.enumedate: NOTE: This wastes RAM and hurts startup performance.
+07-30 14:03:57.076 15361 15361 W com.enumedate: Found duplicated class when checking oat files: 'Landroid_libs/ub_uiautomator/R;' in /data/app/~~yyzCQymb3prQ8slsLHJFGA==/com.enumedate.test-VC8FyMPak5gWAPucoeDpZg==/base.apk and /data/app/~~yyzCQymb3prQ8slsLHJFGA==/com.enumedate.test-VC8FyMPak5gWAPucoeDpZg==/base.apk
+07-30 14:03:57.103 15361 15361 W com.enumedate: ClassLoaderContext classpath size mismatch. expected=0, found=4 (PCL[] | PCL[/system/framework/android.test.runner.jar*2931394026:/system/framework/android.test.mock.jar*239297726:/system/framework/android.test.base.jar*315452938:/data/app/~~yyzCQymb3prQ8slsLHJFGA==/com.enumedate.test-VC8FyMPak5gWAPucoeDpZg==/base.apk*4029732008]{PCL[/system/framework/android.test.base.jar*315452938]#PCL[/system/framework/android.test.mock.jar*239297726]{PCL[/system/framework/android.test.base.jar*315452938]}#PCL[/system/framework/android.test.runner.jar*2931394026]{PCL[/system/framework/android.test.base.jar*315452938]#PCL[/system/framework/android.test.mock.jar*239297726]{PCL[/system/framework/android.test.base.jar*315452938]}}};PCL[/system/framework/android.test.runner.jar*2931394026:/system/framework/android.test.mock.jar*239297726:/system/framework/android.test.base.jar*315452938:/data/app/~~yyzCQymb3prQ8slsLHJFGA==/com.enumedate.test-VC8FyMPak5gWAPucoeDpZg==/base.apk*4029732008:/data/app/~~3zHotpAIRceqc6XDriSdGw==/com.enumedate-CNkryRUewAYW8BhxO7k9Iw==/base.apk*2283142149])
+07-30 14:03:57.104 15361 15361 W com.enumedate: Found duplicate classes, falling back to extracting from APK : /data/app/~~3zHotpAIRceqc6XDriSdGw==/com.enumedate-CNkryRUewAYW8BhxO7k9Iw==/base.apk
+07-30 14:03:57.104 15361 15361 W com.enumedate: NOTE: This wastes RAM and hurts startup performance.
+07-30 14:03:57.104 15361 15361 W com.enumedate: Found duplicated class when checking oat files: 'La/a;' in /data/app/~~3zHotpAIRceqc6XDriSdGw==/com.enumedate-CNkryRUewAYW8BhxO7k9Iw==/base.apk and /data/app/~~3zHotpAIRceqc6XDriSdGw==/com.enumedate-CNkryRUewAYW8BhxO7k9Iw==/base.apk
+07-30 14:03:57.168 15361 15361 D NetworkSecurityConfig: Using Network Security Config from resource network_security_config debugBuild: false
+07-30 14:03:57.169 15361 15361 D NetworkSecurityConfig: Using Network Security Config from resource network_security_config debugBuild: false
+07-30 14:03:57.176 15361 15361 I MonitoringInstr: Instrumentation started!
+07-30 14:03:57.189 15361 15361 V TestEventClient: No service name argument was given (testDiscoveryService, testRunEventService or orchestratorService)
+07-30 14:03:57.192 15361 15361 V fb-UnpackingSoSource: locked dso store /data/user/0/com.enumedate/lib-main
+07-30 14:03:57.193 15361 15361 V fb-UnpackingSoSource: deps mismatch on deps store: regenerating
+07-30 14:03:57.194 15361 15361 V fb-UnpackingSoSource: so store dirty: regenerating
+07-30 14:03:57.219 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/libbutter.so: deferring to libdir
+07-30 14:03:57.219 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/libc++_shared.so: deferring to libdir
+07-30 14:03:57.219 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/libfabricjni.so: deferring to libdir
+07-30 14:03:57.220 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/libfb.so: deferring to libdir
+07-30 14:03:57.220 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/libfbjni.so: deferring to libdir
+07-30 14:03:57.220 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/libfolly_futures.so: deferring to libdir
+07-30 14:03:57.220 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/libfolly_json.so: deferring to libdir
+07-30 14:03:57.220 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/libglog.so: deferring to libdir
+07-30 14:03:57.220 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/libglog_init.so: deferring to libdir
+07-30 14:03:57.220 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/libimagepipeline.so: deferring to libdir
+07-30 14:03:57.221 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/libjsc.so: deferring to libdir
+07-30 14:03:57.221 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/libjscexecutor.so: deferring to libdir
+07-30 14:03:57.221 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/libjsi.so: deferring to libdir
+07-30 14:03:57.221 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/libjsijniprofiler.so: deferring to libdir
+07-30 14:03:57.221 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/libjsinspector.so: deferring to libdir
+07-30 14:03:57.221 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/liblogger.so: deferring to libdir
+07-30 14:03:57.221 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/libmapbufferjni.so: deferring to libdir
+07-30 14:03:57.222 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/libnative-filters.so: deferring to libdir
+07-30 14:03:57.222 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/libnative-imagetranscoder.so: deferring to libdir
+07-30 14:03:57.222 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/libreact_codegen_rncore.so: deferring to libdir
+07-30 14:03:57.222 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/libreact_config.so: deferring to libdir
+07-30 14:03:57.222 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/libreact_debug.so: deferring to libdir
+07-30 14:03:57.222 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/libreact_nativemodule_core.so: deferring to libdir
+07-30 14:03:57.222 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/libreact_render_animations.so: deferring to libdir
+07-30 14:03:57.222 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/libreact_render_attributedstring.so: deferring to libdir
+07-30 14:03:57.223 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/libreact_render_componentregistry.so: deferring to libdir
+07-30 14:03:57.223 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/libreact_render_core.so: deferring to libdir
+07-30 14:03:57.223 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/libreact_render_debug.so: deferring to libdir
+07-30 14:03:57.223 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/libreact_render_graphics.so: deferring to libdir
+07-30 14:03:57.223 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/libreact_render_imagemanager.so: deferring to libdir
+07-30 14:03:57.223 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/libreact_render_leakchecker.so: deferring to libdir
+07-30 14:03:57.223 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/libreact_render_mapbuffer.so: deferring to libdir
+07-30 14:03:57.223 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/libreact_render_mounting.so: deferring to libdir
+07-30 14:03:57.223 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/libreact_render_runtimescheduler.so: deferring to libdir
+07-30 14:03:57.223 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/libreact_render_scheduler.so: deferring to libdir
+07-30 14:03:57.223 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/libreact_render_telemetry.so: deferring to libdir
+07-30 14:03:57.223 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/libreact_render_templateprocessor.so: deferring to libdir
+07-30 14:03:57.223 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/libreact_render_textlayoutmanager.so: deferring to libdir
+07-30 14:03:57.223 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/libreact_render_uimanager.so: deferring to libdir
+07-30 14:03:57.224 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/libreact_utils.so: deferring to libdir
+07-30 14:03:57.224 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/libreactnativeblob.so: deferring to libdir
+07-30 14:03:57.224 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/libreactnativejni.so: deferring to libdir
+07-30 14:03:57.224 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/libreactnativeutilsjni.so: deferring to libdir
+07-30 14:03:57.224 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/libreactperfloggerjni.so: deferring to libdir
+07-30 14:03:57.224 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/libreanimated.so: deferring to libdir
+07-30 14:03:57.224 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/librrc_image.so: deferring to libdir
+07-30 14:03:57.224 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/librrc_root.so: deferring to libdir
+07-30 14:03:57.224 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/librrc_text.so: deferring to libdir
+07-30 14:03:57.225 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/librrc_unimplementedview.so: deferring to libdir
+07-30 14:03:57.225 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/librrc_view.so: deferring to libdir
+07-30 14:03:57.225 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/libruntimeexecutor.so: deferring to libdir
+07-30 14:03:57.225 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/libturbomodulejsijni.so: deferring to libdir
+07-30 14:03:57.225 15361 15361 D ApkSoSource: not allowing consideration of lib/x86/libyoga.so: deferring to libdir
+07-30 14:03:57.226 15361 15361 V fb-UnpackingSoSource: regenerating DSO store com.facebook.soloader.a
+07-30 14:03:57.226 15361 15361 V fb-UnpackingSoSource: Finished regenerating DSO store com.facebook.soloader.a
+07-30 14:03:57.226 15361 15361 V fb-UnpackingSoSource: starting syncer worker
+07-30 14:03:57.238 15361 15361 V fb-UnpackingSoSource: releasing dso store lock for /data/user/0/com.enumedate/lib-main (from syncer thread)
+07-30 14:03:57.238 15361 15361 V fb-UnpackingSoSource: not releasing dso store lock for /data/user/0/com.enumedate/lib-main (syncer thread started)
+07-30 14:03:57.241 15361 15361 D SoLoader: libjscexecutor.so not found on /data/data/com.enumedate/lib-main
+07-30 14:03:57.241 15361 15361 D SoLoader: libjscexecutor.so found on /data/app/~~3zHotpAIRceqc6XDriSdGw==/com.enumedate-CNkryRUewAYW8BhxO7k9Iw==/lib/x86
+07-30 14:03:57.241 15361 15361 D SoLoader: Not resolving dependencies for libjscexecutor.so
+07-30 14:03:57.276 15361 15361 D JavaScriptCore.Version: 250230.2.1
+07-30 14:03:57.295 15361 15383 I UsageTrackerFacilitator: Usage tracking enabled
+07-30 14:03:57.301 15361 15383 I TestRequestBuilder: Scanning classpath to find tests in paths [/data/app/~~yyzCQymb3prQ8slsLHJFGA==/com.enumedate.test-VC8FyMPak5gWAPucoeDpZg==/base.apk]
+07-30 14:03:57.302 15361 15383 W com.enumedate: Opening an oat file without a class loader. Are you using the deprecated DexFile APIs?
+07-30 14:03:57.416 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/DetoxANRHandler; annotation class 2321
+07-30 14:03:57.416 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.416 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/DetoxANRHandler; annotation class 2321
+07-30 14:03:57.416 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/DetoxCrashHandler; annotation class 2321
+07-30 14:03:57.416 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.416 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/DetoxCrashHandler; annotation class 2321
+07-30 14:03:57.417 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/DetoxMain; annotation class 2321
+07-30 14:03:57.417 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.417 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/DetoxMain; annotation class 2321
+07-30 14:03:57.417 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/DetoxMainKt; annotation class 2321
+07-30 14:03:57.417 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.417 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/DetoxMainKt; annotation class 2321
+07-30 14:03:57.417 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/LaunchIntentsFactory; annotation class 2321
+07-30 14:03:57.417 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.417 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/LaunchIntentsFactory; annotation class 2321
+07-30 14:03:57.417 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/NotificationDataParser; annotation class 2321
+07-30 14:03:57.417 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.418 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/NotificationDataParser; annotation class 2321
+07-30 14:03:57.418 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/TestEngineFacade; annotation class 2321
+07-30 14:03:57.418 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.418 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/TestEngineFacade; annotation class 2321
+07-30 14:03:57.418 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/action/common/MotionDefs; annotation class 2321
+07-30 14:03:57.418 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.418 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/action/common/MotionDefs; annotation class 2321
+07-30 14:03:57.418 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/adapters/server/ActionsExecutor; annotation class 2321
+07-30 14:03:57.418 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.418 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/adapters/server/ActionsExecutor; annotation class 2321
+07-30 14:03:57.418 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/adapters/server/CleanupActionHandler; annotation class 2321
+07-30 14:03:57.418 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.418 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/adapters/server/CleanupActionHandler; annotation class 2321
+07-30 14:03:57.418 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/adapters/server/DetoxActionHandlersKt; annotation class 2321
+07-30 14:03:57.418 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.419 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/adapters/server/DetoxActionHandlersKt; annotation class 2321
+07-30 14:03:57.419 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/adapters/server/DetoxActionsDispatcher; annotation class 2321
+07-30 14:03:57.419 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.419 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/adapters/server/DetoxActionsDispatcher; annotation class 2321
+07-30 14:03:57.419 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/adapters/server/DetoxActionsDispatcherKt; annotation class 2321
+07-30 14:03:57.419 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.419 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/adapters/server/DetoxActionsDispatcherKt; annotation class 2321
+07-30 14:03:57.419 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/adapters/server/DetoxServerAdapter; annotation class 2321
+07-30 14:03:57.419 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.419 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/adapters/server/DetoxServerAdapter; annotation class 2321
+07-30 14:03:57.419 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/adapters/server/DetoxServerInfo; annotation class 2321
+07-30 14:03:57.419 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.419 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/adapters/server/DetoxServerInfo; annotation class 2321
+07-30 14:03:57.419 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/adapters/server/DetoxServerInfoKt; annotation class 2321
+07-30 14:03:57.419 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.419 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/adapters/server/DetoxServerInfoKt; annotation class 2321
+07-30 14:03:57.420 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/adapters/server/InstrumentsEventsActionsHandler; annotation class 2321
+07-30 14:03:57.420 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.420 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/adapters/server/InstrumentsEventsActionsHandler; annotation class 2321
+07-30 14:03:57.420 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/adapters/server/InstrumentsRecordingStateActionHandler; annotation class 2321
+07-30 14:03:57.420 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.420 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/adapters/server/InstrumentsRecordingStateActionHandler; annotation class 2321
+07-30 14:03:57.420 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/adapters/server/InvokeActionHandler; annotation class 2321
+07-30 14:03:57.420 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.420 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/adapters/server/InvokeActionHandler; annotation class 2321
+07-30 14:03:57.421 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/adapters/server/QueryStatusActionHandler; annotation class 2321
+07-30 14:03:57.421 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.421 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/adapters/server/QueryStatusActionHandler; annotation class 2321
+07-30 14:03:57.421 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/adapters/server/ReactNativeReloadActionHandler; annotation class 2321
+07-30 14:03:57.421 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.421 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/adapters/server/ReactNativeReloadActionHandler; annotation class 2321
+07-30 14:03:57.421 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/adapters/server/ReadyActionHandler; annotation class 2321
+07-30 14:03:57.421 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.421 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/adapters/server/ReadyActionHandler; annotation class 2321
+07-30 14:03:57.421 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/adapters/server/ScarceActionHandler; annotation class 2321
+07-30 14:03:57.421 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.421 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/adapters/server/ScarceActionHandler; annotation class 2321
+07-30 14:03:57.421 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/common/DetoxLog; annotation class 2321
+07-30 14:03:57.421 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.421 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/common/DetoxLog; annotation class 2321
+07-30 14:03:57.421 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/common/ErrorUtilsKt; annotation class 2321
+07-30 14:03:57.422 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.422 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/common/ErrorUtilsKt; annotation class 2321
+07-30 14:03:57.422 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/common/JsonConverter; annotation class 2321
+07-30 14:03:57.422 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.422 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/common/JsonConverter; annotation class 2321
+07-30 14:03:57.422 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/common/TextFileReader; annotation class 2321
+07-30 14:03:57.422 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.422 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/common/TextFileReader; annotation class 2321
+07-30 14:03:57.422 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/common/UIThread; annotation class 2321
+07-30 14:03:57.422 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.422 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/common/UIThread; annotation class 2321
+07-30 14:03:57.422 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/common/collect/PairsIterator; annotation class 2321
+07-30 14:03:57.423 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.423 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/common/collect/PairsIterator; annotation class 2321
+07-30 14:03:57.423 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/common/proxy/CallInfo; annotation class 2321
+07-30 14:03:57.423 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.423 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/common/proxy/CallInfo; annotation class 2321
+07-30 14:03:57.423 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/common/proxy/MethodsSpy; annotation class 2321
+07-30 14:03:57.423 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.423 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/common/proxy/MethodsSpy; annotation class 2321
+07-30 14:03:57.424 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/common/proxy/SpyingInvocationHandler; annotation class 2321
+07-30 14:03:57.424 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.424 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/common/proxy/SpyingInvocationHandler; annotation class 2321
+07-30 14:03:57.424 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/config/DetoxConfig; annotation class 2321
+07-30 14:03:57.425 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.425 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/config/DetoxConfig; annotation class 2321
+07-30 14:03:57.425 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/config/DetoxIdlePolicyConfig; annotation class 2321
+07-30 14:03:57.425 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.425 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/config/DetoxIdlePolicyConfig; annotation class 2321
+07-30 14:03:57.425 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/DeviceDisplay; annotation class 2321
+07-30 14:03:57.425 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.425 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/DeviceDisplay; annotation class 2321
+07-30 14:03:57.425 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/EventsInjectorReflected; annotation class 2321
+07-30 14:03:57.425 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.425 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/EventsInjectorReflected; annotation class 2321
+07-30 14:03:57.425 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/UiControllerSpy; annotation class 2321
+07-30 14:03:57.426 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/UiControllerSpy; annotation class 2321
+07-30 14:03:57.426 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/common/proxy/MethodsSpy; annotation class 2321
+07-30 14:03:57.426 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/UiControllerSpy; annotation class 2321
+07-30 14:03:57.426 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/common/proxy/MethodsSpy; annotation class 2321
+07-30 14:03:57.426 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/action/AdjustSliderToPositionAction; annotation class 2321
+07-30 14:03:57.426 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.426 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/action/AdjustSliderToPositionAction; annotation class 2321
+07-30 14:03:57.426 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/action/CheckBoxAttributes; annotation class 2321
+07-30 14:03:57.426 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.426 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/action/CheckBoxAttributes; annotation class 2321
+07-30 14:03:57.427 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/action/CommonAttributes; annotation class 2321
+07-30 14:03:57.427 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.427 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/action/CommonAttributes; annotation class 2321
+07-30 14:03:57.427 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/action/DetoxMultiTap; annotation class 2321
+07-30 14:03:57.427 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.427 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/action/DetoxMultiTap; annotation class 2321
+07-30 14:03:57.427 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/action/DetoxSingleTap; annotation class 2321
+07-30 14:03:57.427 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/action/DetoxSingleTap; annotation class 2321
+07-30 14:03:57.427 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/action/DetoxMultiTap; annotation class 2321
+07-30 14:03:57.427 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/action/DetoxSingleTap; annotation class 2321
+07-30 14:03:57.427 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/action/DetoxMultiTap; annotation class 2321
+07-30 14:03:57.427 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/action/GetAttributesAction; annotation class 2321
+07-30 14:03:57.427 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.427 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/action/GetAttributesAction; annotation class 2321
+07-30 14:03:57.428 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/action/ProgressBarAttributes; annotation class 2321
+07-30 14:03:57.428 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.428 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/action/ProgressBarAttributes; annotation class 2321
+07-30 14:03:57.428 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/action/ScreenshotResult; annotation class 2321
+07-30 14:03:57.428 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.428 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/action/ScreenshotResult; annotation class 2321
+07-30 14:03:57.428 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/action/ScrollToIndexAction; annotation class 2321
+07-30 14:03:57.428 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.429 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/action/ScrollToIndexAction; annotation class 2321
+07-30 14:03:57.429 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/action/ScrollToIndexActionKt; annotation class 2321
+07-30 14:03:57.429 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.429 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/action/ScrollToIndexActionKt; annotation class 2321
+07-30 14:03:57.429 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/action/SliderAttributes; annotation class 2321
+07-30 14:03:57.429 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.429 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/action/SliderAttributes; annotation class 2321
+07-30 14:03:57.429 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/action/TakeViewScreenshotAction; annotation class 2321
+07-30 14:03:57.429 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.429 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/action/TakeViewScreenshotAction; annotation class 2321
+07-30 14:03:57.429 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/action/TextViewAttributes; annotation class 2321
+07-30 14:03:57.429 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.429 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/action/TextViewAttributes; annotation class 2321
+07-30 14:03:57.430 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/action/ViewScreenshot; annotation class 2321
+07-30 14:03:57.430 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.430 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/action/ViewScreenshot; annotation class 2321
+07-30 14:03:57.430 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/action/common/DetoxViewConfigurationKt; annotation class 2321
+07-30 14:03:57.430 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.430 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/action/common/DetoxViewConfigurationKt; annotation class 2321
+07-30 14:03:57.430 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/action/common/DetoxViewConfigurations; annotation class 2321
+07-30 14:03:57.430 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.430 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/action/common/DetoxViewConfigurations; annotation class 2321
+07-30 14:03:57.430 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/action/common/MotionEvents; annotation class 2321
+07-30 14:03:57.430 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.430 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/action/common/MotionEvents; annotation class 2321
+07-30 14:03:57.430 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/action/common/MotionEventsKt; annotation class 2321
+07-30 14:03:57.430 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.430 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/action/common/MotionEventsKt; annotation class 2321
+07-30 14:03:57.431 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/action/common/ReflectUtils; annotation class 2321
+07-30 14:03:57.431 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.431 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/action/common/ReflectUtils; annotation class 2321
+07-30 14:03:57.431 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/action/common/TapEvents; annotation class 2321
+07-30 14:03:57.431 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.431 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/action/common/TapEvents; annotation class 2321
+07-30 14:03:57.431 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/action/common/TapEventsKt; annotation class 2321
+07-30 14:03:57.431 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.431 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/action/common/TapEventsKt; annotation class 2321
+07-30 14:03:57.431 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/action/common/utils/UiControllerUtils; annotation class 2321
+07-30 14:03:57.431 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.431 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/action/common/utils/UiControllerUtils; annotation class 2321
+07-30 14:03:57.432 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/common/CommunitySliderHelper; annotation class 2321
+07-30 14:03:57.432 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/common/CommunitySliderHelper; annotation class 2321
+07-30 14:03:57.432 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/common/SliderHelper; annotation class 2321
+07-30 14:03:57.432 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/common/CommunitySliderHelper; annotation class 2321
+07-30 14:03:57.432 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/common/SliderHelper; annotation class 2321
+07-30 14:03:57.432 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/common/LegacySliderHelper; annotation class 2321
+07-30 14:03:57.432 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/common/LegacySliderHelper; annotation class 2321
+07-30 14:03:57.433 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/common/SliderHelper; annotation class 2321
+07-30 14:03:57.433 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/common/LegacySliderHelper; annotation class 2321
+07-30 14:03:57.433 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/common/SliderHelper; annotation class 2321
+07-30 14:03:57.433 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/common/SliderHelperKt; annotation class 2321
+07-30 14:03:57.433 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.433 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/common/SliderHelperKt; annotation class 2321
+07-30 14:03:57.433 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/matcher/IsAssignableFromMatcher; annotation class 2321
+07-30 14:03:57.433 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.433 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/matcher/IsAssignableFromMatcher; annotation class 2321
+07-30 14:03:57.433 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/matcher/ViewAtIndexMatcher; annotation class 2321
+07-30 14:03:57.433 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.433 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/matcher/ViewAtIndexMatcher; annotation class 2321
+07-30 14:03:57.433 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/matcher/ViewMatchers; annotation class 2321
+07-30 14:03:57.434 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.434 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/matcher/ViewMatchers; annotation class 2321
+07-30 14:03:57.434 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/registry/IRStatusInquirer; annotation class 2321
+07-30 14:03:57.434 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.434 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/registry/IRStatusInquirer; annotation class 2321
+07-30 14:03:57.434 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/registry/IRStatusInquirerKt; annotation class 2321
+07-30 14:03:57.434 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.435 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/registry/IRStatusInquirerKt; annotation class 2321
+07-30 14:03:57.435 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/scroll/AbsListViewBack; annotation class 2321
+07-30 14:03:57.435 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.435 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/scroll/AbsListViewBack; annotation class 2321
+07-30 14:03:57.435 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/scroll/AbsListViewForward; annotation class 2321
+07-30 14:03:57.435 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.435 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/scroll/AbsListViewForward; annotation class 2321
+07-30 14:03:57.435 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/scroll/DetoxScrollAction; annotation class 2321
+07-30 14:03:57.435 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/scroll/DetoxScrollAction; annotation class 2321
+07-30 14:03:57.435 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/scroll/DetoxScrollActionBase; annotation class 2321
+07-30 14:03:57.435 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/scroll/DetoxScrollAction; annotation class 2321
+07-30 14:03:57.435 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/scroll/DetoxScrollActionBase; annotation class 2321
+07-30 14:03:57.435 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/scroll/DetoxScrollActionStaleAtEdge; annotation class 2321
+07-30 14:03:57.436 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/scroll/DetoxScrollActionStaleAtEdge; annotation class 2321
+07-30 14:03:57.436 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/scroll/DetoxScrollActionBase; annotation class 2321
+07-30 14:03:57.436 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/scroll/DetoxScrollActionStaleAtEdge; annotation class 2321
+07-30 14:03:57.436 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/scroll/DetoxScrollActionBase; annotation class 2321
+07-30 14:03:57.436 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/scroll/DetoxSwipe; annotation class 2321
+07-30 14:03:57.436 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.436 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/scroll/DetoxSwipe; annotation class 2321
+07-30 14:03:57.437 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/scroll/FlinglessSwiper; annotation class 2321
+07-30 14:03:57.437 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.437 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/scroll/FlinglessSwiper; annotation class 2321
+07-30 14:03:57.437 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/scroll/ScrollEdgeException; annotation class 2321
+07-30 14:03:57.437 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.437 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/scroll/ScrollEdgeException; annotation class 2321
+07-30 14:03:57.437 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/scroll/ScrollProbes; annotation class 2321
+07-30 14:03:57.437 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.437 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/scroll/ScrollProbes; annotation class 2321
+07-30 14:03:57.438 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/scroll/ScrollableProbeHBack; annotation class 2321
+07-30 14:03:57.438 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/scroll/ScrollableProbeHBack; annotation class 2321
+07-30 14:03:57.438 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/scroll/AbsScrollableProbe; annotation class 2321
+07-30 14:03:57.438 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/scroll/ScrollableProbeHBack; annotation class 2321
+07-30 14:03:57.438 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/scroll/AbsScrollableProbe; annotation class 2321
+07-30 14:03:57.438 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/scroll/ScrollableProbeHForward; annotation class 2321
+07-30 14:03:57.438 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/scroll/ScrollableProbeHForward; annotation class 2321
+07-30 14:03:57.438 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/scroll/AbsScrollableProbe; annotation class 2321
+07-30 14:03:57.438 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/scroll/ScrollableProbeHForward; annotation class 2321
+07-30 14:03:57.438 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/scroll/AbsScrollableProbe; annotation class 2321
+07-30 14:03:57.438 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/scroll/ScrollableProbeVBack; annotation class 2321
+07-30 14:03:57.439 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/scroll/ScrollableProbeVBack; annotation class 2321
+07-30 14:03:57.439 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/scroll/AbsScrollableProbe; annotation class 2321
+07-30 14:03:57.439 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/scroll/ScrollableProbeVBack; annotation class 2321
+07-30 14:03:57.439 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/scroll/AbsScrollableProbe; annotation class 2321
+07-30 14:03:57.439 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/scroll/ScrollableProbeVForward; annotation class 2321
+07-30 14:03:57.439 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/scroll/ScrollableProbeVForward; annotation class 2321
+07-30 14:03:57.439 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/scroll/AbsScrollableProbe; annotation class 2321
+07-30 14:03:57.439 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/scroll/ScrollableProbeVForward; annotation class 2321
+07-30 14:03:57.439 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/scroll/AbsScrollableProbe; annotation class 2321
+07-30 14:03:57.440 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/scroll/SwipeHelper; annotation class 2321
+07-30 14:03:57.440 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.440 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/scroll/SwipeHelper; annotation class 2321
+07-30 14:03:57.441 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/scroll/SwipeHelperKt; annotation class 2321
+07-30 14:03:57.441 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.441 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/scroll/SwipeHelperKt; annotation class 2321
+07-30 14:03:57.441 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/utils/Vector2D; annotation class 2321
+07-30 14:03:57.441 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.441 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/utils/Vector2D; annotation class 2321
+07-30 14:03:57.441 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/utils/Vector2DKt; annotation class 2321
+07-30 14:03:57.441 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.441 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/espresso/utils/Vector2DKt; annotation class 2321
+07-30 14:03:57.442 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/reactnative/MQThreadReflected; annotation class 2321
+07-30 14:03:57.442 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.442 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/reactnative/MQThreadReflected; annotation class 2321
+07-30 14:03:57.442 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/reactnative/MQThreadsReflector; annotation class 2321
+07-30 14:03:57.443 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.443 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/reactnative/MQThreadsReflector; annotation class 2321
+07-30 14:03:57.443 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/reactnative/RNVersion; annotation class 2321
+07-30 14:03:57.443 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.443 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/reactnative/RNVersion; annotation class 2321
+07-30 14:03:57.443 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/reactnative/ReactNativeExtension; annotation class 2321
+07-30 14:03:57.443 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.443 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/reactnative/ReactNativeExtension; annotation class 2321
+07-30 14:03:57.443 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/reactnative/ReactNativeExtensionKt; annotation class 2321
+07-30 14:03:57.443 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.443 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/reactnative/ReactNativeExtensionKt; annotation class 2321
+07-30 14:03:57.445 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/reactnative/ReactNativeLoadingMonitorKt; annotation class 2321
+07-30 14:03:57.445 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.445 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/reactnative/ReactNativeLoadingMonitorKt; annotation class 2321
+07-30 14:03:57.445 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/reactnative/ReactNativeReLoader; annotation class 2321
+07-30 14:03:57.445 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.445 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/reactnative/ReactNativeReLoader; annotation class 2321
+07-30 14:03:57.445 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/reactnative/helpers/RNHelpers; annotation class 2321
+07-30 14:03:57.445 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.445 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/reactnative/helpers/RNHelpers; annotation class 2321
+07-30 14:03:57.446 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/reactnative/helpers/RNHelpersKt; annotation class 2321
+07-30 14:03:57.446 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/reactnative/helpers/RNHelpersKt; annotation class 2321
+07-30 14:03:57.448 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/reactnative/idlingresources/ModuleReflected; annotation class 2321
+07-30 14:03:57.448 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/reactnative/idlingresources/ModuleReflected; annotation class 2321
+07-30 14:03:57.449 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/reactnative/idlingresources/SerialExecutorReflected; annotation class 2321
+07-30 14:03:57.449 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/reactnative/idlingresources/SerialExecutorReflected; annotation class 2321
+07-30 14:03:57.449 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/reactnative/idlingresources/timers/DefaultIdleInterrogationStrategy; annotation class 2321
+07-30 14:03:57.449 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.449 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/reactnative/idlingresources/timers/DefaultIdleInterrogationStrategy; annotation class 2321
+07-30 14:03:57.449 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/reactnative/idlingresources/timers/DefaultIdleInterrogationStrategyKt; annotation class 2321
+07-30 14:03:57.449 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.449 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/reactnative/idlingresources/timers/DefaultIdleInterrogationStrategyKt; annotation class 2321
+07-30 14:03:57.450 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/reactnative/idlingresources/timers/DelegatedIdleInterrogationStrategy; annotation class 2321
+07-30 14:03:57.450 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.450 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/reactnative/idlingresources/timers/DelegatedIdleInterrogationStrategy; annotation class 2321
+07-30 14:03:57.450 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/reactnative/idlingresources/timers/DelegatedIdleInterrogationStrategyKt; annotation class 2321
+07-30 14:03:57.450 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.450 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/reactnative/idlingresources/timers/DelegatedIdleInterrogationStrategyKt; annotation class 2321
+07-30 14:03:57.450 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/reactnative/idlingresources/timers/IdleInterrogationStrategyKt; annotation class 2321
+07-30 14:03:57.450 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.450 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/reactnative/idlingresources/timers/IdleInterrogationStrategyKt; annotation class 2321
+07-30 14:03:57.450 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/reactnative/idlingresources/timers/RN62TimingModuleReflected; annotation class 2321
+07-30 14:03:57.450 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.450 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/reactnative/idlingresources/timers/RN62TimingModuleReflected; annotation class 2321
+07-30 14:03:57.450 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/reactnative/idlingresources/timers/TimerReflected; annotation class 2321
+07-30 14:03:57.450 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.451 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/reactnative/idlingresources/timers/TimerReflected; annotation class 2321
+07-30 14:03:57.451 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/reactnative/idlingresources/timers/TimersIdlingResource; annotation class 2321
+07-30 14:03:57.451 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.451 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/reactnative/idlingresources/timers/TimersIdlingResource; annotation class 2321
+07-30 14:03:57.451 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/reactnative/idlingresources/timers/TimingModuleReflected; annotation class 2321
+07-30 14:03:57.451 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.451 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/reactnative/idlingresources/timers/TimingModuleReflected; annotation class 2321
+07-30 14:03:57.451 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/reactnative/idlingresources/uimodule/DispatchCommandOperationReflected; annotation class 2321
+07-30 14:03:57.451 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.451 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/reactnative/idlingresources/uimodule/DispatchCommandOperationReflected; annotation class 2321
+07-30 14:03:57.451 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/reactnative/idlingresources/uimodule/DispatchCommandOperationReflectedKt; annotation class 2321
+07-30 14:03:57.451 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.452 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/reactnative/idlingresources/uimodule/DispatchCommandOperationReflectedKt; annotation class 2321
+07-30 14:03:57.452 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/reactnative/idlingresources/uimodule/NativeHierarchyManagerReflected; annotation class 2321
+07-30 14:03:57.452 15361 15383 I chatty  : uid=10182(com.enumedate) roidJUnitRunner identical 1 line
+07-30 14:03:57.452 15361 15383 W com.enumedate: Unable to resolve Lcom/wix/detox/reactnative/idlingresources/uimodule/NativeHierarchyManagerReflected; annotation class 2321

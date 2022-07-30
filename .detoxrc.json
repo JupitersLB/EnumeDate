@@ -10,8 +10,9 @@
     },
     "android": {
       "type": "android.apk",
-      "binaryPath": "android/app/build/outputs/apk/release/app-release.apk",
-      "build": "cd android && fastlane test"
+      "binaryPath": "android/app/build/outputs/apk/releaseE2E/app-releaseE2E.apk",
+      "testBinaryPath": "android/app/build/outputs/apk/androidTest/releaseE2E/app-releaseE2E-androidTest.apk",
+      "build": "cd android && fastlane test && cd .."
     }
   },
   "devices": {
@@ -24,7 +25,7 @@
     "emulator": {
       "type": "android.emulator",
       "device": {
-        "avdName": "Pixel_3a_API_30_x86"
+        "avdName": "Pixel_4_XL_API_30"
       }
     }
   },

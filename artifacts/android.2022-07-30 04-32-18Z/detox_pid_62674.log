@@ -1,0 +1,575 @@
+Jul 30 13:32:19 detox[62674] TRACE: [DETOX_CREATE] created a Detox instance with config:
+{
+  appsConfig: {
+    default: {
+      type: 'android.apk',
+      binaryPath: 'android/app/build/outputs/apk/release/app-release.apk',
+      build: 'cd android && fastlane test && cd ..'
+    }
+  },
+  artifactsConfig: {
+    rootDir: 'artifacts/android.2022-07-30 04-32-18Z',
+    plugins: {
+      log: {
+        enabled: true,
+        keepOnlyFailedTestsArtifacts: false
+      },
+      screenshot: {
+        enabled: true,
+        shouldTakeAutomaticSnapshots: false,
+        keepOnlyFailedTestsArtifacts: false
+      },
+      video: {
+        enabled: false,
+        keepOnlyFailedTestsArtifacts: false
+      },
+      instruments: {
+        enabled: false,
+        keepOnlyFailedTestsArtifacts: false
+      },
+      timeline: {
+        enabled: false
+      },
+      uiHierarchy: {
+        enabled: false,
+        keepOnlyFailedTestsArtifacts: false
+      }
+    },
+    pathBuilder: ArtifactPathBuilder {
+      _rootDir: 'artifacts/android.2022-07-30 04-32-18Z'
+    }
+  },
+  behaviorConfig: {
+    init: {
+      reinstallApp: true,
+      exposeGlobals: true
+    },
+    cleanup: {
+      shutdownDevice: false
+    },
+    launchApp: 'auto'
+  },
+  cliConfig: {
+    recordLogs: 'all',
+    configuration: 'android',
+    useCustomLogger: true
+  },
+  configurationName: 'android',
+  deviceConfig: {
+    type: 'android.emulator',
+    device: {
+      avdName: 'Pixel_4_XL_API_30'
+    }
+  },
+  runnerConfig: {
+    testRunner: 'jest',
+    runnerConfig: 'e2e/config.json',
+    specs: 'e2e',
+    skipLegacyWorkersInjection: true
+  },
+  sessionConfig: {
+    autoStart: true,
+    sessionId: '713da90c-1a22-54cb-3c1b-6d57c81e18f4',
+    debugSynchronization: 10000
+  }
+}
+Jul 30 13:32:19 detox[62674] DEBUG: [WSS_CREATE] Detox server listening on localhost:64394...
+Jul 30 13:32:19 detox[62674] DEBUG: [WSS_CONNECTION, #64395] registered a new connection.
+Jul 30 13:32:19 detox[62674] TRACE: [WS_OPEN] opened web socket to: ws://localhost:64394
+Jul 30 13:32:19 detox[62674] TRACE: [WS_SEND] {"type":"login","params":{"sessionId":"713da90c-1a22-54cb-3c1b-6d57c81e18f4","role":"tester"},"messageId":0}
+Jul 30 13:32:19 detox[62674] TRACE: [WSS_GET_FROM, #64395] {"type":"login","params":{"sessionId":"713da90c-1a22-54cb-3c1b-6d57c81e18f4","role":"tester"},"messageId":0}
+Jul 30 13:32:19 detox[62674] TRACE: [SESSION_CREATED] created session 713da90c-1a22-54cb-3c1b-6d57c81e18f4
+Jul 30 13:32:19 detox[62674] TRACE: [WSS_SEND_TO, #tester] {"type":"loginSuccess","params":{"testerConnected":true,"appConnected":false},"messageId":0}
+Jul 30 13:32:19 detox[62674] TRACE: [SESSION_JOINED] tester joined session 713da90c-1a22-54cb-3c1b-6d57c81e18f4
+Jul 30 13:32:19 detox[62674] TRACE: [WS_MESSAGE] {"type":"loginSuccess","params":{"testerConnected":true,"appConnected":false},"messageId":0}
+ 
+Jul 30 13:32:19 detox[62674] DEBUG: [EXEC_CMD, #0] "/Users/liam/Library/Android/sdk/emulator/emulator" -list-avds --verbose
+Jul 30 13:32:19 detox[62674] TRACE: [EXEC_SUCCESS, #0] Pixel_4_XL_API_30
+
+Jul 30 13:32:19 detox[62674] DEBUG: [EXEC_CMD, #1] "/Users/liam/Library/Android/sdk/emulator/emulator" -version 
+Jul 30 13:32:19 detox[62674] TRACE: [EXEC_SUCCESS, #1] Android emulator version 31.2.10.0 (build_id 8420304) (CL:N/A)
+Copyright (C) 2006-2017 The Android Open Source Project and many others.
+This program is a derivative of the QEMU CPU emulator (www.qemu.org).
+
+  This software is licensed under the terms of the GNU General Public
+  License version 2, as published by the Free Software Foundation, and
+  may be copied, distributed, and modified under those terms.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+
+Jul 30 13:32:19 detox[62674] DEBUG: [EMU_BIN_VERSION_DETECT] Detected emulator binary version { major: 31, minor: 2, patch: 10, toString: [Function: toString] }
+Jul 30 13:32:19 detox[62674] DEBUG: [ALLOCATE_DEVICE] Trying to allocate a device based on "Pixel_4_XL_API_30"
+Jul 30 13:32:19 detox[62674] DEBUG: [EXEC_CMD, #2] "/Users/liam/Library/Android/sdk/platform-tools/adb"  devices
+Jul 30 13:32:19 detox[62674] DEBUG: [EXEC_SUCCESS, #2] List of devices attached
+emulator-11144	device
+
+
+Jul 30 13:32:19 detox[62674] TRACE: [TELNET_CONNECTING] port: 11144, host: localhost
+Jul 30 13:32:19 detox[62674] DEBUG: [DEVICE_LOOKUP] Found a matching & free device emulator-11144
+Jul 30 13:32:19 detox[62674] DEBUG: [ALLOCATE_DEVICE] Settled on emulator-11144
+Jul 30 13:32:19 detox[62674] DEBUG: [EXEC_CMD, #3] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-11144 shell "getprop dev.bootcomplete"
+Jul 30 13:32:19 detox[62674] TRACE: [EXEC_SUCCESS, #3] 1
+
+Jul 30 13:32:19 detox[62674] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onBootDevice({
+  deviceId: 'emulator-11144',
+  type: 'Pixel_4_XL_API_30',
+  coldBoot: false
+})
+Jul 30 13:32:19 detox[62674] DEBUG: [EXEC_CMD, #4] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-11144 shell "getprop ro.build.version.sdk"
+Jul 30 13:32:19 detox[62674] TRACE: [EXEC_SUCCESS, #4] 30
+
+Jul 30 13:32:19 detox[62674] DEBUG: [EXEC_CMD, #5] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-11144 shell "settings put global animator_duration_scale 0"
+Jul 30 13:32:19 detox[62674] TRACE: [EXEC_SUCCESS, #5] 
+Jul 30 13:32:19 detox[62674] DEBUG: [EXEC_CMD, #6] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-11144 shell "settings put global window_animation_scale 0"
+Jul 30 13:32:19 detox[62674] TRACE: [EXEC_SUCCESS, #6] 
+Jul 30 13:32:19 detox[62674] DEBUG: [EXEC_CMD, #7] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-11144 shell "settings put global transition_animation_scale 0"
+Jul 30 13:32:19 detox[62674] TRACE: [EXEC_SUCCESS, #7] 
+Jul 30 13:32:19 detox[62674] DEBUG: [EXEC_CMD, #8] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-11144 shell "dumpsys power | grep \"^[ ]*m[UW].*=\""
+Jul 30 13:32:20 detox[62674] TRACE: [EXEC_SUCCESS, #8]   mWakefulness=Awake
+  mWakefulnessChanging=false
+  mWakeLockSummary=0x1
+  mUserActivitySummary=0x1
+  mWakeUpWhenPluggedOrUnpluggedConfig=false
+  mWakeUpWhenPluggedOrUnpluggedInTheaterModeConfig=false
+  mUserActivityTimeoutOverrideFromWindowManager=-1
+  mUserInactiveOverrideFromWindowManager=false
+  mUserId=0
+
+Jul 30 13:32:20 detox[62674] DEBUG: [EXEC_CMD, #9] "/Users/liam/Library/Android/sdk/build-tools/33.0.0/aapt" dump badging "/Users/liam/code/JupitersLB/EnumeDate/android/app/build/outputs/apk/release/app-release.apk"
+Jul 30 13:32:20 detox[62674] TRACE: [EXEC_SUCCESS, #9] package: name='com.enumedate' versionCode='1' versionName='1.0' platformBuildVersionName='12' platformBuildVersionCode='31' compileSdkVersion='31' compileSdkVersionCodename='12'
+sdkVersion:'21'
+targetSdkVersion:'31'
+uses-permission: name='android.permission.INTERNET'
+application-label:'EnumeDate'
+application-label-af:'EnumeDate'
+application-label-am:'EnumeDate'
+application-label-ar:'EnumeDate'
+application-label-as:'EnumeDate'
+application-label-az:'EnumeDate'
+application-label-be:'EnumeDate'
+application-label-bg:'EnumeDate'
+application-label-bn:'EnumeDate'
+application-label-bs:'EnumeDate'
+application-label-ca:'EnumeDate'
+application-label-cs:'EnumeDate'
+application-label-da:'EnumeDate'
+application-label-de:'EnumeDate'
+application-label-el:'EnumeDate'
+application-label-en-AU:'EnumeDate'
+application-label-en-CA:'EnumeDate'
+application-label-en-GB:'EnumeDate'
+application-label-en-IN:'EnumeDate'
+application-label-en-XC:'EnumeDate'
+application-label-es:'EnumeDate'
+application-label-es-US:'EnumeDate'
+application-label-et:'EnumeDate'
+application-label-eu:'EnumeDate'
+application-label-fa:'EnumeDate'
+application-label-fi:'EnumeDate'
+application-label-fr:'EnumeDate'
+application-label-fr-CA:'EnumeDate'
+application-label-gl:'EnumeDate'
+application-label-gu:'EnumeDate'
+application-label-hi:'EnumeDate'
+application-label-hr:'EnumeDate'
+application-label-hu:'EnumeDate'
+application-label-hy:'EnumeDate'
+application-label-in:'EnumeDate'
+application-label-is:'EnumeDate'
+application-label-it:'EnumeDate'
+application-label-iw:'EnumeDate'
+application-label-ja:'EnumeDate'
+application-label-ka:'EnumeDate'
+application-label-kk:'EnumeDate'
+application-label-km:'EnumeDate'
+application-label-kn:'EnumeDate'
+application-label-ko:'EnumeDate'
+application-label-ky:'EnumeDate'
+application-label-lo:'EnumeDate'
+application-label-lt:'EnumeDate'
+application-label-lv:'EnumeDate'
+application-label-mk:'EnumeDate'
+application-label-ml:'EnumeDate'
+application-label-mn:'EnumeDate'
+application-label-mr:'EnumeDate'
+application-label-ms:'EnumeDate'
+application-label-my:'EnumeDate'
+application-label-nb:'EnumeDate'
+application-label-ne:'EnumeDate'
+application-label-nl:'EnumeDate'
+application-label-or:'EnumeDate'
+application-label-pa:'EnumeDate'
+application-label-pl:'EnumeDate'
+application-label-pt:'EnumeDate'
+application-label-pt-BR:'EnumeDate'
+application-label-pt-PT:'EnumeDate'
+application-label-ro:'EnumeDate'
+application-label-ru:'EnumeDate'
+application-label-si:'EnumeDate'
+application-label-sk:'EnumeDate'
+application-label-sl:'EnumeDate'
+application-label-sq:'EnumeDate'
+application-label-sr:'EnumeDate'
+application-label-sr-Latn:'EnumeDate'
+application-label-sv:'EnumeDate'
+application-label-sw:'EnumeDate'
+application-label-ta:'EnumeDate'
+application-label-te:'EnumeDate'
+application-label-th:'EnumeDate'
+application-label-tl:'EnumeDate'
+application-label-tr:'EnumeDate'
+application-label-uk:'EnumeDate'
+application-label-ur:'EnumeDate'
+application-label-uz:'EnumeDate'
+application-label-vi:'EnumeDate'
+application-label-zh-CN:'EnumeDate'
+application-label-zh-HK:'EnumeDate'
+application-label-zh-TW:'EnumeDate'
+application-label-zu:'EnumeDate'
+application-icon-160:'res/u3.png'
+application-icon-240:'res/SD.png'
+application-icon-320:'res/jy.png'
+application-icon-480:'res/D2.png'
+application-icon-640:'res/CG.png'
+application-icon-65534:'res/u3.png'
+application: label='EnumeDate' icon='res/u3.png'
+launchable-activity: name='com.enumedate.MainActivity'  label='EnumeDate' icon=''
+feature-group: label=''
+  uses-feature: name='android.hardware.faketouch'
+  uses-implied-feature: name='android.hardware.faketouch' reason='default feature for all apps'
+main
+supports-screens: 'small' 'normal' 'large' 'xlarge'
+supports-any-density: 'true'
+locales: '--_--' 'af' 'am' 'ar' 'as' 'az' 'be' 'bg' 'bn' 'bs' 'ca' 'cs' 'da' 'de' 'el' 'en-AU' 'en-CA' 'en-GB' 'en-IN' 'en-XC' 'es' 'es-US' 'et' 'eu' 'fa' 'fi' 'fr' 'fr-CA' 'gl' 'gu' 'hi' 'hr' 'hu' 'hy' 'in' 'is' 'it' 'iw' 'ja' 'ka' 'kk' 'km' 'kn' 'ko' 'ky' 'lo' 'lt' 'lv' 'mk' 'ml' 'mn' 'mr' 'ms' 'my' 'nb' 'ne' 'nl' 'or' 'pa' 'pl' 'pt' 'pt-BR' 'pt-PT' 'ro' 'ru' 'si' 'sk' 'sl' 'sq' 'sr' 'sr-Latn' 'sv' 'sw' 'ta' 'te' 'th' 'tl' 'tr' 'uk' 'ur' 'uz' 'vi' 'zh-CN' 'zh-HK' 'zh-TW' 'zu'
+densities: '160' '240' '320' '480' '640' '65534'
+native-code: 'arm64-v8a' 'armeabi-v7a' 'x86' 'x86_64'
+
+Jul 30 13:32:20 detox[62674] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onBeforeTerminateApp({ deviceId: 'emulator-11144', bundleId: 'com.enumedate' })
+Jul 30 13:32:20 detox[62674] DEBUG: [EXEC_CMD, #10] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-11144 shell "am force-stop com.enumedate"
+Jul 30 13:32:20 detox[62674] TRACE: [EXEC_SUCCESS, #10] 
+Jul 30 13:32:20 detox[62674] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onTerminateApp({ deviceId: 'emulator-11144', bundleId: 'com.enumedate' })
+Jul 30 13:32:20 detox[62674] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onBeforeUninstallApp({ deviceId: 'emulator-11144', bundleId: 'com.enumedate' })
+Jul 30 13:32:20 detox[62674] DEBUG: [EXEC_CMD, #11] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-11144 shell "pm list packages com.enumedate"
+Jul 30 13:32:20 detox[62674] TRACE: [EXEC_SUCCESS, #11] package:com.enumedate
+package:com.enumedate.test
+
+Jul 30 13:32:20 detox[62674] DEBUG: [EXEC_CMD, #12] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-11144 uninstall com.enumedate
+Jul 30 13:32:20 detox[62674] TRACE: [EXEC_SUCCESS, #12] Success
+
+Jul 30 13:32:20 detox[62674] DEBUG: [EXEC_CMD, #13] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-11144 shell "pm list packages com.enumedate.test"
+Jul 30 13:32:20 detox[62674] TRACE: [EXEC_SUCCESS, #13] package:com.enumedate.test
+
+Jul 30 13:32:20 detox[62674] DEBUG: [EXEC_CMD, #14] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-11144 uninstall com.enumedate.test
+Jul 30 13:32:20 detox[62674] TRACE: [EXEC_SUCCESS, #14] Success
+
+Jul 30 13:32:20 detox[62674] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onBeforeTerminateApp({ deviceId: 'emulator-11144', bundleId: 'com.enumedate' })
+Jul 30 13:32:20 detox[62674] DEBUG: [EXEC_CMD, #15] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-11144 shell "am force-stop com.enumedate"
+Jul 30 13:32:20 detox[62674] TRACE: [EXEC_SUCCESS, #15] 
+Jul 30 13:32:20 detox[62674] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onTerminateApp({ deviceId: 'emulator-11144', bundleId: 'com.enumedate' })
+Jul 30 13:32:20 detox[62674] DEBUG: [EXEC_CMD, #16] "/Users/liam/Library/Android/sdk/build-tools/33.0.0/aapt" dump xmlstrings "/Users/liam/code/JupitersLB/EnumeDate/android/app/build/outputs/apk/release/app-release.apk" AndroidManifest.xml
+Jul 30 13:32:20 detox[62674] TRACE: [EXEC_SUCCESS, #16] String pool of 49 unique UTF-16 non-sorted strings, 49 entries and 0 styles using 2032 bytes:
+String #0: theme
+String #1: label
+String #2: icon
+String #3: name
+String #4: exported
+String #5: authorities
+String #6: launchMode
+String #7: configChanges
+String #8: value
+String #9: minSdkVersion
+String #10: versionCode
+String #11: versionName
+String #12: windowSoftInputMode
+String #13: targetSdkVersion
+String #14: allowBackup
+String #15: networkSecurityConfig
+String #16: roundIcon
+String #17: compileSdkVersion
+String #18: compileSdkVersionCodename
+String #19: appComponentFactory
+String #20: 1.0
+String #21: 12
+String #22: action
+String #23: activity
+String #24: android
+String #25: android.intent.action.MAIN
+String #26: android.intent.category.LAUNCHER
+String #27: android.permission.INTERNET
+String #28: androidx.core.app.CoreComponentFactory
+String #29: androidx.emoji2.text.EmojiCompatInitializer
+String #30: androidx.lifecycle.ProcessLifecycleInitializer
+String #31: androidx.startup
+String #32: androidx.startup.InitializationProvider
+String #33: application
+String #34: category
+String #35: com.enumedate
+String #36: com.enumedate.MainActivity
+String #37: com.enumedate.MainApplication
+String #38: com.enumedate.androidx-startup
+String #39: http://schemas.android.com/apk/res/android
+String #40: intent-filter
+String #41: manifest
+String #42: meta-data
+String #43: package
+String #44: platformBuildVersionCode
+String #45: platformBuildVersionName
+String #46: provider
+String #47: uses-permission
+String #48: uses-sdk
+
+Jul 30 13:32:20 detox[62674] DEBUG: [EXEC_CMD, #17] "/Users/liam/Library/Android/sdk/build-tools/33.0.0/aapt" dump xmlstrings "/Users/liam/code/JupitersLB/EnumeDate/android/app/build/outputs/apk/androidTest/release/app-release-androidTest.apk" AndroidManifest.xml
+Jul 30 13:32:20 detox[62674] TRACE: [EXEC_SUCCESS, #17] String pool of 40 unique UTF-16 non-sorted strings, 40 entries and 0 styles using 1992 bytes:
+String #0: theme
+String #1: label
+String #2: name
+String #3: exported
+String #4: targetPackage
+String #5: handleProfiling
+String #6: functionalTest
+String #7: minSdkVersion
+String #8: targetSdkVersion
+String #9: compileSdkVersion
+String #10: compileSdkVersionCodename
+String #11: 12
+String #12: Tests for com.enumedate
+String #13: action
+String #14: activity
+String #15: android
+String #16: android.intent.action.MAIN
+String #17: android.permission.REORDER_TASKS
+String #18: android.test.runner
+String #19: androidx.test.core.app.InstrumentationActivityInvoker$BootstrapActivity
+String #20: androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity
+String #21: androidx.test.core.app.InstrumentationActivityInvoker$EmptyFloatingActivity
+String #22: androidx.test.orchestrator
+String #23: androidx.test.runner.AndroidJUnitRunner
+String #24: androidx.test.services
+String #25: application
+String #26: com.enumedate
+String #27: com.enumedate.test
+String #28: com.google.android.apps.common.testing.services
+String #29: http://schemas.android.com/apk/res/android
+String #30: instrumentation
+String #31: intent-filter
+String #32: manifest
+String #33: package
+String #34: platformBuildVersionCode
+String #35: platformBuildVersionName
+String #36: queries
+String #37: uses-library
+String #38: uses-permission
+String #39: uses-sdk
+
+Jul 30 13:32:20 detox[62674] DEBUG: [EXEC_CMD, #18] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-11144 shell "rm -fr /data/local/tmp/detox"
+Jul 30 13:32:20 detox[62674] TRACE: [EXEC_SUCCESS, #18] 
+Jul 30 13:32:20 detox[62674] DEBUG: [EXEC_CMD, #19] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-11144 shell "mkdir -p /data/local/tmp/detox"
+Jul 30 13:32:21 detox[62674] TRACE: [EXEC_SUCCESS, #19] 
+Jul 30 13:32:21 detox[62674] DEBUG: [EXEC_CMD, #20] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-11144 push "/Users/liam/code/JupitersLB/EnumeDate/android/app/build/outputs/apk/release/app-release.apk" "/data/local/tmp/detox/Application.apk"
+Jul 30 13:32:21 detox[62674] TRACE: [EXEC_SUCCESS, #20] /Users/liam/code/JupitersLB/EnumeDate/android/app/build/outputs/apk/release/app-release.apk: 1 file pushed, 0 skipped. 135.0 MB/s (30881322 bytes in 0.218s)
+
+Jul 30 13:32:21 detox[62674] DEBUG: [SPAWN_CMD, #21, cpid=62733] /Users/liam/Library/Android/sdk/platform-tools/adb -s emulator-11144 shell pm install -r -g -t /data/local/tmp/detox/Application.apk
+Jul 30 13:32:22 detox[62674] TRACE: [SPAWN_STDOUT, #21, cpid=62733] Success
+
+Jul 30 13:32:22 detox[62674] DEBUG: [SPAWN_END, #21, cpid=62733] /Users/liam/Library/Android/sdk/platform-tools/adb -s emulator-11144 shell pm install -r -g -t /data/local/tmp/detox/Application.apk exited with code #0
+Jul 30 13:32:22 detox[62674] DEBUG: [EXEC_CMD, #22] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-11144 push "/Users/liam/code/JupitersLB/EnumeDate/android/app/build/outputs/apk/androidTest/release/app-release-androidTest.apk" "/data/local/tmp/detox/Test.apk"
+Jul 30 13:32:22 detox[62674] TRACE: [EXEC_SUCCESS, #22] /Users/liam/code/JupitersLB/EnumeDate/android/app/build/outputs/apk/androidTest/release/app-release-androidTest.apk: 1 file pushed, 0 skipped. 112.8 MB/s (1840946 bytes in 0.016s)
+
+Jul 30 13:32:22 detox[62674] DEBUG: [SPAWN_CMD, #23, cpid=62735] /Users/liam/Library/Android/sdk/platform-tools/adb -s emulator-11144 shell pm install -r -g -t /data/local/tmp/detox/Test.apk
+Jul 30 13:32:23 detox[62674] TRACE: [SPAWN_STDOUT, #23, cpid=62735] Success
+
+Jul 30 13:32:23 detox[62674] DEBUG: [SPAWN_END, #23, cpid=62735] /Users/liam/Library/Android/sdk/platform-tools/adb -s emulator-11144 shell pm install -r -g -t /data/local/tmp/detox/Test.apk exited with code #0
+Jul 30 13:32:23 ROOT_DESCRIBE_BLOCK[62674] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onRunDescribeStart({ name: 'ROOT_DESCRIBE_BLOCK' })
+Jul 30 13:32:23 Example[62674] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onRunDescribeStart({ name: 'Example' })
+Jul 30 13:32:23 detox[62674] INFO:  [97mExample[39m is assigned to [94memulator-11144 (Pixel_4_XL_API_30)[39m
+Jul 30 13:32:23 detox[62674] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onBeforeTerminateApp({ deviceId: 'emulator-11144', bundleId: 'com.enumedate' })
+Jul 30 13:32:23 detox[62674] DEBUG: [EXEC_CMD, #24] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-11144 shell "am force-stop com.enumedate"
+Jul 30 13:32:23 detox[62674] TRACE: [EXEC_SUCCESS, #24] 
+Jul 30 13:32:23 detox[62674] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onTerminateApp({ deviceId: 'emulator-11144', bundleId: 'com.enumedate' })
+Jul 30 13:32:23 detox[62674] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onBeforeLaunchApp({
+  deviceId: 'emulator-11144',
+  bundleId: 'com.enumedate',
+  launchArgs: {
+    detoxServer: 'ws://localhost:64394',
+    detoxSessionId: '713da90c-1a22-54cb-3c1b-6d57c81e18f4'
+  }
+})
+Jul 30 13:32:23 detox[62674] DEBUG: [EXEC_CMD, #25] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-11144 shell "date +\"%m-%d %T.000\""
+Jul 30 13:32:23 detox[62674] TRACE: [EXEC_SUCCESS, #25] 07-30 13:32:23.000
+
+Jul 30 13:32:23 detox[62674] DEBUG: [EXEC_CMD, #26] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-11144 reverse tcp:64394 tcp:64394
+Jul 30 13:32:23 detox[62674] TRACE: [EXEC_SUCCESS, #26] 64394
+
+Jul 30 13:32:23 detox[62674] DEBUG: [EXEC_CMD, #27] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-11144 shell "pm list instrumentation"
+Jul 30 13:32:24 detox[62674] TRACE: [EXEC_SUCCESS, #27] instrumentation:com.enumedate.test/androidx.test.runner.AndroidJUnitRunner (target=com.enumedate)
+
+Jul 30 13:32:24 detox[62674] DEBUG: [SPAWN_CMD, #28, cpid=62741] /Users/liam/Library/Android/sdk/platform-tools/adb -s emulator-11144 shell am instrument -w -r -e detoxServer ws://localhost:64394 -e detoxSessionId 713da90c-1a22-54cb-3c1b-6d57c81e18f4 -e debug false com.enumedate.test/androidx.test.runner.AndroidJUnitRunner
+Jul 30 13:32:24 detox[62674] DEBUG: [EXEC_CMD, #29] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-11144 shell "ps | grep \"com\.enumedate$\""
+Jul 30 13:32:24 detox[62674] TRACE: [EXEC_SUCCESS, #29] u0_a172       13723    304 1302892 120252 0                   0 S com.enumedate
+
+Jul 30 13:32:24 detox[13723] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onLaunchApp({
+  deviceId: 'emulator-11144',
+  bundleId: 'com.enumedate',
+  launchArgs: {
+    detoxServer: 'ws://localhost:64394',
+    detoxSessionId: '713da90c-1a22-54cb-3c1b-6d57c81e18f4'
+  },
+  pid: 13723
+})
+Jul 30 13:32:24 detox[62674] TRACE: [ARTIFACT_START] starting ADBLogcatRecording
+Jul 30 13:32:24 detox[62674] DEBUG: [SPAWN_CMD, #30, cpid=62744] /Users/liam/Library/Android/sdk/platform-tools/adb -s emulator-11144 shell "logcat -T \"07-30 13:32:23.000\" --pid=13723 -f /sdcard/133219584_0.log"
+Jul 30 13:32:24 detox[62674] TRACE: [SPAWN_STDOUT, #28, cpid=62741] INSTRUMENTATION_STATUS: class=com.enumedate.DetoxTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+com.enumedate.DetoxTest:
+INSTRUMENTATION_STATUS: test=runDetoxTests
+INSTRUMENTATION_STATUS_CODE: 1
+
+Jul 30 13:32:24 detox[62674] TRACE: [SPAWN_STDOUT, #28, cpid=62741] INSTRUMENTATION_STATUS: class=com.enumedate.DetoxTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stack=java.lang.NoSuchMethodError: No static method checkParameterIsNotNull(Ljava/lang/Object;Ljava/lang/String;)V in class Lf5/k; or its super classes (declaration of 'f5.k' appears in /data/app/~~ivJ0Mk9MrRLA-s-MM7fwVQ==/com.enumedate-KLrTLofbKQV-1Cdux03wsA==/base.apk)
+	at com.wix.detox.common.proxy.MethodsSpy.<init>(Unknown Source:2)
+	at com.wix.detox.espresso.UiControllerSpy.<init>(UiControllerSpy.kt:11)
+	at com.wix.detox.espresso.UiControllerSpy.<clinit>(UiControllerSpy.kt:16)
+	at com.wix.detox.espresso.UiControllerSpy.attachThroughProxy(Unknown Source:0)
+	at com.wix.detox.Detox.runTests(Detox.java:194)
+	at com.wix.detox.Detox.runTests(Detox.java:128)
+	at com.enumedate.DetoxTest.runDetoxTests(DetoxTest.java:34)
+
+INSTRUMENTATION_STATUS: stream=
+Error in runDetoxTests(com.enumedate.DetoxTest):
+java.lang.NoSuchMethodError: No static method checkParameterIsNotNull(Ljava/lang/Object;Ljava/lang/String;)V in class Lf5/k; or its super classes (declaration of 'f5.k' appears in /data/app/~~ivJ0Mk9MrRLA-s-MM7fwVQ==/com.enumedate-KLrTLofbKQV-1Cdux03wsA==/base.apk)
+	at com.wix.detox.common.proxy.MethodsSpy.<init>(Unknown Source:2)
+	at com.wix.detox.espresso.UiControllerSpy.<init>(UiControllerSpy.kt:11)
+	at com.wix.detox.espresso.UiControllerSpy.<clinit>(UiControllerSpy.kt:16)
+	at com.wix.detox.espresso.UiControllerSpy.attachThroughProxy(Unknown Source:0)
+	at com.wix.detox.Detox.runTests(Detox.java:194)
+	at com.wix.detox.Detox.runTests(Detox.java:128)
+	at com.enumedate.DetoxTest.runDetoxTests(DetoxTest.java:34)
+
+INSTRUMENTATION_STATUS: test=runDetoxTests
+INSTRUMENTATION_STATUS_CODE: -2
+
+Jul 30 13:32:24 detox[62674] DEBUG: [EXEC_CMD, #31] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-11144 shell du /sdcard/133219584_0.log
+Jul 30 13:32:24 detox[62674] TRACE: [EXEC_SUCCESS, #31] 4	/sdcard/133219584_0.log
+
+Jul 30 13:32:25 detox[62674] TRACE: [SPAWN_STDOUT, #28, cpid=62741] INSTRUMENTATION_RESULT: stream=
+
+Time: 0.027
+There was 1 failure:
+1) runDetoxTests(com.enumedate.DetoxTest)
+java.lang.NoSuchMethodError: No static method checkParameterIsNotNull(Ljava/lang/Object;Ljava/lang/String;)V in class Lf5/k; or its super classes (declaration of 'f5.k' appears in /data/app/~~ivJ0Mk9MrRLA-s-MM7fwVQ==/com.enumedate-KLrTLofbKQV-1Cdux03wsA==/base.apk)
+	at com.wix.detox.common.proxy.MethodsSpy.<init>(Unknown Source:2)
+	at com.wix.detox.espresso.UiControllerSpy.<init>(UiControllerSpy.kt:11)
+	at com.wix.detox.espresso.UiControllerSpy.<clinit>(UiControllerSpy.kt:16)
+	at com.wix.detox.espresso.UiControllerSpy.attachThroughProxy(Unknown Source:0)
+	at com.wix.detox.Detox.runTests(Detox.java:194)
+	at com.wix.detox.Detox.runTests(Detox.java:128)
+	at com.enumedate.DetoxTest.runDetoxTests(DetoxTest.java:34)
+	at java.lang.reflect.Method.invoke(Native Method)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at androidx.test.rule.ActivityTestRule$ActivityStatement.evaluate(ActivityTestRule.java:549)
+	at org.junit.rules.RunRules.evaluate(RunRules.java:20)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at androidx.test.ext.junit.runners.AndroidJUnit4.run(AndroidJUnit4.java:162)
+	at org.junit.runners.Suite.runChild(Suite.java:128)
+	at org.junit.runners.Suite.runChild(Suite.java:27)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)
+	at androidx.test.internal.runner.TestExecutor.execute(TestExecutor.java:56)
+	at androidx.test.runner.AndroidJUnitRunner.onStart(AndroidJUnitRunner.java:444)
+	at android.app.Instrumentation$InstrumentationThread.run(Instrumentation.java:2205)
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1
+
+Jul 30 13:32:25 detox[62674] DEBUG: [SPAWN_END, #28, cpid=62741] /Users/liam/Library/Android/sdk/platform-tools/adb -s emulator-11144 shell am instrument -w -r -e detoxServer ws://localhost:64394 -e detoxSessionId 713da90c-1a22-54cb-3c1b-6d57c81e18f4 -e debug false com.enumedate.test/androidx.test.runner.AndroidJUnitRunner exited with code #0
+Jul 30 13:32:25 detox[62674] DEBUG: [EXEC_CMD, #32] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-11144 reverse --remove tcp:64394
+Jul 30 13:32:25 detox[62674] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onHookFailure({
+  error: DetoxRuntimeError: Failed to run application on the device
+  
+  HINT: Most likely, your main activity has crashed prematurely.
+  
+  Native stacktrace dump: java.lang.NoSuchMethodError: No static method checkParameterIsNotNull(Ljava/lang/Object;Ljava/lang/String;)V in class Lf5/k; or its super classes (declaration of 'f5.k' appears in /data/app/~~ivJ0Mk9MrRLA-s-MM7fwVQ==/com.enumedate-KLrTLofbKQV-1Cdux03wsA==/base.apk)
+      at Object.launchApp (/Users/liam/code/JupitersLB/EnumeDate/e2e/firstTest.e2e.js:3:18)
+      at Promise.then.completed (/Users/liam/code/JupitersLB/EnumeDate/node_modules/jest-circus/build/utils.js:333:28)
+      at new Promise (<anonymous>)
+      at callAsyncCircusFn (/Users/liam/code/JupitersLB/EnumeDate/node_modules/jest-circus/build/utils.js:259:10)
+      at _callCircusHook (/Users/liam/code/JupitersLB/EnumeDate/node_modules/jest-circus/build/run.js:240:40)
+      at processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at _runTestsForDescribeBlock (/Users/liam/code/JupitersLB/EnumeDate/node_modules/jest-circus/build/run.js:56:7)
+      at _runTestsForDescribeBlock (/Users/liam/code/JupitersLB/EnumeDate/node_modules/jest-circus/build/run.js:91:9)
+      at run (/Users/liam/code/JupitersLB/EnumeDate/node_modules/jest-circus/build/run.js:31:3)
+      at runAndTransformResultsToJestFormat (/Users/liam/code/JupitersLB/EnumeDate/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:135:21)
+      at jestAdapter (/Users/liam/code/JupitersLB/EnumeDate/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:92:19)
+      at runTestInternal (/Users/liam/code/JupitersLB/EnumeDate/node_modules/jest-runner/build/runTest.js:411:16)
+      at runTest (/Users/liam/code/JupitersLB/EnumeDate/node_modules/jest-runner/build/runTest.js:499:34),
+  hook: 'beforeAll'
+})
+Jul 30 13:32:25 detox[62674] INFO:  [1m[37mExample: [39m[22m[90mshould have a home screen[39m
+Jul 30 13:32:25 detox[62674] INFO:  [1m[37mExample: [39m[22m[90mshould have a home screen[39m[90m [[31mFAIL[90m][39m
+Jul 30 13:32:25 detox[62674] INFO:  [1m[37mExample: [39m[22m[90mshould have an add event button[39m
+Jul 30 13:32:25 detox[62674] INFO:  [1m[37mExample: [39m[22m[90mshould have an add event button[39m[90m [[31mFAIL[90m][39m
+Jul 30 13:32:25 Example[62674] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onRunDescribeFinish({ name: 'Example' })
+Jul 30 13:32:25 ROOT_DESCRIBE_BLOCK[62674] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onRunDescribeFinish({ name: 'ROOT_DESCRIBE_BLOCK' })
+Jul 30 13:32:25 detox[62674] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onBeforeCleanup()
+Jul 30 13:32:25 detox[62674] TRACE: [EXEC_SUCCESS, #32] 
+Jul 30 13:32:25 detox[62674] TRACE: [ARTIFACT_SAVE] saving ADBLogcatRecording to: artifacts/android.2022-07-30 04-32-18Z/emulator-11144 2022-07-30 04-32-25Z.startup.log
+Jul 30 13:32:25 detox[62674] TRACE: [ARTIFACT_STOP] stopping ADBLogcatRecording
+Jul 30 13:32:25 detox[62674] DEBUG: [EXEC_CMD, #33] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-11144 shell "date +\"%m-%d %T.000\""
+Jul 30 13:32:25 detox[62674] TRACE: [EXEC_SUCCESS, #33] 07-30 13:32:24.000
+
+Jul 30 13:32:25 detox[62744] TRACE: [SPAWN_KILL] sending SIGINT to: /Users/liam/Library/Android/sdk/platform-tools/adb -s emulator-11144 shell logcat -T "07-30 13:32:23.000" --pid=13723 -f /sdcard/133219584_0.log
+Jul 30 13:32:25 detox[62674] DEBUG: [SPAWN_END, #30, cpid=62744] /Users/liam/Library/Android/sdk/platform-tools/adb -s emulator-11144 shell "logcat -T \"07-30 13:32:23.000\" --pid=13723 -f /sdcard/133219584_0.log" terminated with SIGINT
+Jul 30 13:32:25 detox[62674] DEBUG: [EXEC_CMD, #34] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-11144 pull "/sdcard/133219584_0.log" "artifacts/android.2022-07-30 04-32-18Z/emulator-11144 2022-07-30 04-32-25Z.startup.log"
+Jul 30 13:32:25 detox[62674] TRACE: [EXEC_SUCCESS, #34] /sdcard/133219584_0.log: 1 file pulled, 0 skipped. 24.4 MB/s (74611 bytes in 0.003s)
+
+Jul 30 13:32:25 detox[62674] DEBUG: [EXEC_CMD, #35] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-11144 shell "rm  \"/sdcard/133219584_0.log\""
+Jul 30 13:32:25 detox[62674] TRACE: [EXEC_SUCCESS, #35] 
+Jul 30 13:32:25 detox[62674] TRACE: [ARTIFACT_START] starting FileArtifact
+Jul 30 13:32:25 detox[62674] TRACE: [ARTIFACT_STOP] stopping FileArtifact
+Jul 30 13:32:25 detox[62674] TRACE: [ARTIFACT_SAVE] saving FileArtifact to: artifacts/android.2022-07-30 04-32-18Z/detox_pid_62674.json.log { append: true }
+Jul 30 13:32:25 detox[62674] TRACE: [ARTIFACT_START] starting FileArtifact
+Jul 30 13:32:25 detox[62674] TRACE: [ARTIFACT_STOP] stopping FileArtifact
+Jul 30 13:32:25 detox[62674] TRACE: [ARTIFACT_SAVE] saving FileArtifact to: artifacts/android.2022-07-30 04-32-18Z/detox_pid_62674.log { append: true }
+Jul 30 13:32:25 detox[62674] DEBUG: [MOVE_FILE] moving "/private/var/folders/ry/_vlvsqsd14190954pn4m90xw0000gn/T/6cfc7481-985a-43d1-ac4c-0b2e052457b3.detox.log" to artifacts/android.2022-07-30 04-32-18Z/detox_pid_62674.log
+Jul 30 13:32:25 detox[62674] DEBUG: [MOVE_FILE] moving "/private/var/folders/ry/_vlvsqsd14190954pn4m90xw0000gn/T/7203b2eb-cb5b-48d9-9def-fe7ddea04745.detox.log" to artifacts/android.2022-07-30 04-32-18Z/detox_pid_62674.json.log
+Jul 30 13:32:25 detox[62674] ERROR: [APP_UNREACHABLE] Detox can't seem to connect to the test app(s)!
+
+HINT: 
+
+The test app might have crashed prematurely, or has had trouble setting up the connection.
+Refer to our troubleshooting guide, for full details: https://wix.github.io/Detox/docs/troubleshooting/running-tests#tests-execution-hangs 
+
+
+
+Jul 30 13:32:25 detox[62674] TRACE: [SESSION_TORN] tester exited session 713da90c-1a22-54cb-3c1b-6d57c81e18f4
+Jul 30 13:32:25 detox[62674] DEBUG: [WSS_CLOSE] Detox server has been closed gracefully

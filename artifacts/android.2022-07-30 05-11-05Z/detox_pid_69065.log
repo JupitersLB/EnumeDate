@@ -1,0 +1,891 @@
+Jul 30 14:11:06 detox[69065] TRACE: [DETOX_CREATE] created a Detox instance with config:
+{
+  appsConfig: {
+    default: {
+      type: 'android.apk',
+      binaryPath: 'android/app/build/outputs/apk/releaseE2E/app-releaseE2E.apk',
+      testBinaryPath: 'android/app/build/outputs/apk/androidTest/releaseE2E/app-releaseE2E-androidTest.apk',
+      build: 'cd android && fastlane test && cd ..'
+    }
+  },
+  artifactsConfig: {
+    rootDir: 'artifacts/android.2022-07-30 05-11-05Z',
+    plugins: {
+      log: {
+        enabled: true,
+        keepOnlyFailedTestsArtifacts: false
+      },
+      screenshot: {
+        enabled: true,
+        shouldTakeAutomaticSnapshots: false,
+        keepOnlyFailedTestsArtifacts: false
+      },
+      video: {
+        enabled: false,
+        keepOnlyFailedTestsArtifacts: false
+      },
+      instruments: {
+        enabled: false,
+        keepOnlyFailedTestsArtifacts: false
+      },
+      timeline: {
+        enabled: false
+      },
+      uiHierarchy: {
+        enabled: false,
+        keepOnlyFailedTestsArtifacts: false
+      }
+    },
+    pathBuilder: ArtifactPathBuilder {
+      _rootDir: 'artifacts/android.2022-07-30 05-11-05Z'
+    }
+  },
+  behaviorConfig: {
+    init: {
+      reinstallApp: true,
+      exposeGlobals: true
+    },
+    cleanup: {
+      shutdownDevice: false
+    },
+    launchApp: 'auto'
+  },
+  cliConfig: {
+    recordLogs: 'all',
+    configuration: 'android',
+    useCustomLogger: true
+  },
+  configurationName: 'android',
+  deviceConfig: {
+    type: 'android.emulator',
+    device: {
+      avdName: 'Pixel_4_XL_API_30'
+    }
+  },
+  runnerConfig: {
+    testRunner: 'jest',
+    runnerConfig: 'e2e/config.json',
+    specs: 'e2e',
+    skipLegacyWorkersInjection: true
+  },
+  sessionConfig: {
+    autoStart: true,
+    sessionId: '38711af9-9e02-1b7a-7b4e-df030bb38cc5',
+    debugSynchronization: 10000
+  }
+}
+Jul 30 14:11:06 detox[69065] DEBUG: [WSS_CREATE] Detox server listening on localhost:50982...
+Jul 30 14:11:06 detox[69065] DEBUG: [WSS_CONNECTION, #50983] registered a new connection.
+Jul 30 14:11:06 detox[69065] TRACE: [WS_OPEN] opened web socket to: ws://localhost:50982
+Jul 30 14:11:06 detox[69065] TRACE: [WS_SEND] {"type":"login","params":{"sessionId":"38711af9-9e02-1b7a-7b4e-df030bb38cc5","role":"tester"},"messageId":0}
+Jul 30 14:11:06 detox[69065] TRACE: [WSS_GET_FROM, #50983] {"type":"login","params":{"sessionId":"38711af9-9e02-1b7a-7b4e-df030bb38cc5","role":"tester"},"messageId":0}
+Jul 30 14:11:06 detox[69065] TRACE: [SESSION_CREATED] created session 38711af9-9e02-1b7a-7b4e-df030bb38cc5
+Jul 30 14:11:06 detox[69065] TRACE: [WSS_SEND_TO, #tester] {"type":"loginSuccess","params":{"testerConnected":true,"appConnected":false},"messageId":0}
+Jul 30 14:11:06 detox[69065] TRACE: [SESSION_JOINED] tester joined session 38711af9-9e02-1b7a-7b4e-df030bb38cc5
+Jul 30 14:11:06 detox[69065] TRACE: [WS_MESSAGE] {"type":"loginSuccess","params":{"testerConnected":true,"appConnected":false},"messageId":0}
+ 
+Jul 30 14:11:06 detox[69065] DEBUG: [EXEC_CMD, #0] "/Users/liam/Library/Android/sdk/emulator/emulator" -list-avds --verbose
+Jul 30 14:11:06 detox[69065] TRACE: [EXEC_SUCCESS, #0] Pixel_4_XL_API_30
+
+Jul 30 14:11:06 detox[69065] DEBUG: [EXEC_CMD, #1] "/Users/liam/Library/Android/sdk/emulator/emulator" -version 
+Jul 30 14:11:06 detox[69065] TRACE: [EXEC_SUCCESS, #1] Android emulator version 31.2.10.0 (build_id 8420304) (CL:N/A)
+Copyright (C) 2006-2017 The Android Open Source Project and many others.
+This program is a derivative of the QEMU CPU emulator (www.qemu.org).
+
+  This software is licensed under the terms of the GNU General Public
+  License version 2, as published by the Free Software Foundation, and
+  may be copied, distributed, and modified under those terms.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+
+Jul 30 14:11:06 detox[69065] DEBUG: [EMU_BIN_VERSION_DETECT] Detected emulator binary version { major: 31, minor: 2, patch: 10, toString: [Function: toString] }
+Jul 30 14:11:06 detox[69065] DEBUG: [ALLOCATE_DEVICE] Trying to allocate a device based on "Pixel_4_XL_API_30"
+Jul 30 14:11:06 detox[69065] DEBUG: [EXEC_CMD, #2] "/Users/liam/Library/Android/sdk/platform-tools/adb"  devices
+Jul 30 14:11:06 detox[69065] DEBUG: [EXEC_SUCCESS, #2] List of devices attached
+
+
+Jul 30 14:11:06 detox[69065] DEBUG: [ALLOCATE_DEVICE] Settled on emulator-17416
+Jul 30 14:11:06 detox[69065] DEBUG: [SPAWN_CMD] /Users/liam/Library/Android/sdk/emulator/emulator -verbose -no-audio -no-boot-anim -port 17416 @Pixel_4_XL_API_30
+Jul 30 14:11:09 detox[69065] DEBUG: [SPAWN_SUCCESS] WARNING | unexpected system image feature string, emulator might not function correctly, please try updating the emulator.
+VERBOSE | autoconfig: -skin pixel_4_xl
+VERBOSE | autoconfig: -skindir /Users/liam/Library/Android/sdk/skins/
+VERBOSE | autoconfig: -kernel /Users/liam/Library/Android/sdk/system-images/android-30/google_apis/x86//kernel-ranchu-64
+VERBOSE | Target arch = 'x86'
+VERBOSE | Auto-config: -qemu -cpu qemu32
+VERBOSE | Auto-detect: Kernel image requires new device naming scheme.
+VERBOSE | Auto-detect: Kernel does not support YAFFS2 partitions.
+VERBOSE | autoconfig: -ramdisk /Users/liam/Library/Android/sdk/system-images/android-30/google_apis/x86//ramdisk.img
+VERBOSE | Using initial system image: /Users/liam/Library/Android/sdk/system-images/android-30/google_apis/x86//system.img
+VERBOSE | Using initial vendor image: /Users/liam/Library/Android/sdk/system-images/android-30/google_apis/x86//vendor.img
+VERBOSE | autoconfig: -data /Users/liam/.android/avd/Pixel_4_XL_API_30.avd/userdata-qemu.img
+VERBOSE | autoconfig: -initdata /Users/liam/.android/avd/Pixel_4_XL_API_30.avd/userdata.img
+VERBOSE | autoconfig: -cache /Users/liam/.android/avd/Pixel_4_XL_API_30.avd/cache.img
+VERBOSE | autoconfig: -sdcard /Users/liam/.android/avd/Pixel_4_XL_API_30.avd/sdcard.img
+VERBOSE | Increasing RAM size to 2048MB
+VERBOSE | VM heap size 256MB is below hardware specified minimum of 576MB,setting it to that value
+VERBOSE | System image is read only
+VERBOSE | Found 1 DNS servers:
+VERBOSE | 	192.168.0.1
+VERBOSE | Unexpected feature list:
+VERBOSE | Vulkan
+VERBOSE | trying to load skin file '/Users/liam/Library/Android/sdk/skins//pixel_4_xl/layout'
+VERBOSE | Requested console port 17416: Inferring adb port 17417.
+VERBOSE | CPU Acceleration: working
+VERBOSE | CPU Acceleration status: Hypervisor.Framework OS X Version 12.2
+VERBOSE | handleCpuAcceleration: feature check for hvf
+VERBOSE | registered 'boot-properties' qemud service
+VERBOSE | Adding boot property: 'qemu.cmdline' = 'androidboot.logcat=*:V androidboot.consolepipe=qemu_pipe,pipe:logcat'
+VERBOSE | Adding boot property: 'qemu.logcat' = 'start'
+VERBOSE | GPU emulation enabled using 'host' mode
+VERBOSE | Initializing hardware OpenGLES emulation support
+VERBOSE | create display 0
+VERBOSE | setDisplayPose 0 x 0 y 0 w 1440 h 3040 dpi 0
+INFO    | configAndStartRenderer: setting vsync to 60 hz
+VERBOSE | Found 1 DNS servers:
+VERBOSE | 	192.168.0.1
+INFO    | Content of hardware configuration file:
+INFO    | 	hw.cpu.arch = x86
+INFO    | 	hw.cpu.model = qemu32
+INFO    | 	hw.cpu.ncore = 4
+INFO    | 	hw.ramSize = 2048
+INFO    | 	hw.screen = multi-touch
+INFO    | 	hw.mainKeys = false
+INFO    | 	hw.trackBall = false
+INFO    | 	hw.keyboard = true
+INFO    | 	hw.keyboard.lid = false
+INFO    | 	hw.keyboard.charmap = qwerty2
+INFO    | 	hw.dPad = false
+INFO    | 	hw.rotaryInput = false
+INFO    | 	hw.gsmModem = true
+INFO    | 	hw.gps = true
+INFO    | 	hw.battery = true
+INFO    | 	hw.accelerometer = true
+INFO    | 	hw.gyroscope = true
+INFO    | 	hw.audioInput = true
+INFO    | 	hw.audioOutput = true
+INFO    | 	hw.sdCard = true
+INFO    | 	hw.sdCard.path = /Users/liam/.android/avd/Pixel_4_XL_API_30.avd/sdcard.img
+INFO    | 	disk.cachePartition = true
+INFO    | 	disk.cachePartition.path = /Users/liam/.android/avd/Pixel_4_XL_API_30.avd/cache.img
+INFO    | 	disk.cachePartition.size = 66m
+INFO    | 	test.quitAfterBootTimeOut = -1
+INFO    | 	test.delayAdbTillBootComplete = 0
+INFO    | 	test.monitorAdb = 0
+INFO    | 	hw.lcd.width = 1440
+INFO    | 	hw.lcd.height = 3040
+INFO    | 	hw.lcd.depth = 16
+INFO    | 	hw.lcd.density = 560
+INFO    | 	hw.lcd.backlight = true
+INFO    | 	hw.lcd.vsync = 60
+INFO    | 	hw.gltransport = pipe
+INFO    | 	hw.gltransport.asg.writeBufferSize = 1048576
+INFO    | 	hw.gltransport.asg.writeStepSize = 4096
+INFO    | 	hw.gltransport.asg.dataRingSize = 32768
+INFO    | 	hw.gltransport.drawFlushInterval = 800
+INFO    | 	hw.displayRegion.0.1.xOffset = -1
+INFO    | 	hw.displayRegion.0.1.yOffset = -1
+INFO    | 	hw.displayRegion.0.1.width = 0
+INFO    | 	hw.displayRegion.0.1.height = 0
+INFO    | 	hw.displayRegion.0.2.xOffset = -1
+INFO    | 	hw.displayRegion.0.2.yOffset = -1
+INFO    | 	hw.displayRegion.0.2.width = 0
+INFO    | 	hw.displayRegion.0.2.height = 0
+INFO    | 	hw.displayRegion.0.3.xOffset = -1
+INFO    | 	hw.displayRegion.0.3.yOffset = -1
+INFO    | 	hw.displayRegion.0.3.width = 0
+INFO    | 	hw.displayRegion.0.3.height = 0
+INFO    | 	hw.display1.width = 0
+INFO    | 	hw.display1.height = 0
+INFO    | 	hw.display1.density = 0
+INFO    | 	hw.display1.xOffset = -1
+INFO    | 	hw.display1.yOffset = -1
+INFO    | 	hw.display1.flag = 0
+INFO    | 	hw.display2.width = 0
+INFO    | 	hw.display2.height = 0
+INFO    | 	hw.display2.density = 0
+INFO    | 	hw.display2.xOffset = -1
+INFO    | 	hw.display2.yOffset = -1
+INFO    | 	hw.display2.flag = 0
+INFO    | 	hw.display3.width = 0
+INFO    | 	hw.display3.height = 0
+INFO    | 	hw.display3.density = 0
+INFO    | 	hw.display3.xOffset = -1
+INFO    | 	hw.display3.yOffset = -1
+INFO    | 	hw.display3.flag = 0
+INFO    | 	hw.gpu.enabled = true
+INFO    | 	hw.gpu.mode = host
+INFO    | 	hw.initialOrientation = Portrait
+INFO    | 	hw.camera.back = virtualscene
+INFO    | 	hw.camera.front = emulated
+INFO    | 	vm.heapSize = 576
+INFO    | 	hw.sensors.light = true
+INFO    | 	hw.sensors.pressure = true
+INFO    | 	hw.sensors.humidity = true
+INFO    | 	hw.sensors.proximity = true
+INFO    | 	hw.sensors.magnetic_field = true
+INFO    | 	hw.sensors.magnetic_field_uncalibrated = true
+INFO    | 	hw.sensors.gyroscope_uncalibrated = true
+INFO    | 	hw.sensors.orientation = true
+INFO    | 	hw.sensors.temperature = true
+INFO    | 	hw.sensors.rgbclight = false
+INFO    | 	hw.sensor.hinge = false
+INFO    | 	hw.sensor.hinge.count = 0
+INFO    | 	hw.sensor.hinge.type = 0
+INFO    | 	hw.sensor.hinge.sub_type = 0
+INFO    | 	hw.sensor.hinge.fold_to_displayRegion.0.1_at_posture = 1
+INFO    | 	hw.sensor.roll = false
+INFO    | 	hw.sensor.roll.count = 0
+INFO    | 	hw.sensor.roll.resize_to_displayRegion.0.1_at_posture = 6
+INFO    | 	hw.sensor.roll.resize_to_displayRegion.0.2_at_posture = 6
+INFO    | 	hw.sensor.roll.resize_to_displayRegion.0.3_at_posture = 6
+INFO    | 	hw.sensors.heart_rate = false
+INFO    | 	hw.sensors.wrist_tilt = false
+INFO    | 	hw.useext4 = true
+INFO    | 	hw.arc = false
+INFO    | 	hw.arc.autologin = false
+INFO    | 	hw.device.name = pixel_4_xl
+INFO    | 	kernel.path = /Users/liam/Library/Android/sdk/system-images/android-30/google_apis/x86//kernel-ranchu-64
+INFO    | 	kernel.newDeviceNaming = yes
+INFO    | 	kernel.supportsYaffs2 = no
+INFO    | 	disk.ramdisk.path = /Users/liam/Library/Android/sdk/system-images/android-30/google_apis/x86//ramdisk.img
+INFO    | 	disk.systemPartition.initPath = /Users/liam/Library/Android/sdk/system-images/android-30/google_apis/x86//system.img
+INFO    | 	disk.systemPartition.size = 3083m
+INFO    | 	disk.vendorPartition.initPath = /Users/liam/Library/Android/sdk/system-images/android-30/google_apis/x86//vendor.img
+INFO    | 	disk.vendorPartition.size = 800m
+INFO    | 	disk.dataPartition.path = /Users/liam/.android/avd/Pixel_4_XL_API_30.avd/userdata-qemu.img
+INFO    | 	disk.dataPartition.size = 6g
+INFO    | 	disk.encryptionKeyPartition.path = /Users/liam/.android/avd/Pixel_4_XL_API_30.avd/encryptionkey.img
+INFO    | 	PlayStore.enabled = false
+INFO    | 	avd.name = Pixel_4_XL_API_30
+INFO    | 	avd.id = Pixel_4_XL_API_30
+INFO    | 	fastboot.forceColdBoot = false
+INFO    | 	android.sdk.root = /Users/liam/Library/Android/sdk
+INFO    | 	android.avd.home = /Users/liam/.android/avd
+INFO    | .
+INFO    | QEMU options list:
+INFO    | 	 argv[00] = "/Users/liam/Library/Android/sdk/emulator/qemu/darwin-x86_64/qemu-system-x86_64"
+INFO    | 	 argv[01] = "-dns-server"
+INFO    | 	 argv[02] = "192.168.0.1"
+INFO    | 	 argv[03] = "-no-audio"
+INFO    | 	 argv[04] = "-mem-path"
+INFO    | 	 argv[05] = "/Users/liam/.android/avd/Pixel_4_XL_API_30.avd/snapshots/default_boot/ram.img"
+INFO    | 	 argv[06] = "-mem-file-shared"
+INFO    | 	 argv[07] = "-serial"
+INFO    | 	 argv[08] = "null"
+INFO    | 	 argv[09] = "-android-ports"
+INFO    | 	 argv[10] = "17416,17417"
+INFO    | 	 argv[11] = "-device"
+INFO    | 	 argv[12] = "goldfish_pstore,addr=0xff018000,size=0x10000,file=/Users/liam/.android/avd/Pixel_4_XL_API_30.avd/data/misc/pstore/pstore.bin"
+INFO    | 	 argv[13] = "-cpu"
+INFO    | 	 argv[14] = "android64"
+INFO    | 	 argv[15] = "-enable-hvf"
+INFO    | 	 argv[16] = "-smp"
+INFO    | 	 argv[17] = "cores=4"
+INFO    | 	 argv[18] = "-m"
+INFO    | 	 argv[19] = "2048"
+INFO    | 	 argv[20] = "-lcd-density"
+INFO    | 	 argv[21] = "560"
+INFO    | 	 argv[22] = "-nodefaults"
+INFO    | 	 argv[23] = "-kernel"
+INFO    | 	 argv[24] = "/Users/liam/Library/Android/sdk/system-images/android-30/google_apis/x86//kernel-ranchu-64"
+INFO    | 	 argv[25] = "-initrd"
+INFO    | 	 argv[26] = "/Users/liam/Library/Android/sdk/system-images/android-30/google_apis/x86//ramdisk.img"
+INFO    | 	 argv[27] = "-drive"
+INFO    | 	 argv[28] = "if=none,index=0,id=system,if=none,file=/Users/liam/Library/Android/sdk/system-images/android-30/google_apis/x86//system.img,read-only"
+INFO    | 	 argv[29] = "-device"
+INFO    | 	 argv[30] = "virtio-blk-pci,drive=system,modern-pio-notify"
+INFO    | 	 argv[31] = "-drive"
+INFO    | 	 argv[32] = "if=none,index=1,id=cache,if=none,file=/Users/liam/.android/avd/Pixel_4_XL_API_30.avd/cache.img.qcow2,overlap-check=none,cache=unsafe,l2-cache-size=1048576"
+INFO    | 	 argv[33] = "-device"
+INFO    | 	 argv[34] = "virtio-blk-pci,drive=cache,modern-pio-notify"
+INFO    | 	 argv[35] = "-drive"
+INFO    | 	 argv[36] = "if=none,index=2,id=userdata,if=none,file=/Users/liam/.android/avd/Pixel_4_XL_API_30.avd/userdata-qemu.img.qcow2,overlap-check=none,cache=unsafe,l2-cache-size=1048576"
+INFO    | 	 argv[37] = "-device"
+INFO    | 	 argv[38] = "virtio-blk-pci,drive=userdata,modern-pio-notify"
+INFO    | 	 argv[39] = "-drive"
+INFO    | 	 argv[40] = "if=none,index=3,id=encrypt,if=none,file=/Users/liam/.android/avd/Pixel_4_XL_API_30.avd/encryptionkey.img.qcow2,overlap-check=none,cache=unsafe,l2-cache-size=1048576"
+INFO    | 	 argv[41] = "-device"
+INFO    | 	 argv[42] = "virtio-blk-pci,drive=encrypt,modern-pio-notify"
+INFO    | 	 argv[43] = "-drive"
+INFO    | 	 argv[44] = "if=none,index=4,id=vendor,if=none,file=/Users/liam/Library/Android/sdk/system-images/android-30/google_apis/x86//vendor.img,read-only"
+INFO    | 	 argv[45] = "-device"
+INFO    | 	 argv[46] = "virtio-blk-pci,drive=vendor,modern-pio-notify"
+INFO    | 	 argv[47] = "-drive"
+INFO    | 	 argv[48] = "if=none,index=5,id=sdcard,if=none,file=/Users/liam/.android/avd/Pixel_4_XL_API_30.avd/sdcard.img.qcow2,overlap-check=none,cache=unsafe,l2-cache-size=1048576"
+INFO    | 	 argv[49] = "-device"
+INFO    | 	 argv[50] = "virtio-blk-pci,drive=sdcard,modern-pio-notify"
+INFO    | 	 argv[51] = "-netdev"
+INFO    | 	 argv[52] = "user,id=mynet"
+INFO    | 	 argv[53] = "-device"
+INFO    | 	 argv[54] = "virtio-net-pci,netdev=mynet"
+INFO    | 	 argv[55] = "-device"
+INFO    | 	 argv[56] = "virtio-rng-pci"
+INFO    | 	 argv[57] = "-show-cursor"
+INFO    | 	 argv[58] = "-device"
+INFO    | 	 argv[59] = "virtio_input_multi_touch_pci_1"
+INFO    | 	 argv[60] = "-device"
+INFO    | 	 argv[61] = "virtio_input_multi_touch_pci_2"
+INFO    | 	 argv[62] = "-device"
+INFO    | 	 argv[63] = "virtio_input_multi_touch_pci_3"
+INFO    | 	 argv[64] = "-device"
+INFO    | 	 argv[65] = "virtio_input_multi_touch_pci_4"
+INFO    | 	 argv[66] = "-device"
+INFO    | 	 argv[67] = "virtio_input_multi_touch_pci_5"
+INFO    | 	 argv[68] = "-device"
+INFO    | 	 argv[69] = "virtio_input_multi_touch_pci_6"
+INFO    | 	 argv[70] = "-device"
+INFO    | 	 argv[71] = "virtio_input_multi_touch_pci_7"
+INFO    | 	 argv[72] = "-device"
+INFO    | 	 argv[73] = "virtio_input_multi_touch_pci_8"
+INFO    | 	 argv[74] = "-device"
+INFO    | 	 argv[75] = "virtio_input_multi_touch_pci_9"
+INFO    | 	 argv[76] = "-device"
+INFO    | 	 argv[77] = "virtio_input_multi_touch_pci_10"
+INFO    | 	 argv[78] = "-device"
+INFO    | 	 argv[79] = "virtio_input_multi_touch_pci_11"
+INFO    | 	 argv[80] = "-device"
+INFO    | 	 argv[81] = "virtio-keyboard-pci"
+INFO    | 	 argv[82] = "-L"
+INFO    | 	 argv[83] = "/Users/liam/Library/Android/sdk/emulator/lib/pc-bios"
+INFO    | 	 argv[84] = "-soundhw"
+INFO    | 	 argv[85] = "hda"
+INFO    | 	 argv[86] = "-vga"
+INFO    | 	 argv[87] = "none"
+INFO    | 	 argv[88] = "-append"
+INFO    | 	 argv[89] = "no_timer_check clocksource=pit console=0 cma=324M@0-4G mac80211_hwsim.channels=2 loop.max_part=7 ramoops.mem_address=0xff018000 ramoops.mem_size=0x10000 memmap=0x10000$0xff018000 printk.devkmsg=on qemu=1 androidboot.hardware=ranchu androidboot.serialno=EMULATOR31X2X10X0 android.bootanim=0 qemu.gles=1 qemu.settings.system.screen_off_timeout=2147483647 qemu.encrypt=1 qemu.vsync=60 qemu.gltransport=pipe qemu.gltransport.drawFlushInterval=800 qemu.opengles.version=196608 qemu.uirenderer=skiagl qemu.dalvik.vm.heapsize=576m qemu.camera_protocol_ver=1 qemu.camera_hq_edge_processing=0 androidboot.vbmeta.size=6144 androidboot.vbmeta.hash_alg=sha256 androidboot.vbmeta.digest=41e0952e52a1df2eb16607419694ec2a0ecf7eb9cdc3698594df3668cebf05b9 androidboot.boot_devices=pci0000:00/0000:00:03.0 qemu.wifi=1 qemu.hwcodec.avcdec=2 qemu.hwcodec.vpxdec=2 android.qemud=1 qemu.avd_name=Pixel_4_XL_API_30"
+INFO    | 	 argv[90] = "-android-hw"
+INFO    | 	 argv[91] = "/Users/liam/.android/avd/Pixel_4_XL_API_30.avd/hardware-qemu.ini"
+INFO    | Concatenated QEMU options: /Users/liam/Library/Android/sdk/emulator/qemu/darwin-x86_64/qemu-system-x86_64 -dns-server 192.168.0.1 -no-audio -mem-path /Users/liam/.android/avd/Pixel_4_XL_API_30.avd/snapshots/default_boot/ram.img -mem-file-shared -serial null -android-ports 17416,17417 -device goldfish_pstore,addr=0xff018000,size=0x10000,file=/Users/liam/.android/avd/Pixel_4_XL_API_30.avd/data/misc/pstore/pstore.bin -cpu android64 -enable-hvf -smp cores=4 -m 2048 -lcd-density 560 -nodefaults -kernel /Users/liam/Library/Android/sdk/system-images/android-30/google_apis/x86//kernel-ranchu-64 -initrd /Users/liam/Library/Android/sdk/system-images/android-30/google_apis/x86//ramdisk.img -drive if=none,index=0,id=system,if=none,file=/Users/liam/Library/Android/sdk/system-images/android-30/google_apis/x86//system.img,read-only -device virtio-blk-pci,drive=system,modern-pio-notify -drive if=none,index=1,id=cache,if=none,file=/Users/liam/.android/avd/Pixel_4_XL_API_30.avd/cache.img.qcow2,overlap-check=none,cache=unsafe,l2-cache-size=1048576 -device virtio-blk-pci,drive=cache,modern-pio-notify -drive if=none,index=2,id=userdata,if=none,file=/Users/liam/.android/avd/Pixel_4_XL_API_30.avd/userdata-qemu.img.qcow2,overlap-check=none,cache=unsafe,l2-cache-size=1048576 -device virtio-blk-pci,drive=userdata,modern-pio-notify -drive if=none,index=3,id=encrypt,if=none,file=/Users/liam/.android/avd/Pixel_4_XL_API_30.avd/encryptionkey.img.qcow2,overlap-check=none,cache=unsafe,l2-cache-size=1048576 -device virtio-blk-pci,drive=encrypt,modern-pio-notify -drive if=none,index=4,id=vendor,if=none,file=/Users/liam/Library/Android/sdk/system-images/android-30/google_apis/x86//vendor.img,read-only -device virtio-blk-pci,drive=vendor,modern-pio-notify -drive if=none,index=5,id=sdcard,if=none,file=/Users/liam/.android/avd/Pixel_4_XL_API_30.avd/sdcard.img.qcow2,overlap-check=none,cache=unsafe,l2-cache-size=1048576 -device virtio-blk-pci,drive=sdcard,modern-pio-notify -netdev user,id=mynet -device virtio-net-pci,netdev=mynet -device virtio-rng-pci -show-cursor -device virtio_input_multi_touch_pci_1 -device virtio_input_multi_touch_pci_2 -device virtio_input_multi_touch_pci_3 -device virtio_input_multi_touch_pci_4 -device virtio_input_multi_touch_pci_5 -device virtio_input_multi_touch_pci_6 -device virtio_input_multi_touch_pci_7 -device virtio_input_multi_touch_pci_8 -device virtio_input_multi_touch_pci_9 -device virtio_input_multi_touch_pci_10 -device virtio_input_multi_touch_pci_11 -device virtio-keyboard-pci -L /Users/liam/Library/Android/sdk/emulator/lib/pc-bios -soundhw hda -vga none -append 'no_timer_check clocksource=pit console=0 cma=324M@0-4G mac80211_hwsim.channels=2 loop.max_part=7 ramoops.mem_address=0xff018000 ramoops.mem_size=0x10000 memmap=0x10000$0xff018000 printk.devkmsg=on qemu=1 androidboot.hardware=ranchu androidboot.serialno=EMULATOR31X2X10X0 android.bootanim=0 qemu.gles=1 qemu.settings.system.screen_off_timeout=2147483647 qemu.encrypt=1 qemu.vsync=60 qemu.gltransport=pipe qemu.gltransport.drWARNING | cannot add library /Users/liam/Library/Android/sdk/emulator/qemu/darwin-x86_64/lib64/vulkan/libvulkan.dylib: failed
+awFlushInterval=800 qemu.opengles.version=196608 qemu.uirenderer=skiagl qemu.dalvik.vm.heapsize=576m qemu.camera_protocol_ver=1 qemu.camera_hq_edge_processing=0 androidboot.vbmeta.size=6144 androidboot.vbmeta.hash_alg=sha256 androidboot.vbmeta.digest=41e0952e52a1df2eb16607419694ec2a0ecf7eb9cdc3698594df3668cebf05b9 androidboot.boot_devices=pci0000:00/0000:00:03.0 qemu.wifi=1 qemu.hwcodec.avcdec=2 qemu.hwcodec.vpxdec=2 android.qemud=1 qemu.avd_name=Pixel_4_XL_API_30' -android-hw /Users/liam/.android/avd/Pixel_4_XL_API_30.avd/hardware-qemu.ini
+VERBOSE | Android qemu version 31.2.10.0 (build_id 8420304) (CL:N/A)
+VERBOSE | Starting QEMU main loop
+INFO    | added library /Users/liam/Library/Android/sdk/emulator/lib64/vulkan/libvulkan.dylib
+VERBOSE | Adding boot property: 'ro.opengles.version' = '196608'
+VERBOSE | Adding boot property: 'qemu.sf.fake_camera' = 'front'
+VERBOSE | Adding boot property: 'qemu.adb.secure' = '1'
+VERBOSE | Adding boot property: 'dalvik.vm.heapsize' = '576m'
+VERBOSE | Adding boot property: 'qemu.hw.mainkeys' = '0'
+VERBOSE | Adding boot property: 'qemu.sf.lcd_density' = '560'
+VERBOSE | goldfish_events.have-dpad: false
+VERBOSE | goldfish_events.have-trackball: false
+VERBOSE | goldfish_events.have-camera: true
+VERBOSE | goldfish_events.have-keyboard: false
+VERBOSE | goldfish_events.have-lidswitch: false
+VERBOSE | goldfish_events.have-tabletmode: false
+VERBOSE | goldfish_events.have-touch: false
+VERBOSE | goldfish_events.have-multitouch: false
+VERBOSE | Adding boot property: 'net.wifi_mac_prefix' = '17416'
+WARNING | Requested adb port (17417) is outside the recommended range [5555,5586]. ADB may not function properly for the emulator. See -help-port for details.
+VERBOSE | Not using any http proxy
+VERBOSE | Adding boot property: 'qemu.timezone' = 'Asia/Tokyo'
+VERBOSE | android_hw_fingerprint_init: fingerprint qemud listen service initialized
+VERBOSE | emulator_window_fb_rotate
+VERBOSE | config multidisplay with config.ini 0x0 0x0 0x0
+VERBOSE | No acpi ini file provided, using default
+VERBOSE | Adding boot property: 'qemu.cmdline' = 'androidboot.logcat=*:V androidboot.consolepipe=qemu_pipe,pipe:logcat'
+VERBOSE | Adding boot property: 'qemu.logcat' = 'start'
+VERBOSE | Adding boot property: 'ro.opengles.version' = '196608'
+VERBOSE | Adding boot property: 'qemu.sf.fake_camera' = 'front'
+VERBOSE | Adding boot property: 'qemu.adb.secure' = '1'
+VERBOSE | Adding boot property: 'dalvik.vm.heapsize' = '576m'
+VERBOSE | Adding boot property: 'qemu.hw.mainkeys' = '0'
+VERBOSE | Adding boot property: 'qemu.sf.lcd_density' = '560'
+VERBOSE | Adding boot property: 'net.wifi_mac_prefix' = '15124'
+VERBOSE | Adding boot property: 'qemu.timezone' = 'Asia/Tokyo'
+VERBOSE | Path:/Users/liam/Library/Android/sdk/platform-tools/adb protocol version: 41
+VERBOSE | Path:/Users/liam/Library/Android/sdk/platform-tools/adb protocol version: 41
+VERBOSE | Path:/usr/local/bin/adb protocol version: 41
+VERBOSE | Found: 3 adb executables
+VERBOSE | Adb: /Users/liam/Library/Android/sdk/platform-tools/adb
+VERBOSE | Adb: /Users/liam/Library/Android/sdk/platform-tools/adb
+VERBOSE | Adb: /usr/local/bin/adb
+VERBOSE | Path:/Users/liam/Library/Android/sdk/platform-tools/adb protocol version: 41
+VERBOSE | Path:/Users/liam/Library/Android/sdk/platform-tools/adb protocol version: 41
+VERBOSE | Path:/usr/local/bin/adb protocol version: 41
+VERBOSE | _hwFingerprint_connect: connect finger print listen is called
+VERBOSE | Registering pipe service multidisplay
+VERBOSE | MultiDisplayPipe created 0x600003ba01c0
+VERBOSE | onGuestSendCommand: [0x6000039b6cb0] Adb connected, start proxing data
+
+Jul 30 14:11:09 detox[69065] DEBUG: [EXEC_CMD, #3] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-17416 shell "getprop dev.bootcomplete"
+Jul 30 14:11:09 detox[69065] TRACE: [EXEC_SUCCESS, #3] 1
+
+Jul 30 14:11:09 detox[69065] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onBootDevice({
+  deviceId: 'emulator-17416',
+  type: 'Pixel_4_XL_API_30',
+  coldBoot: true
+})
+Jul 30 14:11:09 detox[69065] DEBUG: [EXEC_CMD, #4] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-17416 shell "getprop ro.build.version.sdk"
+Jul 30 14:11:09 detox[69065] TRACE: [EXEC_SUCCESS, #4] 30
+
+Jul 30 14:11:09 detox[69065] DEBUG: [EXEC_CMD, #5] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-17416 shell "settings put global animator_duration_scale 0"
+Jul 30 14:11:10 detox[69065] TRACE: [EXEC_SUCCESS, #5] 
+Jul 30 14:11:10 detox[69065] DEBUG: [EXEC_CMD, #6] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-17416 shell "settings put global window_animation_scale 0"
+Jul 30 14:11:10 detox[69065] TRACE: [EXEC_SUCCESS, #6] 
+Jul 30 14:11:10 detox[69065] DEBUG: [EXEC_CMD, #7] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-17416 shell "settings put global transition_animation_scale 0"
+Jul 30 14:11:10 detox[69065] TRACE: [EXEC_SUCCESS, #7] 
+Jul 30 14:11:10 detox[69065] DEBUG: [EXEC_CMD, #8] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-17416 shell "dumpsys power | grep \"^[ ]*m[UW].*=\""
+Jul 30 14:11:10 detox[69065] TRACE: [EXEC_SUCCESS, #8]   mWakefulness=Awake
+  mWakefulnessChanging=false
+  mWakeLockSummary=0x1
+  mUserActivitySummary=0x1
+  mWakeUpWhenPluggedOrUnpluggedConfig=false
+  mWakeUpWhenPluggedOrUnpluggedInTheaterModeConfig=false
+  mUserActivityTimeoutOverrideFromWindowManager=-1
+  mUserInactiveOverrideFromWindowManager=false
+  mUserId=0
+
+Jul 30 14:11:10 detox[69065] DEBUG: [EXEC_CMD, #9] "/Users/liam/Library/Android/sdk/build-tools/33.0.0/aapt" dump badging "/Users/liam/code/JupitersLB/EnumeDate/android/app/build/outputs/apk/releaseE2E/app-releaseE2E.apk"
+Jul 30 14:11:10 detox[69065] TRACE: [EXEC_SUCCESS, #9] package: name='com.enumedate' versionCode='1' versionName='1.0' platformBuildVersionName='12' platformBuildVersionCode='31' compileSdkVersion='31' compileSdkVersionCodename='12'
+sdkVersion:'21'
+targetSdkVersion:'31'
+uses-permission: name='android.permission.INTERNET'
+application-label:'EnumeDate'
+application-label-af:'EnumeDate'
+application-label-am:'EnumeDate'
+application-label-ar:'EnumeDate'
+application-label-as:'EnumeDate'
+application-label-az:'EnumeDate'
+application-label-be:'EnumeDate'
+application-label-bg:'EnumeDate'
+application-label-bn:'EnumeDate'
+application-label-bs:'EnumeDate'
+application-label-ca:'EnumeDate'
+application-label-cs:'EnumeDate'
+application-label-da:'EnumeDate'
+application-label-de:'EnumeDate'
+application-label-el:'EnumeDate'
+application-label-en-AU:'EnumeDate'
+application-label-en-CA:'EnumeDate'
+application-label-en-GB:'EnumeDate'
+application-label-en-IN:'EnumeDate'
+application-label-en-XC:'EnumeDate'
+application-label-es:'EnumeDate'
+application-label-es-US:'EnumeDate'
+application-label-et:'EnumeDate'
+application-label-eu:'EnumeDate'
+application-label-fa:'EnumeDate'
+application-label-fi:'EnumeDate'
+application-label-fr:'EnumeDate'
+application-label-fr-CA:'EnumeDate'
+application-label-gl:'EnumeDate'
+application-label-gu:'EnumeDate'
+application-label-hi:'EnumeDate'
+application-label-hr:'EnumeDate'
+application-label-hu:'EnumeDate'
+application-label-hy:'EnumeDate'
+application-label-in:'EnumeDate'
+application-label-is:'EnumeDate'
+application-label-it:'EnumeDate'
+application-label-iw:'EnumeDate'
+application-label-ja:'EnumeDate'
+application-label-ka:'EnumeDate'
+application-label-kk:'EnumeDate'
+application-label-km:'EnumeDate'
+application-label-kn:'EnumeDate'
+application-label-ko:'EnumeDate'
+application-label-ky:'EnumeDate'
+application-label-lo:'EnumeDate'
+application-label-lt:'EnumeDate'
+application-label-lv:'EnumeDate'
+application-label-mk:'EnumeDate'
+application-label-ml:'EnumeDate'
+application-label-mn:'EnumeDate'
+application-label-mr:'EnumeDate'
+application-label-ms:'EnumeDate'
+application-label-my:'EnumeDate'
+application-label-nb:'EnumeDate'
+application-label-ne:'EnumeDate'
+application-label-nl:'EnumeDate'
+application-label-or:'EnumeDate'
+application-label-pa:'EnumeDate'
+application-label-pl:'EnumeDate'
+application-label-pt:'EnumeDate'
+application-label-pt-BR:'EnumeDate'
+application-label-pt-PT:'EnumeDate'
+application-label-ro:'EnumeDate'
+application-label-ru:'EnumeDate'
+application-label-si:'EnumeDate'
+application-label-sk:'EnumeDate'
+application-label-sl:'EnumeDate'
+application-label-sq:'EnumeDate'
+application-label-sr:'EnumeDate'
+application-label-sr-Latn:'EnumeDate'
+application-label-sv:'EnumeDate'
+application-label-sw:'EnumeDate'
+application-label-ta:'EnumeDate'
+application-label-te:'EnumeDate'
+application-label-th:'EnumeDate'
+application-label-tl:'EnumeDate'
+application-label-tr:'EnumeDate'
+application-label-uk:'EnumeDate'
+application-label-ur:'EnumeDate'
+application-label-uz:'EnumeDate'
+application-label-vi:'EnumeDate'
+application-label-zh-CN:'EnumeDate'
+application-label-zh-HK:'EnumeDate'
+application-label-zh-TW:'EnumeDate'
+application-label-zu:'EnumeDate'
+application-icon-160:'res/u3.png'
+application-icon-240:'res/SD.png'
+application-icon-320:'res/jy.png'
+application-icon-480:'res/D2.png'
+application-icon-640:'res/CG.png'
+application-icon-65534:'res/u3.png'
+application: label='EnumeDate' icon='res/u3.png'
+launchable-activity: name='com.enumedate.MainActivity'  label='EnumeDate' icon=''
+feature-group: label=''
+  uses-feature: name='android.hardware.faketouch'
+  uses-implied-feature: name='android.hardware.faketouch' reason='default feature for all apps'
+main
+supports-screens: 'small' 'normal' 'large' 'xlarge'
+supports-any-density: 'true'
+locales: '--_--' 'af' 'am' 'ar' 'as' 'az' 'be' 'bg' 'bn' 'bs' 'ca' 'cs' 'da' 'de' 'el' 'en-AU' 'en-CA' 'en-GB' 'en-IN' 'en-XC' 'es' 'es-US' 'et' 'eu' 'fa' 'fi' 'fr' 'fr-CA' 'gl' 'gu' 'hi' 'hr' 'hu' 'hy' 'in' 'is' 'it' 'iw' 'ja' 'ka' 'kk' 'km' 'kn' 'ko' 'ky' 'lo' 'lt' 'lv' 'mk' 'ml' 'mn' 'mr' 'ms' 'my' 'nb' 'ne' 'nl' 'or' 'pa' 'pl' 'pt' 'pt-BR' 'pt-PT' 'ro' 'ru' 'si' 'sk' 'sl' 'sq' 'sr' 'sr-Latn' 'sv' 'sw' 'ta' 'te' 'th' 'tl' 'tr' 'uk' 'ur' 'uz' 'vi' 'zh-CN' 'zh-HK' 'zh-TW' 'zu'
+densities: '160' '240' '320' '480' '640' '65534'
+native-code: 'arm64-v8a' 'armeabi-v7a' 'x86' 'x86_64'
+
+Jul 30 14:11:10 detox[69065] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onBeforeTerminateApp({ deviceId: 'emulator-17416', bundleId: 'com.enumedate' })
+Jul 30 14:11:10 detox[69065] DEBUG: [EXEC_CMD, #10] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-17416 shell "am force-stop com.enumedate"
+Jul 30 14:11:10 detox[69065] TRACE: [EXEC_SUCCESS, #10] 
+Jul 30 14:11:10 detox[69065] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onTerminateApp({ deviceId: 'emulator-17416', bundleId: 'com.enumedate' })
+Jul 30 14:11:10 detox[69065] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onBeforeUninstallApp({ deviceId: 'emulator-17416', bundleId: 'com.enumedate' })
+Jul 30 14:11:10 detox[69065] DEBUG: [EXEC_CMD, #11] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-17416 shell "pm list packages com.enumedate"
+Jul 30 14:11:10 detox[69065] TRACE: [EXEC_SUCCESS, #11] package:com.enumedate
+package:com.enumedate.test
+
+Jul 30 14:11:10 detox[69065] DEBUG: [EXEC_CMD, #12] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-17416 uninstall com.enumedate
+Jul 30 14:11:10 detox[69065] TRACE: [EXEC_SUCCESS, #12] Success
+
+Jul 30 14:11:10 detox[69065] DEBUG: [EXEC_CMD, #13] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-17416 shell "pm list packages com.enumedate.test"
+Jul 30 14:11:11 detox[69065] TRACE: [EXEC_SUCCESS, #13] package:com.enumedate.test
+
+Jul 30 14:11:11 detox[69065] DEBUG: [EXEC_CMD, #14] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-17416 uninstall com.enumedate.test
+Jul 30 14:11:11 detox[69065] TRACE: [EXEC_SUCCESS, #14] Success
+
+Jul 30 14:11:11 detox[69065] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onBeforeTerminateApp({ deviceId: 'emulator-17416', bundleId: 'com.enumedate' })
+Jul 30 14:11:11 detox[69065] DEBUG: [EXEC_CMD, #15] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-17416 shell "am force-stop com.enumedate"
+Jul 30 14:11:11 detox[69065] TRACE: [EXEC_SUCCESS, #15] 
+Jul 30 14:11:11 detox[69065] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onTerminateApp({ deviceId: 'emulator-17416', bundleId: 'com.enumedate' })
+Jul 30 14:11:11 detox[69065] DEBUG: [EXEC_CMD, #16] "/Users/liam/Library/Android/sdk/build-tools/33.0.0/aapt" dump xmlstrings "/Users/liam/code/JupitersLB/EnumeDate/android/app/build/outputs/apk/releaseE2E/app-releaseE2E.apk" AndroidManifest.xml
+Jul 30 14:11:11 detox[69065] TRACE: [EXEC_SUCCESS, #16] String pool of 50 unique UTF-16 non-sorted strings, 50 entries and 0 styles using 2080 bytes:
+String #0: theme
+String #1: label
+String #2: icon
+String #3: name
+String #4: exported
+String #5: authorities
+String #6: launchMode
+String #7: configChanges
+String #8: value
+String #9: minSdkVersion
+String #10: versionCode
+String #11: versionName
+String #12: windowSoftInputMode
+String #13: targetSdkVersion
+String #14: allowBackup
+String #15: usesCleartextTraffic
+String #16: networkSecurityConfig
+String #17: roundIcon
+String #18: compileSdkVersion
+String #19: compileSdkVersionCodename
+String #20: appComponentFactory
+String #21: 1.0
+String #22: 12
+String #23: action
+String #24: activity
+String #25: android
+String #26: android.intent.action.MAIN
+String #27: android.intent.category.LAUNCHER
+String #28: android.permission.INTERNET
+String #29: androidx.core.app.CoreComponentFactory
+String #30: androidx.emoji2.text.EmojiCompatInitializer
+String #31: androidx.lifecycle.ProcessLifecycleInitializer
+String #32: androidx.startup
+String #33: androidx.startup.InitializationProvider
+String #34: application
+String #35: category
+String #36: com.enumedate
+String #37: com.enumedate.MainActivity
+String #38: com.enumedate.MainApplication
+String #39: com.enumedate.androidx-startup
+String #40: http://schemas.android.com/apk/res/android
+String #41: intent-filter
+String #42: manifest
+String #43: meta-data
+String #44: package
+String #45: platformBuildVersionCode
+String #46: platformBuildVersionName
+String #47: provider
+String #48: uses-permission
+String #49: uses-sdk
+
+Jul 30 14:11:11 detox[69065] DEBUG: [EXEC_CMD, #17] "/Users/liam/Library/Android/sdk/build-tools/33.0.0/aapt" dump xmlstrings "/Users/liam/code/JupitersLB/EnumeDate/android/app/build/outputs/apk/androidTest/releaseE2E/app-releaseE2E-androidTest.apk" AndroidManifest.xml
+Jul 30 14:11:11 detox[69065] TRACE: [EXEC_SUCCESS, #17] String pool of 40 unique UTF-16 non-sorted strings, 40 entries and 0 styles using 1992 bytes:
+String #0: theme
+String #1: label
+String #2: name
+String #3: exported
+String #4: targetPackage
+String #5: handleProfiling
+String #6: functionalTest
+String #7: minSdkVersion
+String #8: targetSdkVersion
+String #9: compileSdkVersion
+String #10: compileSdkVersionCodename
+String #11: 12
+String #12: Tests for com.enumedate
+String #13: action
+String #14: activity
+String #15: android
+String #16: android.intent.action.MAIN
+String #17: android.permission.REORDER_TASKS
+String #18: android.test.runner
+String #19: androidx.test.core.app.InstrumentationActivityInvoker$BootstrapActivity
+String #20: androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity
+String #21: androidx.test.core.app.InstrumentationActivityInvoker$EmptyFloatingActivity
+String #22: androidx.test.orchestrator
+String #23: androidx.test.runner.AndroidJUnitRunner
+String #24: androidx.test.services
+String #25: application
+String #26: com.enumedate
+String #27: com.enumedate.test
+String #28: com.google.android.apps.common.testing.services
+String #29: http://schemas.android.com/apk/res/android
+String #30: instrumentation
+String #31: intent-filter
+String #32: manifest
+String #33: package
+String #34: platformBuildVersionCode
+String #35: platformBuildVersionName
+String #36: queries
+String #37: uses-library
+String #38: uses-permission
+String #39: uses-sdk
+
+Jul 30 14:11:11 detox[69065] DEBUG: [EXEC_CMD, #18] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-17416 shell "rm -fr /data/local/tmp/detox"
+Jul 30 14:11:11 detox[69065] TRACE: [EXEC_SUCCESS, #18] 
+Jul 30 14:11:11 detox[69065] DEBUG: [EXEC_CMD, #19] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-17416 shell "mkdir -p /data/local/tmp/detox"
+Jul 30 14:11:11 detox[69065] TRACE: [EXEC_SUCCESS, #19] 
+Jul 30 14:11:11 detox[69065] DEBUG: [EXEC_CMD, #20] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-17416 push "/Users/liam/code/JupitersLB/EnumeDate/android/app/build/outputs/apk/releaseE2E/app-releaseE2E.apk" "/data/local/tmp/detox/Application.apk"
+Jul 30 14:11:11 detox[69065] TRACE: [EXEC_SUCCESS, #20] /Users/liam/code/JupitersLB/EnumeDate/android/app/build/outputs/apk/releaseE2E/app-releaseE2E.apk: 1 file pushed, 0 skipped. 146.0 MB/s (31610966 bytes in 0.207s)
+
+Jul 30 14:11:12 detox[69065] DEBUG: [SPAWN_CMD, #21, cpid=69133] /Users/liam/Library/Android/sdk/platform-tools/adb -s emulator-17416 shell pm install -r -g -t /data/local/tmp/detox/Application.apk
+Jul 30 14:11:15 detox[69065] TRACE: [SPAWN_STDOUT, #21, cpid=69133] Success
+
+Jul 30 14:11:15 detox[69065] DEBUG: [SPAWN_END, #21, cpid=69133] /Users/liam/Library/Android/sdk/platform-tools/adb -s emulator-17416 shell pm install -r -g -t /data/local/tmp/detox/Application.apk exited with code #0
+Jul 30 14:11:15 detox[69065] DEBUG: [EXEC_CMD, #22] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-17416 push "/Users/liam/code/JupitersLB/EnumeDate/android/app/build/outputs/apk/androidTest/releaseE2E/app-releaseE2E-androidTest.apk" "/data/local/tmp/detox/Test.apk"
+Jul 30 14:11:15 detox[69065] TRACE: [EXEC_SUCCESS, #22] /Users/liam/code/JupitersLB/EnumeDate/android/app/build/outputs/apk/androidTest/releaseE2E/app-releaseE2E-androidTest.apk: 1 file pushed, 0 skipped. 281.7 MB/s (1841392 bytes in 0.006s)
+
+Jul 30 14:11:15 detox[69065] DEBUG: [SPAWN_CMD, #23, cpid=69136] /Users/liam/Library/Android/sdk/platform-tools/adb -s emulator-17416 shell pm install -r -g -t /data/local/tmp/detox/Test.apk
+Jul 30 14:11:16 detox[69065] TRACE: [SPAWN_STDOUT, #23, cpid=69136] Success
+
+Jul 30 14:11:16 detox[69065] DEBUG: [SPAWN_END, #23, cpid=69136] /Users/liam/Library/Android/sdk/platform-tools/adb -s emulator-17416 shell pm install -r -g -t /data/local/tmp/detox/Test.apk exited with code #0
+Jul 30 14:11:16 ROOT_DESCRIBE_BLOCK[69065] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onRunDescribeStart({ name: 'ROOT_DESCRIBE_BLOCK' })
+Jul 30 14:11:16 Example[69065] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onRunDescribeStart({ name: 'Example' })
+Jul 30 14:11:16 detox[69065] INFO:  [97mExample[39m is assigned to [94memulator-17416 (Pixel_4_XL_API_30)[39m
+Jul 30 14:11:16 detox[69065] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onBeforeTerminateApp({ deviceId: 'emulator-17416', bundleId: 'com.enumedate' })
+Jul 30 14:11:16 detox[69065] DEBUG: [EXEC_CMD, #24] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-17416 shell "am force-stop com.enumedate"
+Jul 30 14:11:16 detox[69065] TRACE: [EXEC_SUCCESS, #24] 
+Jul 30 14:11:16 detox[69065] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onTerminateApp({ deviceId: 'emulator-17416', bundleId: 'com.enumedate' })
+Jul 30 14:11:16 detox[69065] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onBeforeLaunchApp({
+  deviceId: 'emulator-17416',
+  bundleId: 'com.enumedate',
+  launchArgs: {
+    detoxServer: 'ws://localhost:50982',
+    detoxSessionId: '38711af9-9e02-1b7a-7b4e-df030bb38cc5'
+  }
+})
+Jul 30 14:11:16 detox[69065] DEBUG: [EXEC_CMD, #25] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-17416 shell "date +\"%m-%d %T.000\""
+Jul 30 14:11:16 detox[69065] TRACE: [EXEC_SUCCESS, #25] 07-30 14:11:16.000
+
+Jul 30 14:11:16 detox[69065] DEBUG: [EXEC_CMD, #26] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-17416 reverse tcp:50982 tcp:50982
+Jul 30 14:11:16 detox[69065] TRACE: [EXEC_SUCCESS, #26] 50982
+
+Jul 30 14:11:16 detox[69065] DEBUG: [EXEC_CMD, #27] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-17416 shell "pm list instrumentation"
+Jul 30 14:11:16 detox[69065] TRACE: [EXEC_SUCCESS, #27] instrumentation:com.enumedate.test/androidx.test.runner.AndroidJUnitRunner (target=com.enumedate)
+
+Jul 30 14:11:17 detox[69065] DEBUG: [SPAWN_CMD, #28, cpid=69141] /Users/liam/Library/Android/sdk/platform-tools/adb -s emulator-17416 shell am instrument -w -r -e detoxServer ws://localhost:50982 -e detoxSessionId 38711af9-9e02-1b7a-7b4e-df030bb38cc5 -e debug false com.enumedate.test/androidx.test.runner.AndroidJUnitRunner
+Jul 30 14:11:17 detox[69065] DEBUG: [EXEC_CMD, #29] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-17416 shell "ps | grep \"com\.enumedate$\""
+Jul 30 14:11:17 detox[69065] TRACE: [EXEC_SUCCESS, #29] u0_a184       16107    304 1287232 114496 0                   0 R com.enumedate
+
+Jul 30 14:11:17 detox[16107] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onLaunchApp({
+  deviceId: 'emulator-17416',
+  bundleId: 'com.enumedate',
+  launchArgs: {
+    detoxServer: 'ws://localhost:50982',
+    detoxSessionId: '38711af9-9e02-1b7a-7b4e-df030bb38cc5'
+  },
+  pid: 16107
+})
+Jul 30 14:11:17 detox[69065] TRACE: [ARTIFACT_START] starting ADBLogcatRecording
+Jul 30 14:11:17 detox[69065] DEBUG: [SPAWN_CMD, #30, cpid=69144] /Users/liam/Library/Android/sdk/platform-tools/adb -s emulator-17416 shell "logcat -T \"07-30 14:11:16.000\" --pid=16107 -f /sdcard/14116624_0.log"
+Jul 30 14:11:17 detox[69065] TRACE: [SPAWN_STDOUT, #28, cpid=69141] INSTRUMENTATION_STATUS: class=com.enumedate.DetoxTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+com.enumedate.DetoxTest:
+Jul 30 14:11:17 detox[69065] TRACE: [SPAWN_STDOUT, #28, cpid=69141] 
+INSTRUMENTATION_STATUS: test=runDetoxTests
+INSTRUMENTATION_STATUS_CODE: 1
+
+Jul 30 14:11:17 detox[69065] DEBUG: [EXEC_CMD, #31] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-17416 shell du /sdcard/14116624_0.log
+Jul 30 14:11:17 detox[69065] TRACE: [EXEC_SUCCESS, #31] 4	/sdcard/14116624_0.log
+
+Jul 30 14:11:18 detox[69065] DEBUG: [WSS_CONNECTION, #51082] registered a new connection.
+Jul 30 14:11:18 detox[69065] TRACE: [WSS_GET_FROM, #51082] {"messageId":0,"type":"login","params":{"role":"app","sessionId":"38711af9-9e02-1b7a-7b4e-df030bb38cc5"}}
+Jul 30 14:11:18 detox[69065] TRACE: [WSS_SEND_TO, #app] {"messageId":0,"type":"loginSuccess","params":{"testerConnected":true,"appConnected":true}}
+Jul 30 14:11:18 detox[69065] TRACE: [SESSION_JOINED] app joined session 38711af9-9e02-1b7a-7b4e-df030bb38cc5
+Jul 30 14:11:18 detox[69065] TRACE: [WSS_SEND_TO, #tester] {"type":"appConnected"}
+Jul 30 14:11:18 detox[69065] TRACE: [WS_MESSAGE] {"type":"appConnected"}
+ 
+Jul 30 14:11:18 detox[69065] TRACE: [WS_SEND] {"type":"isReady","params":{},"messageId":-1000}
+Jul 30 14:11:18 detox[69065] TRACE: [WSS_GET_FROM, #tester] {"type":"isReady","params":{},"messageId":-1000}
+Jul 30 14:11:18 detox[69065] TRACE: [WSS_SEND_TO, #app] {"type":"isReady","params":{},"messageId":-1000}
+Jul 30 14:11:20 detox[69065] TRACE: [WSS_GET_FROM, #app] {"messageId":-1000,"type":"ready","params":{}}
+Jul 30 14:11:20 detox[69065] TRACE: [WSS_SEND_TO, #tester] {"messageId":-1000,"type":"ready","params":{}}
+Jul 30 14:11:20 detox[69065] TRACE: [WS_MESSAGE] {"messageId":-1000,"type":"ready","params":{}}
+ 
+Jul 30 14:11:20 detox[16107] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onAppReady({ deviceId: 'emulator-17416', bundleId: 'com.enumedate', pid: 16107 })
+Jul 30 14:11:20 detox[69065] INFO:  [1m[37mExample: [39m[22m[90mshould have a home screen[39m
+Jul 30 14:11:20 detox[69065] TRACE: [DETOX_BEFORE_EACH] running test: "Example should have a home screen"
+Jul 30 14:11:20 detox[69065] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onTestStart({
+  title: 'should have a home screen',
+  fullName: 'Example should have a home screen',
+  status: 'running',
+  invocations: 1
+})
+Jul 30 14:11:20 detox[69065] TRACE: [ARTIFACT_STOP] stopping ADBLogcatRecording
+Jul 30 14:11:20 detox[69065] DEBUG: [EXEC_CMD, #32] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-17416 shell "date +\"%m-%d %T.000\""
+Jul 30 14:11:20 detox[69065] TRACE: [WSS_GET_FROM, #app] {"messageId":-1000,"type":"ready","params":{}}
+Jul 30 14:11:20 detox[69065] TRACE: [WSS_SEND_TO, #tester] {"messageId":-1000,"type":"ready","params":{}}
+Jul 30 14:11:20 detox[69065] TRACE: [WS_MESSAGE] {"messageId":-1000,"type":"ready","params":{}}
+ 
+Jul 30 14:11:20 detox[69065] TRACE: [EXEC_SUCCESS, #32] 07-30 14:11:19.000
+
+Jul 30 14:11:20 detox[69144] TRACE: [SPAWN_KILL] sending SIGINT to: /Users/liam/Library/Android/sdk/platform-tools/adb -s emulator-17416 shell logcat -T "07-30 14:11:16.000" --pid=16107 -f /sdcard/14116624_0.log
+Jul 30 14:11:20 detox[69065] DEBUG: [SPAWN_END, #30, cpid=69144] /Users/liam/Library/Android/sdk/platform-tools/adb -s emulator-17416 shell "logcat -T \"07-30 14:11:16.000\" --pid=16107 -f /sdcard/14116624_0.log" terminated with SIGINT
+Jul 30 14:11:20 detox[69065] TRACE: [ARTIFACT_START] starting ADBLogcatRecording
+Jul 30 14:11:20 detox[69065] DEBUG: [SPAWN_CMD, #33, cpid=69147] /Users/liam/Library/Android/sdk/platform-tools/adb -s emulator-17416 shell "logcat -T \"07-30 14:11:19.000\" --pid=16107 -f /sdcard/14116624_1.log"
+Jul 30 14:11:20 detox[69065] TRACE: [WS_SEND] {"type":"reactNativeReload","params":{},"messageId":-1000}
+Jul 30 14:11:20 detox[69065] TRACE: [WSS_GET_FROM, #tester] {"type":"reactNativeReload","params":{},"messageId":-1000}
+Jul 30 14:11:20 detox[69065] TRACE: [WSS_SEND_TO, #app] {"type":"reactNativeReload","params":{},"messageId":-1000}
+Jul 30 14:11:20 detox[69065] TRACE: [WSS_GET_FROM, #app] {"messageId":-1000,"type":"ready","params":{}}
+Jul 30 14:11:20 detox[69065] TRACE: [WSS_SEND_TO, #tester] {"messageId":-1000,"type":"ready","params":{}}
+Jul 30 14:11:20 detox[69065] TRACE: [WS_MESSAGE] {"messageId":-1000,"type":"ready","params":{}}
+ 
+Jul 30 14:11:20 detox[69065] TRACE: [WS_SEND] {"type":"invoke","params":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxAssertion"},"method":"assertMatcher","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"androidx.test.espresso.Espresso"},"method":"onView","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForTestId","args":["home_screen"]}}]}},{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForSufficientlyVisible","args":[{"type":"Integer","value":75}]}}]},"messageId":1}
+Jul 30 14:11:20 detox[69065] TRACE: [WSS_GET_FROM, #tester] {"type":"invoke","params":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxAssertion"},"method":"assertMatcher","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"androidx.test.espresso.Espresso"},"method":"onView","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForTestId","args":["home_screen"]}}]}},{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForSufficientlyVisible","args":[{"type":"Integer","value":75}]}}]},"messageId":1}
+Jul 30 14:11:20 detox[69065] TRACE: [WSS_SEND_TO, #app] {"type":"invoke","params":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxAssertion"},"method":"assertMatcher","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"androidx.test.espresso.Espresso"},"method":"onView","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForTestId","args":["home_screen"]}}]}},{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForSufficientlyVisible","args":[{"type":"Integer","value":75}]}}]},"messageId":1}
+Jul 30 14:11:20 detox[69065] DEBUG: [EXEC_CMD, #34] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-17416 shell du /sdcard/14116624_1.log
+Jul 30 14:11:20 detox[69065] TRACE: [EXEC_SUCCESS, #34] 4	/sdcard/14116624_1.log
+
+Jul 30 14:11:21 detox[69065] TRACE: [WSS_GET_FROM, #app] {"messageId":1,"type":"invokeResult","params":{"result":null}}
+Jul 30 14:11:21 detox[69065] TRACE: [WSS_SEND_TO, #tester] {"messageId":1,"type":"invokeResult","params":{"result":null}}
+Jul 30 14:11:21 detox[69065] TRACE: [WS_MESSAGE] {"messageId":1,"type":"invokeResult","params":{"result":null}}
+ 
+Jul 30 14:11:21 detox[69065] TRACE: [DETOX_AFTER_EACH] passed test: "Example should have a home screen"
+Jul 30 14:11:21 detox[69065] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onTestDone({
+  title: 'should have a home screen',
+  fullName: 'Example should have a home screen',
+  status: 'passed',
+  invocations: 1,
+  timedOut: false
+})
+Jul 30 14:11:21 detox[69065] TRACE: [ARTIFACT_STOP] stopping ADBLogcatRecording
+Jul 30 14:11:21 detox[69065] DEBUG: [EXEC_CMD, #35] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-17416 shell "date +\"%m-%d %T.000\""
+Jul 30 14:11:21 detox[69065] TRACE: [EXEC_SUCCESS, #35] 07-30 14:11:20.000
+
+Jul 30 14:11:21 detox[69147] TRACE: [SPAWN_KILL] sending SIGINT to: /Users/liam/Library/Android/sdk/platform-tools/adb -s emulator-17416 shell logcat -T "07-30 14:11:19.000" --pid=16107 -f /sdcard/14116624_1.log
+Jul 30 14:11:21 detox[69065] DEBUG: [SPAWN_END, #33, cpid=69147] /Users/liam/Library/Android/sdk/platform-tools/adb -s emulator-17416 shell "logcat -T \"07-30 14:11:19.000\" --pid=16107 -f /sdcard/14116624_1.log" terminated with SIGINT
+Jul 30 14:11:21 detox[69065] INFO:  [1m[37mExample: [39m[22m[90mshould have a home screen[39m[90m [[32mOK[90m][39m
+Jul 30 14:11:21 detox[69065] INFO:  [1m[37mExample: [39m[22m[90mshould have an add event button[39m
+Jul 30 14:11:21 detox[69065] TRACE: [DETOX_BEFORE_EACH] running test: "Example should have an add event button"
+Jul 30 14:11:21 detox[69065] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onTestStart({
+  title: 'should have an add event button',
+  fullName: 'Example should have an add event button',
+  status: 'running',
+  invocations: 1
+})
+Jul 30 14:11:21 detox[69065] TRACE: [ARTIFACT_START] starting ADBLogcatRecording
+Jul 30 14:11:21 detox[69065] DEBUG: [SPAWN_CMD, #36, cpid=69150] /Users/liam/Library/Android/sdk/platform-tools/adb -s emulator-17416 shell "logcat -T \"07-30 14:11:20.000\" --pid=16107 -f /sdcard/14116624_2.log"
+Jul 30 14:11:21 detox[69065] TRACE: [WS_SEND] {"type":"reactNativeReload","params":{},"messageId":-1000}
+Jul 30 14:11:21 detox[69065] TRACE: [WSS_GET_FROM, #tester] {"type":"reactNativeReload","params":{},"messageId":-1000}
+Jul 30 14:11:21 detox[69065] TRACE: [WSS_SEND_TO, #app] {"type":"reactNativeReload","params":{},"messageId":-1000}
+Jul 30 14:11:21 detox[69065] TRACE: [ARTIFACT_SAVE] saving ADBLogcatRecording to: artifacts/android.2022-07-30 05-11-05Z/✓ Example should have a home screen/device.log
+Jul 30 14:11:21 detox[69065] DEBUG: [EXEC_CMD, #37] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-17416 pull "/sdcard/14116624_1.log" "artifacts/android.2022-07-30 05-11-05Z/✓ Example should have a home screen/device.log"
+Jul 30 14:11:21 detox[69065] TRACE: [EXEC_SUCCESS, #37] /sdcard/14116624_1.log: 1 file pulled, 0 skipped. 4.6 MB/s (35255 bytes in 0.007s)
+
+Jul 30 14:11:21 detox[69065] DEBUG: [EXEC_CMD, #38] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-17416 shell "rm  \"/sdcard/14116624_1.log\""
+Jul 30 14:11:21 detox[69065] TRACE: [EXEC_SUCCESS, #38] 
+Jul 30 14:11:21 detox[69065] TRACE: [ARTIFACT_SAVE] saving ADBLogcatRecording to: artifacts/android.2022-07-30 05-11-05Z/emulator-17416 2022-07-30 05-11-21Z.startup.log
+Jul 30 14:11:21 detox[69065] DEBUG: [EXEC_CMD, #39] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-17416 pull "/sdcard/14116624_0.log" "artifacts/android.2022-07-30 05-11-05Z/emulator-17416 2022-07-30 05-11-21Z.startup.log"
+Jul 30 14:11:21 detox[69065] TRACE: [EXEC_SUCCESS, #39] /sdcard/14116624_0.log: 1 file pulled, 0 skipped. 12.2 MB/s (43226 bytes in 0.003s)
+
+Jul 30 14:11:21 detox[69065] DEBUG: [EXEC_CMD, #40] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-17416 shell "rm  \"/sdcard/14116624_0.log\""
+Jul 30 14:11:21 detox[69065] TRACE: [WSS_GET_FROM, #app] {"messageId":-1000,"type":"ready","params":{}}
+Jul 30 14:11:21 detox[69065] TRACE: [WSS_SEND_TO, #tester] {"messageId":-1000,"type":"ready","params":{}}
+Jul 30 14:11:21 detox[69065] TRACE: [WS_MESSAGE] {"messageId":-1000,"type":"ready","params":{}}
+ 
+Jul 30 14:11:21 detox[69065] TRACE: [WS_SEND] {"type":"invoke","params":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxAssertion"},"method":"assertMatcher","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"androidx.test.espresso.Espresso"},"method":"onView","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForTestId","args":["add_new_event_button"]}}]}},{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForSufficientlyVisible","args":[{"type":"Integer","value":75}]}}]},"messageId":2}
+Jul 30 14:11:21 detox[69065] TRACE: [WSS_GET_FROM, #tester] {"type":"invoke","params":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxAssertion"},"method":"assertMatcher","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"androidx.test.espresso.Espresso"},"method":"onView","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForTestId","args":["add_new_event_button"]}}]}},{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForSufficientlyVisible","args":[{"type":"Integer","value":75}]}}]},"messageId":2}
+Jul 30 14:11:21 detox[69065] TRACE: [WSS_SEND_TO, #app] {"type":"invoke","params":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxAssertion"},"method":"assertMatcher","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"androidx.test.espresso.Espresso"},"method":"onView","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForTestId","args":["add_new_event_button"]}}]}},{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForSufficientlyVisible","args":[{"type":"Integer","value":75}]}}]},"messageId":2}
+Jul 30 14:11:21 detox[69065] TRACE: [EXEC_SUCCESS, #40] 
+Jul 30 14:11:21 detox[69065] DEBUG: [EXEC_CMD, #41] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-17416 shell du /sdcard/14116624_2.log
+Jul 30 14:11:22 detox[69065] TRACE: [EXEC_SUCCESS, #41] 4	/sdcard/14116624_2.log
+
+Jul 30 14:11:23 detox[69065] TRACE: [WSS_GET_FROM, #app] {"messageId":2,"type":"invokeResult","params":{"result":null}}
+Jul 30 14:11:23 detox[69065] TRACE: [WSS_SEND_TO, #tester] {"messageId":2,"type":"invokeResult","params":{"result":null}}
+Jul 30 14:11:23 detox[69065] TRACE: [WS_MESSAGE] {"messageId":2,"type":"invokeResult","params":{"result":null}}
+ 
+Jul 30 14:11:23 detox[69065] TRACE: [DETOX_AFTER_EACH] passed test: "Example should have an add event button"
+Jul 30 14:11:23 detox[69065] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onTestDone({
+  title: 'should have an add event button',
+  fullName: 'Example should have an add event button',
+  status: 'passed',
+  invocations: 1,
+  timedOut: false
+})
+Jul 30 14:11:23 detox[69065] TRACE: [ARTIFACT_STOP] stopping ADBLogcatRecording
+Jul 30 14:11:23 detox[69065] DEBUG: [EXEC_CMD, #42] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-17416 shell "date +\"%m-%d %T.000\""
+Jul 30 14:11:23 detox[69065] TRACE: [EXEC_SUCCESS, #42] 07-30 14:11:22.000
+
+Jul 30 14:11:23 detox[69150] TRACE: [SPAWN_KILL] sending SIGINT to: /Users/liam/Library/Android/sdk/platform-tools/adb -s emulator-17416 shell logcat -T "07-30 14:11:20.000" --pid=16107 -f /sdcard/14116624_2.log
+Jul 30 14:11:23 detox[69065] DEBUG: [SPAWN_END, #36, cpid=69150] /Users/liam/Library/Android/sdk/platform-tools/adb -s emulator-17416 shell "logcat -T \"07-30 14:11:20.000\" --pid=16107 -f /sdcard/14116624_2.log" terminated with SIGINT
+Jul 30 14:11:23 detox[69065] INFO:  [1m[37mExample: [39m[22m[90mshould have an add event button[39m[90m [[32mOK[90m][39m
+Jul 30 14:11:23 Example[69065] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onRunDescribeFinish({ name: 'Example' })
+Jul 30 14:11:23 ROOT_DESCRIBE_BLOCK[69065] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onRunDescribeFinish({ name: 'ROOT_DESCRIBE_BLOCK' })
+Jul 30 14:11:23 detox[69065] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onBeforeCleanup()
+Jul 30 14:11:23 detox[69065] TRACE: [ARTIFACT_SAVE] saving ADBLogcatRecording to: artifacts/android.2022-07-30 05-11-05Z/✓ Example should have an add event button/device.log
+Jul 30 14:11:23 detox[69065] DEBUG: [EXEC_CMD, #43] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-17416 pull "/sdcard/14116624_2.log" "artifacts/android.2022-07-30 05-11-05Z/✓ Example should have an add event button/device.log"
+Jul 30 14:11:23 detox[69065] TRACE: [EXEC_SUCCESS, #43] /sdcard/14116624_2.log: 1 file pulled, 0 skipped. 13.3 MB/s (36126 bytes in 0.003s)
+
+Jul 30 14:11:23 detox[69065] DEBUG: [EXEC_CMD, #44] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-17416 shell "rm  \"/sdcard/14116624_2.log\""
+Jul 30 14:11:23 detox[69065] TRACE: [EXEC_SUCCESS, #44] 
+Jul 30 14:11:23 detox[69065] TRACE: [ARTIFACT_START] starting FileArtifact
+Jul 30 14:11:23 detox[69065] TRACE: [ARTIFACT_STOP] stopping FileArtifact
+Jul 30 14:11:23 detox[69065] TRACE: [ARTIFACT_SAVE] saving FileArtifact to: artifacts/android.2022-07-30 05-11-05Z/detox_pid_69065.json.log { append: true }
+Jul 30 14:11:23 detox[69065] TRACE: [ARTIFACT_START] starting FileArtifact
+Jul 30 14:11:23 detox[69065] TRACE: [ARTIFACT_STOP] stopping FileArtifact
+Jul 30 14:11:23 detox[69065] TRACE: [ARTIFACT_SAVE] saving FileArtifact to: artifacts/android.2022-07-30 05-11-05Z/detox_pid_69065.log { append: true }
+Jul 30 14:11:23 detox[69065] DEBUG: [MOVE_FILE] moving "/private/var/folders/ry/_vlvsqsd14190954pn4m90xw0000gn/T/c0cee74c-9860-4850-aaf5-d7a18543177f.detox.log" to artifacts/android.2022-07-30 05-11-05Z/detox_pid_69065.json.log
+Jul 30 14:11:23 detox[69065] DEBUG: [MOVE_FILE] moving "/private/var/folders/ry/_vlvsqsd14190954pn4m90xw0000gn/T/3d3bd342-b99e-4034-be0c-eda4eba66805.detox.log" to artifacts/android.2022-07-30 05-11-05Z/detox_pid_69065.log
+Jul 30 14:11:23 detox[69065] TRACE: [WS_SEND] {"type":"cleanup","params":{"stopRunner":true},"messageId":-49642}
+Jul 30 14:11:23 detox[69065] TRACE: [WSS_GET_FROM, #tester] {"type":"cleanup","params":{"stopRunner":true},"messageId":-49642}
+Jul 30 14:11:23 detox[69065] TRACE: [WSS_SEND_TO, #app] {"type":"cleanup","params":{"stopRunner":true},"messageId":-49642}
+Jul 30 14:11:23 detox[69065] TRACE: [WSS_GET_FROM, #app] {"messageId":-49642,"type":"cleanupDone","params":{}}
+Jul 30 14:11:23 detox[69065] TRACE: [WSS_SEND_TO, #tester] {"messageId":-49642,"type":"cleanupDone","params":{}}
+Jul 30 14:11:23 detox[69065] TRACE: [WS_MESSAGE] {"messageId":-49642,"type":"cleanupDone","params":{}}
+ 
+Jul 30 14:11:23 detox[69065] TRACE: [SESSION_TORN] tester exited session 38711af9-9e02-1b7a-7b4e-df030bb38cc5
+Jul 30 14:11:23 detox[69065] TRACE: [WSS_SEND_TO, #app] {"type":"testerDisconnected","messageId":-1}
+Jul 30 14:11:23 detox[69141] TRACE: [SPAWN_KILL] sending SIGINT to: /Users/liam/Library/Android/sdk/platform-tools/adb -s emulator-17416 shell am instrument -w -r -e detoxServer ws://localhost:50982 -e detoxSessionId 38711af9-9e02-1b7a-7b4e-df030bb38cc5 -e debug false com.enumedate.test/androidx.test.runner.AndroidJUnitRunner
+Jul 30 14:11:23 detox[69065] TRACE: [SESSION_TORN] app exited session 38711af9-9e02-1b7a-7b4e-df030bb38cc5
+Jul 30 14:11:23 detox[69065] DEBUG: [SPAWN_END, #28, cpid=69141] /Users/liam/Library/Android/sdk/platform-tools/adb -s emulator-17416 shell am instrument -w -r -e detoxServer ws://localhost:50982 -e detoxSessionId 38711af9-9e02-1b7a-7b4e-df030bb38cc5 -e debug false com.enumedate.test/androidx.test.runner.AndroidJUnitRunner terminated with SIGINT
+Jul 30 14:11:23 detox[69065] DEBUG: [EXEC_CMD, #45] "/Users/liam/Library/Android/sdk/platform-tools/adb" -s emulator-17416 reverse --remove tcp:50982
+Jul 30 14:11:23 detox[69065] DEBUG: [WSS_CLOSE] Detox server has been closed gracefully
+Jul 30 14:11:23 detox[69065] TRACE: [EXEC_SUCCESS, #45] 
