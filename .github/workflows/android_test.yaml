@@ -22,6 +22,7 @@ jobs:
           bundler-cache: true
       - uses: actions/setup-java@v2
         with:
+          distribution: 'temurin'
           java-version: '11'
       - name: Install Fastlane
         run: cd android && bundle install && cd ..
@@ -39,7 +40,8 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 30
-          target: default
+          target: google_apis
+          arch: x86_64
           emulator-build: 7425822
           profile: pixel 4 xl
           avd-name: Pixel_4_XL_API_30
