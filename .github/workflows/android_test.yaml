@@ -28,6 +28,6 @@ jobs:
       - name: Make secrets
         run: GPG_PASSPHRASE=${GPG_PASSPHRASE} make secrets
       - name: Setup detox
-        run: brew tap wix/brew && brew install applesimutils
+        run: brew tap wix/brew
       - name: Build and test
         run: yarn detox build --configuration android && yarn detox test --configuration android
