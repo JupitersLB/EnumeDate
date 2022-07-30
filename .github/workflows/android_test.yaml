@@ -1,0 +1,33 @@
+name: Android E2E Tests
+
+on:
+  push:
+    branches:
+      - '*'
+env:
+  GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+
+jobs:
+  android-tests:
+    name: Build Android Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.x'
+      - name: Install Fastlane
+        run: cd android && bundle install && cd ..
+      - name: Install packages
+        run: yarn install
+      - name: Build tailwind
+        run: yarn build:tailwind
+      - name: Make secrets
+        run: GPG_PASSPHRASE=${GPG_PASSPHRASE} make secrets
+      - name: Setup detox
+        run: brew tap wix/brew && brew install applesimutils
+      - name: Build and test
+        run: yarn detox build --configuration android && yarn detox test --configuration android
