@@ -42,6 +42,5 @@ jobs:
           target: google_apis
           arch: x86_64
           emulator-build: 7425822
-          profile: Pixel 4 XL
           avd-name: Pixel_4_XL_API_30
           script: yarn detox test --configuration android
