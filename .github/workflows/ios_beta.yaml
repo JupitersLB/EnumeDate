@@ -3,7 +3,7 @@ name: iOS Beta
 on:
   push:
     branches:
-      - 'master'
+      - '*'
 
 jobs:
   github-beta:
@@ -33,13 +33,31 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '2.7.4'
+      - uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+      - name: Install dependencies
+        run: yarn install
+      - uses: actions/cache@v2
+        with:
+          path: '**/Pods'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/Podfile.lock') }}-dependency-${{ hashFiles('**/yarn.lock') }}
+      - name: Install Pods
+        run: cd ios && pod install && cd ..
       - name: Install Fastlane
         run: cd ios && bundle install && cd ..
-      - name: Install packages
-        run: yarn install
       - name: Build tailwind
         run: yarn build:tailwind
-      - name: Install pods
-        run: cd ios && pod install && cd ..
-      - name: Execute Fastlane command
-        run: cd ios && fastlane github_beta
+      - name: Setup detox
+        run: brew tap wix/brew && brew install applesimutils
+      - name: Build Test Version
+        run: yarn detox build --configuration ios
+      - name: Test Build
+        run: yarn detox test --configuration ios
+      - name: Execute Fastlane Beta Build
+        run: cd ios && fastlane github_beta && cd ..
+      - name: Tests
+        run: yarn detox build --configuration ios.beta && yarn detox test --configuration ios.beta
+      - name: Deploy
+        run: cd ios && fastlane deploy_build && cd ..

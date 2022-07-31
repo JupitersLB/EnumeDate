@@ -33,6 +33,16 @@ def ensure_temp_keychain(name, password)
 end
 
 platform :ios do
+  lane :test_build do
+    xcbuild(
+      workspace: "EnumeDate.xcworkspace",
+      scheme: "EnumeDate",
+      configuration: "Release",
+      sdk: "iphonesimulator",
+      derivedDataPath: '../ios/build'
+    )
+  end
+
   lane :test do
     keychain_name = TEMP_KEYCHAIN_USER
     keychain_password = TEMP_KEYCHAIN_PASSWORD
@@ -57,13 +67,7 @@ platform :ios do
       api_key: api_key
     )
 
-    xcbuild(
-      workspace: "EnumeDate.xcworkspace",
-      scheme: "EnumeDate",
-      configuration: "Release",
-      sdk: "iphonesimulator",
-      derivedDataPath: '../ios/build'
-    )
+    test_build
 
     delete_temp_keychain(keychain_name)
   end
@@ -81,9 +85,9 @@ platform :ios do
       in_house: false
     )
     
-    increment_build_number({
-      build_number: latest_testflight_build_number + 1
-    })
+    # increment_build_number({
+    #   build_number: latest_testflight_build_number + 1
+    # })
 
     match(
       type: 'appstore',
@@ -108,16 +112,20 @@ platform :ios do
       }
     )
 
-    pilot(
-      apple_id: "#{DEVELOPER_APP_ID}",
-      app_identifier: "#{DEVELOPER_APP_IDENTIFIER}",
-      skip_waiting_for_build_processing: true,
-      skip_submission: true,
-      distribute_external: false,
-      notify_external_testers: false,
-      ipa: "./EnumeDate.ipa"
-    )
-
     delete_temp_keychain(keychain_name)
+  end
+
+  lane :deploy_build do
+    puts "DEPLOYING WITH #{DEVELOPER_APP_ID} and #{DEVELOPER_APP_IDENTIFIER}"
+    # pilot(
+    #   apple_id: "#{DEVELOPER_APP_ID}",
+    #   app_identifier: "#{DEVELOPER_APP_IDENTIFIER}",
+    #   skip_waiting_for_build_processing: true,
+    #   skip_submission: true,
+    #   distribute_external: false,
+    #   notify_external_testers: false,
+    #   ipa: "./EnumeDate.ipa"
+    # )
+  end
   end
 end
