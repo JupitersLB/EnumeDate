@@ -27,7 +27,8 @@ jobs:
       GIT_URL: '${{secrets.GIT_URL}}'
     steps:
       - uses: actions/checkout@v3
-      - uses: ./.github/actions/action
+      - id: foo
+      - uses: ./.github/actions/action.yaml
       - name: Setup Detox
         run: brew tap wix/brew && brew install applesimutils
       - name: Build Test Version
