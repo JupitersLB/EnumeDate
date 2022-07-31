@@ -26,9 +26,10 @@ jobs:
       APPLE_KEY_CONTENT: '${{ secrets.APPLE_KEY_CONTENT }}'
       GIT_URL: '${{secrets.GIT_URL}}'
     steps:
-      - uses: actions/checkout@v3
-      - id: foo
-        uses: ./.github/actions/action.yaml
+      - uses: actions/checkout@v1
+        name: Checkout
+      - uses: ./.github/actions/action
+        name: My action
       - name: Setup Detox
         run: brew tap wix/brew && brew install applesimutils
       - name: Build Test Version
