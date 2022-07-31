@@ -8,11 +8,9 @@ runs:
       with:
         node-version: '14'
         cache: 'yarn'
-      shell: bash
     - uses: ruby/setup-ruby@v1
       with:
         ruby-version: '2.7.4'
-      shell: bash
     - uses: actions/cache@v2
       with:
         path: '**/node_modules'
