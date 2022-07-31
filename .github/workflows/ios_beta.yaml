@@ -33,7 +33,7 @@ jobs:
       - name: Setup Detox
         run: brew tap wix/brew && brew install applesimutils
       - name: Tests
-        run: yarn detox build --configuration ios.beta && yarn detox test --configuration ios.beta
+        run: yarn detox build --configuration ios && yarn detox test --configuration ios
   deploy:
     name: Build and Deploy Beta
     needs: tests
