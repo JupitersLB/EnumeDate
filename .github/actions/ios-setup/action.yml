@@ -18,6 +18,7 @@ runs:
         shell: bash
     - name: Install Dependencies
       run: yarn install
+      shell: bash
     - uses: actions/cache@v2
       with:
         path: '**/Pods'
