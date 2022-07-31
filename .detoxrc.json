@@ -15,6 +15,7 @@
     },
     "android": {
       "type": "android.apk",
+      "forceAdbInstall": true,
       "binaryPath": "android/app/build/outputs/apk/releaseE2E/app-releaseE2E.apk",
       "testBinaryPath": "android/app/build/outputs/apk/androidTest/releaseE2E/app-releaseE2E-androidTest.apk",
       "build": "cd android && fastlane test && cd .."

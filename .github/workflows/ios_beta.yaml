@@ -3,7 +3,7 @@ name: iOS Beta
 on:
   push:
     branches:
-      - '*'
+      - 'master'
 
 jobs:
   github-beta:

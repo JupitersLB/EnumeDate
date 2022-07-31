@@ -3,7 +3,7 @@ name: iOS Tetss
 on:
   push:
     branches:
-      - '*'
+      - 'master'
 
 jobs:
   github-beta:
