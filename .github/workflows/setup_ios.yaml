@@ -1,8 +1,5 @@
 name: 'iOS Setup Action'
-on:
-  push:
-    branches:
-      - '*'
+on: workflow_call
 
 jobs:
   setup-ios:
