@@ -127,5 +127,4 @@ platform :ios do
     #   ipa: "./EnumeDate.ipa"
     # )
   end
-  end
 end

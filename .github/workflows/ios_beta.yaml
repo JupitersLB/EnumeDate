@@ -27,9 +27,10 @@ jobs:
       GIT_URL: '${{secrets.GIT_URL}}'
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v3
         with:
-          node-version: '14.x'
+          node-version: '14'
+          cache: 'yarn'
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '2.7.4'
@@ -37,7 +38,7 @@ jobs:
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
-      - name: Install dependencies
+      - name: Install Dependencies
         run: yarn install
       - uses: actions/cache@v2
         with:
@@ -47,14 +48,12 @@ jobs:
         run: cd ios && pod install && cd ..
       - name: Install Fastlane
         run: cd ios && bundle install && cd ..
-      - name: Build tailwind
+      - name: Build Tailwind
         run: yarn build:tailwind
-      - name: Setup detox
+      - name: Setup Detox
         run: brew tap wix/brew && brew install applesimutils
       - name: Build Test Version
-        run: yarn detox build --configuration ios
-      - name: Test Build
-        run: yarn detox test --configuration ios
+        run: yarn detox build --configuration ios && yarn detox test --configuration ios
       - name: Execute Fastlane Beta Build
         run: cd ios && fastlane github_beta && cd ..
       - name: Tests
