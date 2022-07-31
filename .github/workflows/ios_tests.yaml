@@ -1,4 +1,4 @@
-name: iOS Tetss
+name: iOS Tests
 
 on:
   push:

@@ -8,11 +8,6 @@
       "binaryPath": "ios/build/Build/Products/Release-iphonesimulator/EnumeDate.app",
       "build": "cd ios && fastlane test"
     },
-    "ios.beta": {
-      "type": "ios.app",
-      "binaryPath": "ios/build/Build/Products/Release-iphonesimulator/EnumeDate.app",
-      "build": "cd ios && fastlane test_build"
-    },
     "android": {
       "type": "android.apk",
       "forceAdbInstall": true,
@@ -37,10 +32,6 @@
   },
   "configurations": {
     "ios": {
-      "device": "simulator",
-      "app": "ios"
-    },
-    "ios.beta": {
       "device": "simulator",
       "app": "ios"
     },

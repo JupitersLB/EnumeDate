@@ -15,7 +15,6 @@ runs:
       with:
         path: '**/node_modules'
         key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
-        shell: bash
     - name: Install Dependencies
       run: yarn install
       shell: bash
@@ -23,7 +22,6 @@ runs:
       with:
         path: '**/Pods'
         key: ${{ runner.os }}-modules-${{ hashFiles('**/Podfile.lock') }}-dependency-${{ hashFiles('**/yarn.lock') }}
-        shell: bash
     - name: Install Pods
       run: cd ios && pod install && cd ..
       shell: bash

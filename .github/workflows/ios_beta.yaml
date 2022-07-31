@@ -5,37 +5,44 @@ on:
     branches:
       - '*'
 
+env:
+  APP_STORE_CONNECT_TEAM_ID: '${{ secrets.APP_STORE_CONNECT_TEAM_ID }}'
+  DEVELOPER_APP_ID: '${{ secrets.DEVELOPER_APP_ID }}'
+  DEVELOPER_APP_IDENTIFIER: '${{ secrets.DEVELOPER_APP_IDENTIFIER }}'
+  DEVELOPER_PORTAL_TEAM_ID: '${{ secrets.DEVELOPER_PORTAL_TEAM_ID }}'
+  FASTLANE_APPLE_ID: '${{ secrets.FASTLANE_APPLE_ID }}'
+  FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: '${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}'
+  MATCH_PASSWORD: '${{ secrets.MATCH_PASSWORD }}'
+  GIT_AUTHORIZATION: '${{ secrets.GIT_AUTHORIZATION }}'
+  PROVISIONING_PROFILE_SPECIFIER: '${{ secrets.PROVISIONING_PROFILE_SPECIFIER }}'
+  TEMP_KEYCHAIN_PASSWORD: '${{ secrets.TEMP_KEYCHAIN_PASSWORD }}'
+  TEMP_KEYCHAIN_USER: '${{ secrets.TEMP_KEYCHAIN_USER }}'
+  APPLE_KEY_ID: '${{ secrets.APPLE_KEY_ID }}'
+  APPLE_ISSUER_ID: '${{ secrets.APPLE_ISSUER_ID }}'
+  APPLE_KEY_CONTENT: '${{ secrets.APPLE_KEY_CONTENT }}'
+  GIT_URL: '${{secrets.GIT_URL}}'
+
 jobs:
-  github-beta:
-    name: Build and Deploy Beta
+  tests:
+    name: Build and Test App
     runs-on: macos-latest
-    env:
-      APP_STORE_CONNECT_TEAM_ID: '${{ secrets.APP_STORE_CONNECT_TEAM_ID }}'
-      DEVELOPER_APP_ID: '${{ secrets.DEVELOPER_APP_ID }}'
-      DEVELOPER_APP_IDENTIFIER: '${{ secrets.DEVELOPER_APP_IDENTIFIER }}'
-      DEVELOPER_PORTAL_TEAM_ID: '${{ secrets.DEVELOPER_PORTAL_TEAM_ID }}'
-      FASTLANE_APPLE_ID: '${{ secrets.FASTLANE_APPLE_ID }}'
-      FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: '${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}'
-      MATCH_PASSWORD: '${{ secrets.MATCH_PASSWORD }}'
-      GIT_AUTHORIZATION: '${{ secrets.GIT_AUTHORIZATION }}'
-      PROVISIONING_PROFILE_SPECIFIER: '${{ secrets.PROVISIONING_PROFILE_SPECIFIER }}'
-      TEMP_KEYCHAIN_PASSWORD: '${{ secrets.TEMP_KEYCHAIN_PASSWORD }}'
-      TEMP_KEYCHAIN_USER: '${{ secrets.TEMP_KEYCHAIN_USER }}'
-      APPLE_KEY_ID: '${{ secrets.APPLE_KEY_ID }}'
-      APPLE_ISSUER_ID: '${{ secrets.APPLE_ISSUER_ID }}'
-      APPLE_KEY_CONTENT: '${{ secrets.APPLE_KEY_CONTENT }}'
-      GIT_URL: '${{secrets.GIT_URL}}'
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/actions/ios-setup
-        name: My action
+        name: Setup iOS
       - name: Setup Detox
         run: brew tap wix/brew && brew install applesimutils
-      - name: Build Test Version
-        run: yarn detox build --configuration ios && yarn detox test --configuration ios
-      - name: Build Beta Build
-        run: cd ios && fastlane github_beta && cd ..
       - name: Tests
         run: yarn detox build --configuration ios.beta && yarn detox test --configuration ios.beta
+  deploy:
+    name: Build and Deploy Beta
+    needs: tests
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/ios-setup
+        name: Setup iOS
+      - name: Build Beta
+        run: cd ios && fastlane github_beta && cd ..
       - name: Deploy
         run: cd ios && fastlane deploy_build && cd ..
