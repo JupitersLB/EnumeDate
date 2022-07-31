@@ -32,19 +32,7 @@ jobs:
       - name: Gradle cache
         uses: gradle/gradle-build-action@v2
       - name: Download Android Emulator Image
-        run: |
-          echo "y" | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --install "system-images;android-30;google_apis;x86"
-          echo "no" | $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager create avd --force --name Pixel_4_XL_API_30 --device "Nexus 5X" -k 'system-images;android-30;google_apis;x86'
-          $ANDROID_HOME/emulator/emulator -list-avds
-      - name: Android Emulator
-        timeout-minutes: 10
-        continue-on-error: true
-        run: |
-          echo "Starting emulator"
-          nohup $ANDROID_HOME/emulator/emulator -avd Pixel_4_XL_API_30 -no-audio -no-snapshot -no-window &
-          $ANDROID_HOME/platform-tools/adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed | tr -d '\r') ]]; do sleep 1; done; input keyevent 82'
-          $ANDROID_HOME/platform-tools/adb devices
-          echo "Emulator started"
+        run: sh ../android/fastlane/download-android-emulator-image.sh
       - name: Install Fastlane
         run: cd android && bundle install && cd ..
       - name: Build tailwind
@@ -55,16 +43,9 @@ jobs:
         run: brew tap wix/brew
       - name: Build Test Version
         run: yarn detox build --configuration android
-      - name: Check directory tree
-        run: find .
+      - name: Android Emulator
+        timeout-minutes: 10
+        continue-on-error: true
+        run: sh ../android/fastlane/start-emulator.sh
       - name: Test Buid
         run: yarn detox test --configuration android
-      # - name: Test Build
-      #   uses: reactivecircus/android-emulator-runner@v2
-      #   with:
-      #     api-level: 30
-      #     target: google_apis
-      #     arch: x86_64
-      #     emulator-build: 7425822
-      #     avd-name: Pixel_4_XL_API_30
-      #     script: yarn detox test --configuration android
