@@ -40,6 +40,10 @@
       "device": "simulator",
       "app": "ios"
     },
+    "ios.beta": {
+      "device": "simulator",
+      "app": "ios"
+    },
     "android": {
       "device": "emulator",
       "app": "android"

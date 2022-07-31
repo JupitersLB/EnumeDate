@@ -3,7 +3,7 @@ name: iOS Beta
 on:
   push:
     branches:
-      - 'master'
+      - '*'
 
 jobs:
   github-beta:
@@ -54,7 +54,7 @@ jobs:
         run: brew tap wix/brew && brew install applesimutils
       - name: Build Test Version
         run: yarn detox build --configuration ios && yarn detox test --configuration ios
-      - name: Execute Fastlane Beta Build
+      - name: Build Beta Build
         run: cd ios && fastlane github_beta && cd ..
       - name: Tests
         run: yarn detox build --configuration ios.beta && yarn detox test --configuration ios.beta
