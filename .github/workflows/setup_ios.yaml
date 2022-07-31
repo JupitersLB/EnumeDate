@@ -1,0 +1,35 @@
+name: 'iOS Setup Action'
+on:
+  push:
+    branches:
+      - '*'
+
+jobs:
+  setup-ios:
+    name: Setup for iOS
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+          cache: 'yarn'
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '2.7.4'
+      - uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+      - name: Install Dependencies
+        run: yarn install
+      - uses: actions/cache@v2
+        with:
+          path: '**/Pods'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/Podfile.lock') }}-dependency-${{ hashFiles('**/yarn.lock') }}
+      - name: Install Pods
+        run: cd ios && pod install && cd ..
+      - name: Install Fastlane
+        run: cd ios && bundle install && cd ..
+      - name: Build Tailwind
+        run: yarn build:tailwind
