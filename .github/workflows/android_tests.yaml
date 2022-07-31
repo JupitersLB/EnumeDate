@@ -32,7 +32,7 @@ jobs:
       - name: Gradle cache
         uses: gradle/gradle-build-action@v2
       - name: Download Android Emulator Image
-        run: sh ../android/fastlane/download-android-emulator-image.sh
+        run: sh ./android/fastlane/download-android-emulator-image.sh
       - name: Install Fastlane
         run: cd android && bundle install && cd ..
       - name: Build tailwind
@@ -46,6 +46,6 @@ jobs:
       - name: Android Emulator
         timeout-minutes: 10
         continue-on-error: true
-        run: sh ../android/fastlane/start-emulator.sh
+        run: sh ./android/fastlane/start-emulator.sh
       - name: Test Buid
         run: yarn detox test --configuration android
