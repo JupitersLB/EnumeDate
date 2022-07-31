@@ -26,6 +26,7 @@ jobs:
       APPLE_KEY_CONTENT: '${{ secrets.APPLE_KEY_CONTENT }}'
       GIT_URL: '${{secrets.GIT_URL}}'
     steps:
+      - uses: actions/checkout@v2
       - uses: ./.github/workflows/setup_ios.yaml
         name: My action
       - name: Setup Detox
