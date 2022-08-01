@@ -1,0 +1,43 @@
+{
+  "testRunner": "jest",
+  "runnerConfig": "e2e/config.json",
+  "skipLegacyWorkersInjection": true,
+  "apps": {
+    "ios": {
+      "type": "ios.app",
+      "binaryPath": "ios/build/Build/Products/Release-iphonesimulator/EnumeDate.app",
+      "build": "cd ios && fastlane test"
+    },
+    "android": {
+      "type": "android.apk",
+      "forceAdbInstall": true,
+      "binaryPath": "android/app/build/outputs/apk/releaseE2E/app-releaseE2E.apk",
+      "testBinaryPath": "android/app/build/outputs/apk/androidTest/releaseE2E/app-releaseE2E-androidTest.apk",
+      "build": "cd android && fastlane test && cd .."
+    }
+  },
+  "devices": {
+    "simulator": {
+      "type": "ios.simulator",
+      "device": {
+        "type": "iPhone 13"
+      }
+    },
+    "emulator": {
+      "type": "android.emulator",
+      "device": {
+        "avdName": "Pixel_4_XL_API_30"
+      }
+    }
+  },
+  "configurations": {
+    "ios": {
+      "device": "simulator",
+      "app": "ios"
+    },
+    "android": {
+      "device": "emulator",
+      "app": "android"
+    }
+  }
+}

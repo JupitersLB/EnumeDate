@@ -9,5 +9,8 @@
     "*.jsx": "javascriptreact",
     "*.js": "javascriptreact",
     "*.graphql": "graphql"
+  },
+  "[ignore]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
   }
 }

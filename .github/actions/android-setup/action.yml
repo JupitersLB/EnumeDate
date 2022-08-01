@@ -1,0 +1,37 @@
+name: Android Setup
+description: Set up for Android build
+inputs:
+  gpg-pass-phrase:
+    description: 'GPG passphrase for secrets'
+    required: true
+runs:
+  using: 'composite'
+  steps:
+    - name: Set Env
+      run: echo ${{ inputs.gpg-pass-phrase }}
+      shell: bash
+    - uses: actions/setup-node@v3
+      with:
+        node-version: '14'
+        cache: 'yarn'
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '2.7.4'
+    - name: Gradle cache
+      uses: gradle/gradle-build-action@v2
+    - uses: actions/cache@v2
+      with:
+        path: '**/node_modules'
+        key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+    - name: Install Dependencies
+      run: yarn install
+      shell: bash
+    - name: Install Fastlane
+      run: cd ios && bundle install && cd ..
+      shell: bash
+    - name: Build Tailwind
+      run: yarn build:tailwind
+      shell: bash
+    - name: Make secrets
+      run: GPG_PASSPHRASE=${{ inputs.gpg-pass-phrase }} make secrets
+      shell: bash

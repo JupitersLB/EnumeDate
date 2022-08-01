@@ -1,0 +1,33 @@
+name: Android E2E Tests
+
+on:
+  push:
+    branches:
+      - 'tag'
+env:
+  GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+
+jobs:
+  android-tests:
+    name: Build Android Tests
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+      - uses: ./.github/actions/android-setup
+        name: Setup Android
+        with:
+          gpg-pass-phrase: ${GPG_PASSPHRASE}
+      - name: Download Android Emulator Image
+        run: sh ./android/fastlane/download-android-emulator-image.sh
+      - name: Setup detox
+        run: brew tap wix/brew
+      - name: Android Emulator
+        timeout-minutes: 10
+        continue-on-error: true
+        run: sh ./android/fastlane/start-emulator.sh
+      - name: Build And Test
+        run: yarn detox build --configuration android && yarn detox test --configuration android

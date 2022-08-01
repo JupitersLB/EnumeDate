@@ -12,21 +12,11 @@ jobs:
     name: Build Android Debug
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/android-setup
+        name: Setup Android
         with:
-          node-version: '14.x'
-      - uses: actions/setup-ruby@v1
-        with:
-          ruby-version: '2.x'
-      - name: Install Fastlane
-        run: cd android && bundle install && cd ..
-      - name: Install packages
-        run: yarn install
-      - name: Build tailwind
-        run: yarn build:tailwind
-      - name: Make secrets
-        run: GPG_PASSPHRASE=${GPG_PASSPHRASE} make secrets
+          gpg-pass-phrase: ${GPG_PASSPHRASE}
       - name: Prebuild
         run: mkdir android/app/src/main/assets && make build_android_debug
       - name: Execute Fastlane command
