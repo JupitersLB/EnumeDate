@@ -1,4 +1,4 @@
-name: Android E2E Tests
+name: Android Alpha Track
 
 on:
   push:
@@ -8,7 +8,7 @@ env:
   GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
 
 jobs:
-  android-tests:
+  tests:
     name: Build Android Tests
     runs-on: macos-latest
     steps:
@@ -31,3 +31,16 @@ jobs:
         run: sh ./android/fastlane/start-emulator.sh
       - name: Build And Test
         run: yarn detox build --configuration android && yarn detox test --configuration android
+  deploy:
+    name: Build Android Release for the Alpha Track
+    needs: tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/android-setup
+        name: Setup Android
+        with:
+          gpg-pass-phrase: ${GPG_PASSPHRASE}
+      - name: Prebuild
+      - name: Execute Fastlane command
+        run: cd android && fastlane release_aab_alpha
