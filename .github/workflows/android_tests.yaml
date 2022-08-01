@@ -3,7 +3,7 @@ name: Android E2E Tests
 on:
   push:
     branches:
-      - '*'
+      - 'tag'
 env:
   GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
 
