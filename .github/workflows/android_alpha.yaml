@@ -41,6 +41,5 @@ jobs:
         name: Setup Android
         with:
           gpg-pass-phrase: ${GPG_PASSPHRASE}
-      - name: Prebuild
-      - name: Execute Fastlane command
+      - name: Build and Release Alpha Track Build
         run: cd android && fastlane release_aab_alpha
