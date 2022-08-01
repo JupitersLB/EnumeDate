@@ -9,6 +9,7 @@ runs:
   steps:
     - name: Test inputs
       run: echo ${{ inputs.gpg-pass-phrase }}
+      shell: bash
     - uses: actions/setup-node@v3
       with:
         node-version: '14'
