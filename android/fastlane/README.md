@@ -15,6 +15,14 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 ## Android
 
+### android bump_version_code
+
+```sh
+[bundle exec] fastlane android bump_version_code
+```
+
+Bump version code
+
 ### android test
 
 ```sh
@@ -31,10 +39,10 @@ Runs all the tests
 
 Build a debug
 
-### android release_aab
+### android release_apk_alpha
 
 ```sh
-[bundle exec] fastlane android release_aab
+[bundle exec] fastlane android release_apk_alpha
 ```
 
 Build a release aab
