@@ -3,7 +3,7 @@ name: iOS Beta
 on:
   push:
     branches:
-      - '*'
+      - 'tag'
 
 env:
   APP_STORE_CONNECT_TEAM_ID: '${{ secrets.APP_STORE_CONNECT_TEAM_ID }}'
@@ -42,7 +42,5 @@ jobs:
       - uses: actions/checkout@v3
       - uses: ./.github/actions/ios-setup
         name: Setup iOS
-      - name: Build Beta
+      - name: Build and Deploy Beta
         run: cd ios && fastlane github_beta && cd ..
-      - name: Deploy
-        run: cd ios && fastlane deploy_build && cd ..
