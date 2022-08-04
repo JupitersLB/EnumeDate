@@ -1,3 +1,5 @@
+import 'react-native'
+import React from 'react'
 import 'react-native-gesture-handler/jestSetup'
 import mockAsyncStorage from '@react-native-async-storage/async-storage/jest/async-storage-mock'
 
@@ -105,3 +107,9 @@ jest.mock('tailwind-rn', () => {
 
   return { TailwindProvider, useTailwind }
 })
+
+// jest.mock('react-native/Libraries/Modal/Modal', () => {
+//   const Modal = jest.requireActual('react-native/Libraries/Modal/Modal')
+//   // @ts-ignore
+//   return (props) => <Modal {...props} />
+// })

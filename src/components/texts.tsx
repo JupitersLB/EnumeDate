@@ -2,9 +2,14 @@ import React, { FC } from 'react'
 import { Text, TextProps } from 'react-native'
 import { useTailwind } from 'tailwind-rn/dist'
 
-export const JLBText: FC<TextProps> = ({ style, children, ...others }) => {
+export const JLBText: FC<TextProps> = ({
+  style,
+  children,
+  testID,
+  ...others
+}) => {
   return (
-    <Text style={{ ...(style as any) }} {...others}>
+    <Text testID={testID} style={{ ...(style as any) }} {...others}>
       {children}
     </Text>
   )
@@ -21,11 +26,17 @@ export const P: React.FC<TextProps> = ({ style, children, ...others }) => {
   )
 }
 
-export const Label: FC<TextProps> = ({ style, children, ...others }) => {
+export const Label: FC<TextProps> = ({
+  style,
+  children,
+  testID,
+  ...others
+}) => {
   const tailwind = useTailwind()
 
   return (
     <JLBText
+      testID={testID}
       style={{
         ...tailwind(`text-gray-600 text-base capitalize`),
         ...(style as any),

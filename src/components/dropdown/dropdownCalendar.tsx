@@ -4,112 +4,13 @@ import { TouchableOpacity, View } from 'react-native'
 import { useTailwind } from 'tailwind-rn/dist'
 import Icon from 'react-native-vector-icons/Ionicons'
 
-import { JLBText, Label } from '../texts'
+import { JLBText } from '../texts'
 import { DateTime } from 'luxon'
 import RootStoreContext from '../../stores/rootStore'
 import JLBButton from '../JLBButton'
-import { tailwindPx } from '../../utilities/arbitraryPxWorkaround'
 import { useTranslation } from 'react-i18next'
-
-const Day: FC<{
-  datetime: DateTime
-  width: string
-  maxWidth: string
-  isSelected: boolean
-  setSelectedDate: (date: DateTime) => void
-}> = ({ datetime, width, maxWidth, isSelected, setSelectedDate }) => {
-  const tailwind = useTailwind()
-
-  const isToday = datetime.equals(DateTime.now().startOf('day'))
-
-  const dayWidth = datetime.day === 1 ? maxWidth : 'w-full'
-
-  return (
-    <TouchableOpacity
-      onPress={() => setSelectedDate(datetime)}
-      style={tailwind(
-        `flex-row ${
-          datetime.day === 1 ? `${width} justify-end` : 'w-1/7 justify-center'
-        }`
-      )}>
-      <View
-        style={tailwind(
-          `py-1 rounded-full ${dayWidth} ${
-            isToday && !isSelected ? `bg-secondary` : ''
-          } ${isSelected ? 'bg-primary' : ''}`
-        )}>
-        <Label style={tailwind('text-center')}>{datetime.day}</Label>
-      </View>
-    </TouchableOpacity>
-  )
-}
-
-const DayHeaders: FC = ({}) => {
-  const tailwind = useTailwind()
-  const { userStore } = useContext(RootStoreContext)
-
-  return (
-    <View style={tailwind('flex-row w-full justify-between pt-4')}>
-      {[...Array(7).keys()].map((k) => (
-        <Label key={`day-${k}`} style={tailwind('text-center w-1/7')}>
-          {DateTime.fromFormat((k + 1).toString(), 'c')
-            .setLocale(userStore?.user?.settings.lang || 'en')
-            .toFormat('ccc')}
-        </Label>
-      ))}
-    </View>
-  )
-}
-
-const DayDates: FC<{
-  month: number
-  year: number
-  maxWidth: number | null
-  selectedDate: DateTime | null
-  setSelectedDate: (date: DateTime) => void
-}> = ({ month, year, maxWidth, selectedDate, setSelectedDate }) => {
-  const tailwind = useTailwind()
-  const { userStore } = useContext(RootStoreContext)
-
-  const date = DateTime.fromFormat(`${year} ${month}`, 'y M')
-  const daysInMonth = date.daysInMonth
-  const firstDay = date.startOf('month').weekday
-  const days = [...Array(daysInMonth).keys()].map((k) => k + 1)
-
-  const maxWidthPixels = maxWidth && tailwindPx[(maxWidth / 7).toFixed(0)]
-
-  return (
-    <View style={tailwind('flex-row flex-wrap w-full pt-4')}>
-      {days.map(
-        (d) =>
-          maxWidthPixels && (
-            <Day
-              key={`day-${d}`}
-              maxWidth={maxWidthPixels}
-              isSelected={
-                selectedDate?.day === d &&
-                selectedDate?.month === month &&
-                selectedDate?.year === year
-              }
-              setSelectedDate={setSelectedDate}
-              width={
-                {
-                  1: 'w-1/7',
-                  2: 'w-2/7',
-                  3: 'w-3/7',
-                  4: 'w-4/7',
-                  5: 'w-5/7',
-                  6: 'w-6/7',
-                  7: 'w-7/7',
-                }[firstDay]
-              }
-              datetime={DateTime.fromFormat(`${year} ${d} ${month}`, 'y d M')}
-            />
-          )
-      )}
-    </View>
-  )
-}
+import { DayHeaders } from '../calendar/dayHeaders'
+import { DayDates } from '../calendar/dayDates'
 
 const DropdownCalendar: FC<{
   selectedDate: { label: string; value: string } | null
@@ -169,12 +70,14 @@ const DropdownCalendar: FC<{
         <TouchableOpacity onPress={onDownMonth}>
           <Icon name="chevron-back" size={32} />
         </TouchableOpacity>
-        <JLBText style={tailwind('flex flex-grow text-center text-2xl')}>
+        <JLBText
+          testID="calendar_header_date"
+          style={tailwind('flex flex-grow text-center text-2xl')}>
           {DateTime.fromFormat(`${year} ${month}`, 'y M')
             .setLocale(userStore?.user?.settings.lang || 'en')
             .toLocaleString({ month: 'long', year: 'numeric' })}
         </JLBText>
-        <TouchableOpacity onPress={onUpMonth}>
+        <TouchableOpacity testID="up_month" onPress={onUpMonth}>
           <Icon name="chevron-forward" size={32} />
         </TouchableOpacity>
       </View>
