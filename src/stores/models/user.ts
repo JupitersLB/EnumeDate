@@ -1,5 +1,10 @@
 import { types, Instance, SnapshotIn } from 'mobx-state-tree'
-import i18n, { SupportedLangs, SupportedUnits } from '../../config/i18n'
+import i18n, {
+  LangList,
+  SupportedLangs,
+  SupportedUnits,
+  UnitList,
+} from '../../config/i18n'
 import { generateId } from '../../utilities/generateId'
 
 export const User = types
@@ -19,6 +24,18 @@ export const User = types
     },
     setUnit(unit: SupportedUnits) {
       self.settings.unit = unit
+    },
+  }))
+  .views((self) => ({
+    get defaultLangOption() {
+      const langFromList =
+        LangList.find((o) => o.value === self.settings.lang) ||
+        LangList.find((o) => o.value === SupportedLangs.EN)
+      return langFromList
+    },
+    get defaultUnitOption() {
+      UnitList.find((o) => o.value === self.settings.unit)
+      return UnitList.find((o) => o.value === self.settings.unit)
     },
   }))
 

@@ -25,5 +25,11 @@
   "weeks": "Weeks",
   "months": "Months",
   "years": "Years",
-  "unit": "Unit"
+  "unit": "Unit",
+  "preferences": "Preferences",
+  "about": "About",
+  "motivation": "Motivation",
+  "motivationBodyText": "Builing apps is fun, especially when providing solutions to your own problems. A recurring issue, especially when living in a foreign country steeped in bureaucratic procedures, is trying to track waiting periods. Visa processed in 4 weeks to 2 months! Working permission 2 to 4 weeks. Covid vaccine nth booster 3 to 4 months. \n\nAs you get older, you also gain an interest on appreciation to know how much time has passed since an event, or perhaps you just need help remebering... \n\n'We’ve been married for 1045 days!' \n\n'I’ve worked here for 300 weeks!'",
+  "development": "Development",
+  "developmentBodyText": "This app was built using React Native for iOS and Android by Liam Baker"
 }

@@ -5,21 +5,39 @@ import { fireEvent, render, screen } from '@testing-library/react-native'
 import App from '../App'
 
 describe('Testing App Can Change Language', () => {
-  test('Home screen can navigate to the Settings screen', async () => {
-    render(<App />)
+  let app: ReturnType<typeof render>
+
+  beforeEach(async () => {
+    app = render(<App />)
+
     const settingsTab = await screen.findByText('Settings')
     fireEvent.press(settingsTab)
 
-    const languageButton = await screen.findByText('Change language')
-    expect(languageButton).toBeTruthy()
+    return app
+  })
+
+  test('Home screen can navigate to the Settings screen', async () => {
+    const preferencesButton = await screen.findByText('Preferences')
+    expect(preferencesButton).toBeTruthy
+  })
+
+  test('Settings screen can navigate to the preferences screen', async () => {
+    const preferencesButton = await screen.findByText('Preferences')
+    expect(preferencesButton).toBeTruthy
+
+    fireEvent.press(preferencesButton)
+
+    const languageDropdown = await screen.findByTestId('language_dropdown')
+    expect(languageDropdown).toBeTruthy()
   })
 
   test('Settings screen can open language dropdown', async () => {
-    render(<App />)
-    const settingsTab = await screen.findByText('Settings')
-    fireEvent.press(settingsTab)
+    const preferencesButton = await screen.findByText('Preferences')
+    expect(preferencesButton).toBeTruthy
 
-    const languageDropdown = await screen.findByText('Select a Language')
+    fireEvent.press(preferencesButton)
+
+    const languageDropdown = await screen.findByTestId('language_dropdown')
     expect(languageDropdown).toBeTruthy()
 
     fireEvent.press(languageDropdown)
@@ -29,12 +47,12 @@ describe('Testing App Can Change Language', () => {
 
     fireEvent.press(chineseChoice)
 
-    const languageButton = await screen.findByText('Change language')
+    const languageButton = await screen.findByText('Save')
     expect(languageButton).toBeTruthy()
 
     fireEvent.press(languageButton)
 
-    const languageButtonChinese = await screen.findByText('更改語言')
+    const languageButtonChinese = await screen.findByText('語言')
     expect(languageButtonChinese).toBeTruthy()
   })
 })
