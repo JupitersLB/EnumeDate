@@ -1,50 +1,46 @@
 import { observer } from 'mobx-react-lite'
-import React, { FC, useContext } from 'react'
-import { useForm } from 'react-hook-form'
+import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 import { SafeAreaView, View } from 'react-native'
 import { useTailwind } from 'tailwind-rn/dist'
-import JLBButton from '../../components/JLBButton'
-import JLBDropdown from '../../components/JLBDropdown'
-import { LangList, SupportedLangs } from '../../config/i18n'
-import RootStoreContext from '../../stores/rootStore'
+import { SettingsListItem } from '../../components/settings/settingsListItem'
+import { Label } from '../../components/texts'
 import {
   SettingsNavigationProps,
   SettingsRouteProps,
 } from '../../types/navigation'
+import VersionNumber from 'react-native-version-number'
 
 const Settings: FC<{
   navigation: SettingsNavigationProps
   route: SettingsRouteProps
 }> = ({ navigation, route }) => {
-  const { userStore } = useContext(RootStoreContext)
-  const { control, handleSubmit, setValue } = useForm<{
-    language: { label: string; value: SupportedLangs }
-  }>()
   const tailwind = useTailwind()
-  const { t } = useTranslation()
-
-  const onSubmit = (data: {
-    language: { label: string; value: SupportedLangs }
-  }) => {
-    userStore.user?.setLanguage(data.language.value)
-  }
 
   return (
-    <SafeAreaView style={tailwind('mx-10')}>
-      <View style={tailwind('py-8')}>
-        <JLBDropdown
-          label="language"
-          control={control}
-          placeholder="select a language"
-          setValue={setValue}
-          data={LangList}
+    <SafeAreaView style={tailwind('mx-10 flex-1 justify-between')}>
+      <View style={tailwind('mt-20')}>
+        <SettingsListItem
+          onPress={() => navigation.push('Preferences')}
+          title="preferences"
+          iconName="options"
+        />
+        <SettingsListItem
+          onPress={() => navigation.push('About')}
+          title="about"
+          iconName="information-circle"
         />
       </View>
-
-      <JLBButton type="solid" color="primary" onPress={handleSubmit(onSubmit)}>
-        {t('Change language')}
-      </JLBButton>
+      <View style={tailwind('flex-row justify-around mb-5')}>
+        <Label
+          style={tailwind(
+            'text-xs'
+          )}>{`Version: ${VersionNumber.appVersion}`}</Label>
+        <Label
+          style={tailwind(
+            'text-xs'
+          )}>{`Build: ${VersionNumber.buildVersion}`}</Label>
+      </View>
     </SafeAreaView>
   )
 }

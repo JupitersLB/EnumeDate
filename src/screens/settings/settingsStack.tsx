@@ -3,18 +3,16 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { observer } from 'mobx-react-lite'
 
 import settings from './settings'
-import {
-  SettingsStackScreenNavigationProps,
-  SettingsStackScreenRouteProps,
-} from '../../types/navigation'
+import { SettingsStackScreenNavigationProps } from '../../types/navigation'
 import { useTranslation } from 'react-i18next'
+import preferences from './preferences'
+import about from './about'
 
 const SettingsStack = createStackNavigator()
 
 const SettingsStackScreen: FC<{
   navigation: SettingsStackScreenNavigationProps
-  route: SettingsStackScreenRouteProps
-}> = ({ navigation, route }) => {
+}> = ({ navigation }) => {
   const { t } = useTranslation()
 
   return (
@@ -38,6 +36,20 @@ const SettingsStackScreen: FC<{
         options={{
           title: t('Settings'),
           headerLeft: () => null,
+        }}
+      />
+      <SettingsStack.Screen
+        name="About"
+        component={about}
+        options={{
+          title: t('about'),
+        }}
+      />
+      <SettingsStack.Screen
+        name="Preferences"
+        component={preferences}
+        options={{
+          title: t('preferences'),
         }}
       />
     </SettingsStack.Navigator>

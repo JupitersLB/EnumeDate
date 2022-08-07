@@ -28,8 +28,7 @@ describe('Testing App Rendering Correctly', () => {
 
     fireEvent.press(settingsTab)
 
-    const languageButton = await screen.findByText('Change language')
-
-    expect(languageButton).toBeTruthy()
+    const preferencesButton = await screen.findByText('Preferences')
+    expect(preferencesButton).toBeTruthy
   })
 })

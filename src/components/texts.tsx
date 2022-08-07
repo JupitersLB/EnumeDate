@@ -15,6 +15,19 @@ export const JLBText: FC<TextProps> = ({
   )
 }
 
+export const H1: FC<TextProps> = ({ style, children, testID, ...others }) => {
+  const tailwind = useTailwind()
+
+  return (
+    <Text
+      testID={testID}
+      style={{ ...(style as any), ...tailwind('text-xl font-semibold') }}
+      {...others}>
+      {children}
+    </Text>
+  )
+}
+
 export const P: React.FC<TextProps> = ({ style, children, ...others }) => {
   const tailwind = useTailwind()
   return (
