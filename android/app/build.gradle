@@ -312,8 +312,6 @@ dependencies {
     } else {
         implementation jscFlavor
     }
-
-    compile project(':react-native-version-number')
 }
 
 if (isNewArchitectureEnabled()) {
