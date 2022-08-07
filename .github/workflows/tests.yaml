@@ -1,8 +1,11 @@
 name: Integration Tests
 
 on:
+  workflow_call:
   push:
-    branches:
+    branches-ignore:
+      - 'master'
+    tags-ignore:
       - '*'
 
 jobs:
