@@ -17,6 +17,7 @@
   "Confirm": "Confirm",
   "language": "Language",
   "select a language": "Select a Language",
+  "Select a unit": "Select a Unit",
   "days since": "{{diff}} <bold>{{unit}}</bold> since {{start}}",
   "days": "Days",
   "minutes": "Minutes",

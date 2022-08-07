@@ -12,6 +12,7 @@ import {
 } from './src/config/mstPersist'
 import main from './src/screens/main'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
+import { observer } from 'mobx-react-lite'
 
 const Stack = createNativeStackNavigator()
 
@@ -37,4 +38,4 @@ const App: FC<{}> = () => {
   )
 }
 
-export default App
+export default observer(App)

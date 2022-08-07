@@ -111,6 +111,7 @@ const EventForm: FC<{
 
         <JLBDropdown
           label="date"
+          testID="calendar_dropdown"
           control={control}
           defaultValue={defaultDate}
           placeholder="select a date"
@@ -124,6 +125,7 @@ const EventForm: FC<{
 
         <JLBDropdown
           label="unit"
+          testID="unit_dropdown"
           control={control}
           placeholder="select a unit"
           defaultValue={defaultUnit}
@@ -134,6 +136,7 @@ const EventForm: FC<{
 
       <JLBButton
         type="solid"
+        testID="save_button"
         color="primary"
         style={'mt-6 mb-12'}
         onPress={handleSubmit(onSubmit)}>

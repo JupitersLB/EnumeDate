@@ -23,8 +23,11 @@ env:
   GIT_URL: '${{secrets.GIT_URL}}'
 
 jobs:
+  call-integration-test-workflow:
+    uses: ./.github/workflows/tests.yaml
   tests:
-    name: Build and Test App
+    name: Build iOS E2E Tests
+    needs: call-integration-test-workflow
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3

@@ -1,25 +1,23 @@
-import React, { FC, useContext, useEffect } from 'react'
+import React, { FC, useContext } from 'react'
 import { SafeAreaView, View } from 'react-native'
 import { HomeNavigationProps, HomeRouteProps } from '../../types/navigation'
 import { useTailwind } from 'tailwind-rn'
 import JLBButton from '../../components/JLBButton'
 import { ErrorText, P } from '../../components/texts'
 import RootStoreContext from '../../stores/rootStore'
-import { useIsFocused } from '@react-navigation/native'
 import { useTranslation } from 'react-i18next'
-import EventCard from '../../components/cards/eventCard'
 import EventList from '../../components/home/eventList'
+import { observer } from 'mobx-react-lite'
 
 const Home: FC<{ navigation: HomeNavigationProps; route: HomeRouteProps }> = ({
   navigation,
   route,
 }) => {
   const { eventStore, uiStore } = useContext(RootStoreContext)
-  const isFocused = useIsFocused()
   const tailwind = useTailwind()
   const { t } = useTranslation()
 
-  useEffect(() => {}, [isFocused])
+  // eventStore.destroy(eventStore.events[0])
 
   return (
     <SafeAreaView
@@ -27,7 +25,7 @@ const Home: FC<{ navigation: HomeNavigationProps; route: HomeRouteProps }> = ({
       style={tailwind('flex-1 mx-10 justify-between')}>
       <P style={tailwind('text-blue-600')}>EnumeDate</P>
       <View style={tailwind('flex flex-grow my-10')}>
-        <EventList events={eventStore.events} />
+        <EventList key={eventStore.events.length} events={eventStore.events} />
       </View>
 
       <View style={tailwind('mb-10')}>
@@ -47,4 +45,4 @@ const Home: FC<{ navigation: HomeNavigationProps; route: HomeRouteProps }> = ({
   )
 }
 
-export default Home
+export default observer(Home)

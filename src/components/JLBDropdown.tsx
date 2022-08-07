@@ -18,6 +18,7 @@ const JLBDropdown: FC<{
   data?: { label: string; value: string }[]
   calendar?: boolean
   required?: boolean
+  testID?: string
 }> = ({
   control,
   label,
@@ -27,6 +28,7 @@ const JLBDropdown: FC<{
   data,
   required,
   defaultValue,
+  testID,
 }) => {
   const [isVisible, setVisible] = useState(false)
   const [selectedValue, setSelectedValue] = useState<{
@@ -65,6 +67,7 @@ const JLBDropdown: FC<{
             control={control}
             render={({ field: { value } }) => (
               <TouchableOpacity
+                testID={testID}
                 style={tailwind('flex-row items-center w-full')}
                 onPress={() => setVisible(true)}>
                 <JLBText

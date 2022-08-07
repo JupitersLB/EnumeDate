@@ -26,7 +26,9 @@ const EventCard: FC<{ event: IEvent; drag: () => void; isActive: boolean }> = ({
         `border-b border-secondary py-4 ${isActive ? 'bg-primary-light' : ''}`
       )}>
       <View style={tailwind('flex-row justify-between items-center')}>
-        <JLBText style={tailwind('text-2xl capitalize font-semibold')}>
+        <JLBText
+          testID="event_card_title"
+          style={tailwind('text-2xl capitalize font-semibold')}>
           {event?.name}
         </JLBText>
         <TouchableOpacity onLongPress={drag} disabled={isActive}>

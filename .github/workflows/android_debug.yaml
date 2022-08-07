@@ -8,8 +8,11 @@ env:
   GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
 
 jobs:
+  call-integration-test-workflow:
+    uses: ./.github/workflows/tests.yaml
   android-debug:
     name: Build Android Debug
+    needs: call-integration-test-workflow
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
