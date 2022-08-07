@@ -12,7 +12,7 @@ jobs:
     uses: ./.github/workflows/tests.yaml
   android-debug:
     name: Build Android Debug
-    needs: tests
+    needs: call-integration-test-workflow
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3

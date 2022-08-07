@@ -8,8 +8,11 @@ env:
   GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
 
 jobs:
+  call-integration-test-workflow:
+    uses: ./.github/workflows/tests.yaml
   tests:
-    name: Build Android Tests
+    name: Build Android E2E Tests
+    needs: call-integration-test-workflow
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
