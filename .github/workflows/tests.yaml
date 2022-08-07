@@ -14,7 +14,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: ./.github/actions/reusable-action
-        name: Reusable Action
+      - uses: ./.github/actions/basic-setup
+        name: Basic setup
       - name: Tests
         run: yarn test

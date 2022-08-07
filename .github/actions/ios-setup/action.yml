@@ -4,20 +4,11 @@ description: Set up for iOS build
 runs:
   using: 'composite'
   steps:
-    - uses: actions/setup-node@v3
-      with:
-        node-version: '14'
-        cache: 'yarn'
+    - uses: actions/checkout@v3
+    - uses: ./.github/actions/basic-setup
     - uses: ruby/setup-ruby@v1
       with:
         ruby-version: '2.7.4'
-    - uses: actions/cache@v2
-      with:
-        path: '**/node_modules'
-        key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
-    - name: Install Dependencies
-      run: yarn install
-      shell: bash
     - uses: actions/cache@v2
       with:
         path: '**/Pods'
@@ -27,7 +18,4 @@ runs:
       shell: bash
     - name: Install Fastlane
       run: cd ios && bundle install && cd ..
-      shell: bash
-    - name: Build Tailwind
-      run: yarn build:tailwind
       shell: bash
