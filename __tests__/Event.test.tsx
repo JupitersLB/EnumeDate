@@ -1,12 +1,29 @@
 import 'react-native'
 import React from 'react'
-import { fireEvent, render, screen } from '@testing-library/react-native'
+import {
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+} from '@testing-library/react-native'
 
 import App from '../App'
-import DropdownCalendar from '../src/components/dropdown/dropdownCalendar'
 import { DateTime } from 'luxon'
 
 describe('Testing Add A New Event', () => {
+  let app: ReturnType<typeof render>
+
+  beforeEach(async () => {
+    app = render(<App />)
+
+    const eventButton = await screen.findByTestId('add_new_event_button')
+    expect(eventButton).toBeTruthy()
+
+    fireEvent.press(eventButton)
+
+    return app
+  })
+
   test('Navigating to add event page', async () => {
     render(<App />)
 
@@ -20,13 +37,6 @@ describe('Testing Add A New Event', () => {
   })
 
   test('Filling name input', async () => {
-    render(<App />)
-
-    const eventButton = await screen.findByTestId('add_new_event_button')
-    expect(eventButton).toBeTruthy()
-
-    fireEvent.press(eventButton)
-
     const nameInput = await screen.findByPlaceholderText('Enter Name')
     expect(nameInput).toBeTruthy()
 
@@ -34,47 +44,109 @@ describe('Testing Add A New Event', () => {
     expect(nameInput.props.value).toBe('Wedding Day')
   })
 
-  test('Renders calendar', async () => {
-    render(<App />)
+  test('Filling date input', async () => {
+    const calendarDropdown = await screen.findByTestId('calendar_dropdown')
+    expect(calendarDropdown).toBeTruthy
 
-    const mockSetVisible = jest.fn()
-    const mockSetSelectedValue = jest.fn()
+    // open calendar
+    fireEvent.press(calendarDropdown)
 
-    const eventButton = await screen.findByTestId('add_new_event_button')
-    expect(eventButton).toBeTruthy()
+    // select first calendar date
+    const firstDate = await screen.findByTestId(`calendar_day_${1}`)
+    firstDate && fireEvent.press(firstDate)
 
-    fireEvent.press(eventButton)
-
-    const dateDropdown = await screen.findByText('Days')
-    expect(dateDropdown).toBeTruthy()
-
-    fireEvent.press(dateDropdown)
-
-    const { queryByText, queryAllByTestId, queryByTestId } = render(
-      <DropdownCalendar
-        selectedDate={null}
-        setVisible={mockSetVisible}
-        setSelectedValue={mockSetSelectedValue}
-      />
+    const dateTime = DateTime.fromFormat(
+      `${DateTime.now().year} ${1} ${DateTime.now().month}`,
+      'y d M'
+    )
+    const selectedDate = await screen.findByText(
+      dateTime.toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY)
     )
 
-    const dayHeaders = await queryAllByTestId('day_header')
-    expect(dayHeaders.length).toBe(7)
+    // check selected date is being displayed
+    expect(selectedDate).toBeTruthy
 
-    const upMonth = await queryByTestId('up_month')
-    expect(upMonth).toBeTruthy()
+    // confirm date and close modal
+    const confButton = await screen.findByText('Confirm')
+    expect(confButton).toBeTruthy
 
-    const calendarHeader = await queryByTestId('calendar_header_date')
-    expect(calendarHeader?.props.children).toBe(
-      DateTime.fromFormat(
-        `${DateTime.now().year} ${DateTime.now().month}`,
-        'y M'
+    confButton && fireEvent.press(confButton)
+
+    expect(confButton).toBeFalsy
+    expect(selectedDate).toBeTruthy
+  })
+
+  test('Filling unit input', async () => {
+    const unitDropdown = await screen.findByTestId('unit_dropdown')
+    expect(unitDropdown).toBeTruthy()
+
+    const dropdownValue = unitDropdown?.props.children[0][0]?.props.children
+    expect(dropdownValue).toBe('Days')
+
+    fireEvent.press(unitDropdown)
+
+    const monthUnit = await screen.findByText('Months')
+    expect(monthUnit).toBeTruthy
+
+    // modal closes after press
+    fireEvent.press(monthUnit)
+
+    // confirm new unit value
+    const updatedDropdown = await screen.findByTestId('unit_dropdown')
+    const updatedValue = updatedDropdown.props.children[0][0]?.props.children
+    expect(updatedValue).toBe('Months')
+  })
+
+  test('Create an event', async () => {
+    // add name
+    const nameInput = await screen.findByPlaceholderText('Enter Name')
+    fireEvent.changeText(nameInput, 'Wedding Day')
+
+    // add date
+    const calendarDropdown = await screen.findByTestId('calendar_dropdown')
+    expect(calendarDropdown).toBeTruthy
+
+    fireEvent.press(calendarDropdown)
+
+    const firstDate = await screen.findByTestId(`calendar_day_${1}`)
+    firstDate && fireEvent.press(firstDate)
+    const confButton = await screen.findByText('Confirm')
+    confButton && fireEvent.press(confButton)
+
+    const dateTime = DateTime.fromFormat(
+      `${DateTime.now().year} ${1} ${DateTime.now().month}`,
+      'y d M'
+    )
+    const selectedDate = await screen.findByText(
+      dateTime.toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY)
+    )
+
+    // confirm inputs
+    const unitDropdown = await screen.findByTestId('unit_dropdown')
+    const dropdownValue = unitDropdown?.props.children[0][0]?.props.children
+
+    expect(nameInput.props.value).toBe('Wedding Day')
+    expect(selectedDate).toBeTruthy
+    expect(dropdownValue).toBe('Days')
+
+    const saveButton = await screen.findByTestId('save_button')
+    expect(saveButton).toBeTruthy
+
+    // save form
+    fireEvent.press(saveButton)
+
+    // check home page
+    const title = screen.findByText('EnumeDate')
+    expect(title).toBeTruthy()
+
+    // wait for updates in child components and check event is displayed
+    await waitFor(() => {
+      const savedEventTitle = screen.findByTestId('event_card_title')
+      expect(savedEventTitle).toBeTruthy
+      const savedEventDate = screen.findByText(
+        `0 Days since ${dateTime.toLocaleString(DateTime.DATE_SHORT)}`
       )
-        .setLocale('en')
-        .toLocaleString({ month: 'long', year: 'numeric' })
-    )
-
-    const days = await queryAllByTestId('calendar_date')
-    expect(days.length).toBe(DateTime.now().daysInMonth)
+      expect(savedEventDate).toBeTruthy
+    })
   })
 })

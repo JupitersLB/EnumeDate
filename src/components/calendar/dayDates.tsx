@@ -15,8 +15,6 @@ export const DayDates: FC<{
 }> = observer(({ month, year, maxWidth, selectedDate, setSelectedDate }) => {
   const tailwind = useTailwind()
 
-  console.log('month: ', month)
-
   const date = DateTime.fromFormat(`${year} ${month}`, 'y M')
   const daysInMonth = date.daysInMonth
   const firstDay = date.startOf('month').weekday

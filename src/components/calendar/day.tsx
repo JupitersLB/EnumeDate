@@ -27,6 +27,7 @@ export const Day: FC<{
         }`
       )}>
       <View
+        testID={`calendar_day_${datetime.day}`}
         style={tailwind(
           `py-1 rounded-full ${dayWidth} ${
             isToday && !isSelected ? `bg-secondary` : ''

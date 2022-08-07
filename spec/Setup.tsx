@@ -108,8 +108,8 @@ jest.mock('tailwind-rn', () => {
   return { TailwindProvider, useTailwind }
 })
 
-// jest.mock('react-native/Libraries/Modal/Modal', () => {
-//   const Modal = jest.requireActual('react-native/Libraries/Modal/Modal')
-//   // @ts-ignore
-//   return (props) => <Modal {...props} />
-// })
+jest.mock('react-native/Libraries/Modal/Modal', () => {
+  const Modal = jest.requireActual('react-native/Libraries/Modal/Modal')
+  // @ts-ignore
+  return (props) => <Modal {...props} />
+})

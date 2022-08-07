@@ -68,6 +68,7 @@ const DropdownList: FC<{
       keyExtractor={(data) => data.value}
       renderItem={(data) => (
         <TouchableOpacity
+          testID="dropdown_list_item"
           style={tailwind(
             `py-3 px-8 rounded-md ${
               selectedValue?.value === data.item.value ? 'bg-primary-light' : ''

@@ -1,0 +1,17 @@
+name: Integration Tests
+
+on:
+  push:
+    branches:
+      - '*'
+
+jobs:
+  tests:
+    name: Run Integration Tests
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/test-setup
+        name: Setup tests
+      - name: Tests
+        run: yarn test

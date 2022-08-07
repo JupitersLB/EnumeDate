@@ -7,7 +7,7 @@ module.exports = {
   ],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   setupFilesAfterEnv: ['@testing-library/jest-native/extend-expect'],
-  setupFiles: ['<rootDir>/spec/Setup.ts'],
+  setupFiles: ['<rootDir>/spec/Setup.tsx'],
   transformIgnorePatterns: [
     '"node_modules/(?!(@react-native|react-native|react-native-vector-icons)/)"',
   ],

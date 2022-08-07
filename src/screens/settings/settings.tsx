@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react-lite'
 import React, { FC, useContext } from 'react'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
@@ -48,4 +49,4 @@ const Settings: FC<{
   )
 }
 
-export default Settings
+export default observer(Settings)
