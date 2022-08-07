@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react-lite'
 import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
-import { TouchableOpacity, View } from 'react-native'
+import { TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { useTailwind } from 'tailwind-rn/dist'
 import { H1 } from '../texts'
