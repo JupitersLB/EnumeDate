@@ -6,6 +6,7 @@ import { SafeAreaView, View } from 'react-native'
 import { useTailwind } from 'tailwind-rn/dist'
 import JLBButton from '../../components/JLBButton'
 import JLBDropdown from '../../components/JLBDropdown'
+import { H2 } from '../../components/texts'
 import {
   LangList,
   SupportedLangs,

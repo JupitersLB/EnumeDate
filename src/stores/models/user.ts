@@ -25,6 +25,9 @@ export const User = types
     setUnit(unit: SupportedUnits) {
       self.settings.unit = unit
     },
+    setEmail(email: string) {
+      self.email = email
+    },
   }))
   .views((self) => ({
     get defaultLangOption() {

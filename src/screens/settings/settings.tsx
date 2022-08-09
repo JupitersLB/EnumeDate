@@ -10,16 +10,19 @@ import {
   SettingsRouteProps,
 } from '../../types/navigation'
 import VersionNumber from 'react-native-version-number'
+import LoginCard from '../../components/cards/loginCard'
 
 const Settings: FC<{
   navigation: SettingsNavigationProps
   route: SettingsRouteProps
 }> = ({ navigation, route }) => {
   const tailwind = useTailwind()
+  const { t } = useTranslation()
 
   return (
     <SafeAreaView style={tailwind('mx-10 flex-1 justify-between')}>
-      <View style={tailwind('mt-20')}>
+      <View style={tailwind('mt-10')}>
+        <LoginCard />
         <SettingsListItem
           onPress={() => navigation.push('Preferences')}
           title="preferences"

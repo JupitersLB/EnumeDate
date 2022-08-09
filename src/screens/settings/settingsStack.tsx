@@ -7,6 +7,7 @@ import { SettingsStackScreenNavigationProps } from '../../types/navigation'
 import { useTranslation } from 'react-i18next'
 import preferences from './preferences'
 import about from './about'
+import login from './login'
 
 const SettingsStack = createStackNavigator()
 
@@ -50,6 +51,13 @@ const SettingsStackScreen: FC<{
         component={preferences}
         options={{
           title: t('preferences'),
+        }}
+      />
+      <SettingsStack.Screen
+        name="Login"
+        component={login}
+        options={{
+          title: t('login'),
         }}
       />
     </SettingsStack.Navigator>

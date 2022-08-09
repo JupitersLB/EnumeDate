@@ -1,8 +1,10 @@
 import React, { FC, ReactNode } from 'react'
 import clsx from 'clsx'
 import { observer } from 'mobx-react-lite'
-import { Text, TouchableOpacity } from 'react-native'
+import { TouchableOpacity } from 'react-native'
 import { useTailwind } from 'tailwind-rn/dist'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import { H2 } from './texts'
 
 const JLBButton: FC<{
   type: 'solid' | 'outline'
@@ -11,8 +13,18 @@ const JLBButton: FC<{
   color?: 'primary' | 'secondary' | 'danger'
   onPress?: () => void
   testID?: string
+  iconName?: string
   children: ReactNode
-}> = ({ type, style, onPress, disabled, color, children, testID }) => {
+}> = ({
+  type,
+  style,
+  onPress,
+  disabled,
+  color,
+  children,
+  testID,
+  iconName,
+}) => {
   const tailwind = useTailwind()
 
   const bgColor = clsx({
@@ -48,19 +60,31 @@ const JLBButton: FC<{
     'opacity-100': !disabled,
   })
 
+  const iconColor = clsx({
+    '#f4a989': (type === 'solid' || type === 'outline') && color === 'primary',
+    '#89D4F4': type === 'outline' && color === 'secondary',
+    '#F4899E': type === 'outline' && color === 'danger',
+  })
+
   return (
     <TouchableOpacity
       testID={testID}
       onPress={onPress}
       disabled={disabled}
       style={tailwind(
-        `flex items-center rounded-xl ${opacity} px-5 py-4 ${bgColor} ${
+        `flex-row items-center justify-center rounded-xl ${textColor} ${opacity} px-5 py-4 ${bgColor} ${
           style ? style : ''
         }`
       )}>
-      <Text style={tailwind(`font-semibold text-lg ${textColor}`)}>
-        {children}
-      </Text>
+      {iconName && (
+        <Icon
+          style={tailwind('mr-4')}
+          name={iconName}
+          size={32}
+          color={iconColor}
+        />
+      )}
+      <H2 style={tailwind(textColor)}>{children}</H2>
     </TouchableOpacity>
   )
 }
