@@ -1,4 +1,5 @@
-import { types, Instance, SnapshotIn } from 'mobx-state-tree'
+import { DateTime } from 'luxon'
+import { types, Instance, SnapshotIn, getRoot } from 'mobx-state-tree'
 import i18n, {
   LangList,
   SupportedLangs,
@@ -6,12 +7,14 @@ import i18n, {
   UnitList,
 } from '../../config/i18n'
 import { generateId } from '../../utilities/generateId'
+import { IRootStore } from '../rootStore'
 
 export const User = types
   .model('user', {
     id: types.optional(types.identifier, generateId()),
-    token: types.maybeNull(types.string),
     email: types.maybeNull(types.string),
+    registeredUser: types.boolean,
+    createdAt: types.string,
     settings: types.model({
       lang: types.frozen<SupportedLangs>(),
       unit: types.frozen<SupportedUnits>(),
@@ -39,6 +42,22 @@ export const User = types
     get defaultUnitOption() {
       UnitList.find((o) => o.value === self.settings.unit)
       return UnitList.find((o) => o.value === self.settings.unit)
+    },
+    get created(): string {
+      const { userStore } = getRoot<IRootStore>(self)
+
+      return DateTime.fromISO(self.createdAt)
+        .setLocale(userStore.user?.settings.lang || SupportedLangs.EN)
+        .toLocaleString(DateTime.DATE_SHORT)
+    },
+    get timeSince() {
+      return Math.floor(
+        Math.abs(
+          DateTime.fromISO(self.createdAt)
+            .diffNow([self.settings.unit])
+            .toObject()[self.settings.unit]
+        )
+      )
     },
   }))
 

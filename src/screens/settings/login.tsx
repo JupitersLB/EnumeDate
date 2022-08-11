@@ -21,7 +21,7 @@ const Login: FC<{}> = ({}) => {
 
   const onPress = (data: { email: string }) => {
     userStore.user?.setEmail(data.email)
-    userStore.login(data.email).then((r) => console.log('response: ', r))
+    userStore.login(data.email)
   }
 
   return (

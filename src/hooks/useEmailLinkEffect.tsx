@@ -15,15 +15,12 @@ export const useEmailLinkEffect = () => {
       link: FirebaseDynamicLinksTypes.DynamicLink
     ) => {
       // Check and handle if the link is a email login link
-      if (auth().isSignInWithEmailLink(link.url)) {
+      if (auth().isSignInWithEmailLink(link.url) && userStore.user?.email) {
         setLoading(true)
-        const email = userStore.user?.email
-        email &&
-          auth()
-            .signInWithEmailLink(email, link.url)
-            .then((r) => console.log('sign in response: ', r))
-            .catch((e) => setError(e))
-            .finally(() => setLoading(false))
+        auth()
+          .signInWithEmailLink(userStore.user?.email, link.url)
+          .catch((e) => setError(e))
+          .finally(() => setLoading(false))
       }
     }
 

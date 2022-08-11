@@ -2,7 +2,7 @@ import React, { FC, useContext, useEffect, useState } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { TailwindProvider } from 'tailwind-rn'
-import auth from '@react-native-firebase/auth'
+import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth'
 import crashlytics from '@react-native-firebase/crashlytics'
 
 import utilities from './tailwind.json'
@@ -27,41 +27,45 @@ const App: FC<{}> = () => {
   const { userStore } = useContext(RootStoreContext)
   const [initializing, setInitializing] = useState(true) // show loading placeholder screen of somesort
 
-  useEffect(() => {
-    const subscriber = auth().onAuthStateChanged((userState) => {
-      userState?.getIdToken().then((id) => userStore.setAnonFirebaseId(id))
-      if (initializing) setInitializing(false)
-      // set up when handing users better
-      // crashlytics().log('User signed in.')
-      // await Promise.all([
-      //   crashlytics().setUserId(user.uid),
-      //   crashlytics().setAttribute('credits', String(user.credits)),
-      //   crashlytics().setAttributes({
-      //     role: 'admin',
-      //     followers: '13',
-      //     email: user.email,
-      //     username: user.username,
-      //   }),
-      // ])
-    })
-    if (!userStore.anonFirebaseId) {
-      auth()
-        .signInAnonymously()
-        .then(() => {
-          console.log('User signed in anonymously')
-        })
-        .catch((error) => {
-          if (error.code === 'auth/operation-not-allowed') {
-            console.log('Enable anonymous in your firebase console.')
-          }
+  const setupCrashlytics = () => {
+    crashlytics().log('User signed in.')
+    if (userStore.user) {
+      crashlytics().setUserId(userStore.user.id)
+    }
+  }
 
-          console.error(error)
-        })
+  const fetchApiToken = () => {
+    userStore
+      .fetchApiToken()
+      .catch((error) => {
+        if (error.response.status === 404)
+          userStore.createUser().then(() => userStore.fetchApiToken())
+      })
+      .finally(() => setupCrashlytics())
+  }
+
+  const handleUser = (user: FirebaseAuthTypes.User | null) => {
+    user?.getIdToken().then((id) => {
+      if (!userStore.user?.email) {
+        userStore.setAnonFirebaseToken(id)
+      } else {
+        userStore.setFirebaseToken(id)
+      }
+      fetchApiToken()
+    })
+  }
+
+  useEffect(() => {
+    const subscriber = auth().onAuthStateChanged((user) => {
+      handleUser(user)
+      if (initializing) setInitializing(false)
+    })
+    if (!userStore.anonFirebaseToken && !userStore.firebaseToken) {
+      auth().signInAnonymously()
     }
     return subscriber // unsubscribe on unmount
   }, [])
 
-  console.log('id: ', userStore.anonFirebaseId)
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <RootStoreContext.Provider value={rootStore}>

@@ -80,3 +80,5 @@ tailwind.json
 
 /artifacts
 /coverage
+
+.env
