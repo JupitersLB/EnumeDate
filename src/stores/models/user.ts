@@ -11,10 +11,10 @@ import { IRootStore } from '../rootStore'
 
 export const User = types
   .model('user', {
-    id: types.optional(types.identifier, generateId()),
+    id: types.optional(types.string, generateId()),
     email: types.maybeNull(types.string),
-    registeredUser: types.boolean,
-    createdAt: types.string,
+    registeredUser: types.maybeNull(types.boolean),
+    createdAt: types.maybeNull(types.string),
     settings: types.model({
       lang: types.frozen<SupportedLangs>(),
       unit: types.frozen<SupportedUnits>(),

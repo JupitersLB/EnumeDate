@@ -19,7 +19,7 @@ export const useEmailLinkEffect = () => {
         setLoading(true)
         auth()
           .signInWithEmailLink(userStore.user?.email, link.url)
-          .catch((e) => setError(e))
+          .catch(setError)
           .finally(() => setLoading(false))
       }
     }

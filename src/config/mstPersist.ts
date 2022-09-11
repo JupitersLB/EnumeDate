@@ -24,5 +24,5 @@ export const userStorePersist = () => {
     storage: AsyncStorage,
     jsonify: true,
     whitelist: ['firebaseToken', 'anonFirebaseToken', 'apiToken'],
-  }).then(() => rootStore.userStore.createAnonUser())
+  })
 }

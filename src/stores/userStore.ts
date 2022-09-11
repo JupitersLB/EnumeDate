@@ -3,7 +3,7 @@ import * as RNLocalize from 'react-native-localize'
 import { SupportedUnits } from '../config/i18n'
 import auth from '@react-native-firebase/auth'
 
-import { IUser, User } from './models/user'
+import { IUserSnapshotIn, User } from './models/user'
 import { actionCodeSettings } from '../config/firebase'
 import { callApi } from '../utilities/api'
 import { LoginResponse, Transformers } from '../utilities/transformers'
@@ -18,10 +18,14 @@ export const UserStore = types
     apiToken: types.maybeNull(
       types.late(() => types.model({ id: types.string, value: types.string }))
     ),
-    user: types.maybe(types.late(() => User)),
+    user: types.optional(User, () =>
+      User.create({
+        settings: { lang: deviceLanguage, unit: SupportedUnits.DAYS },
+      })
+    ),
   })
   .actions((self) => ({
-    setUser(user: IUser) {
+    setUser(user: IUserSnapshotIn) {
       self.user = user
     },
     setAnonFirebaseToken(token: string) {
@@ -30,18 +34,11 @@ export const UserStore = types
     setFirebaseToken(token: string) {
       self.firebaseToken = token
     },
-    setApiToken(token: { id: string; value: string }) {
+    setApiToken(token: { id: string; value: string } | null) {
       self.apiToken = token
     },
   }))
   .actions((self) => ({
-    createAnonUser() {
-      if (!self.user) {
-        self.user = User.create({
-          settings: { lang: deviceLanguage, unit: SupportedUnits.DAYS },
-        })
-      }
-    },
     createUser() {
       return callApi(
         '/users',
@@ -55,7 +52,8 @@ export const UserStore = types
     },
     logout() {
       auth().signOut()
-      self.setUser(undefined)
+      self.setApiToken(null)
+      self.setFirebaseToken('')
     },
     fetchApiToken() {
       return callApi<LoginResponse>(
