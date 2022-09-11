@@ -32,6 +32,7 @@ local.properties
 /android/gradle.properties
 /android/app/src/main/assets/index.android.bundle
 pc-api-5364934519941482702-201-42cd8cae9a9f.json
+android/app/google-services.json
 
 # node.js
 #
@@ -56,6 +57,8 @@ buck-out/
 */fastlane/Preview.html
 */fastlane/screenshots
 .env.default
+ios/firebase/GoogleService-Info.plist
+ios/EnumeDate/EnumeDate.entitlements
 
 # fastlane generated ios
 *.cer
@@ -77,3 +80,5 @@ tailwind.json
 
 /artifacts
 /coverage
+
+.env

@@ -28,6 +28,19 @@ export const H1: FC<TextProps> = ({ style, children, testID, ...others }) => {
   )
 }
 
+export const H2: FC<TextProps> = ({ style, children, testID, ...others }) => {
+  const tailwind = useTailwind()
+
+  return (
+    <Text
+      testID={testID}
+      style={{ ...(style as any), ...tailwind('font-semibold text-lg') }}
+      {...others}>
+      {children}
+    </Text>
+  )
+}
+
 export const P: React.FC<TextProps> = ({ style, children, ...others }) => {
   const tailwind = useTailwind()
   return (

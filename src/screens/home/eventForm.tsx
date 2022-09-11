@@ -15,6 +15,7 @@ import {
   EventFormRouteProps,
 } from '../../types/navigation'
 import HeaderDelete from '../../components/header/headerDelete'
+import { useTranslation } from 'react-i18next'
 
 interface FormData {
   name: string
@@ -34,6 +35,7 @@ const EventForm: FC<{
     setValue,
   } = useForm<FormData>()
   const tailwind = useTailwind()
+  const { t } = useTranslation()
 
   const id = route?.params?.id
 

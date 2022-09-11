@@ -8,6 +8,7 @@ import RootStoreContext from '../../stores/rootStore'
 import { useTranslation } from 'react-i18next'
 import EventList from '../../components/home/eventList'
 import { observer } from 'mobx-react-lite'
+import EmailLinkHandler from '../../components/home/emailLinkHandler'
 
 const Home: FC<{ navigation: HomeNavigationProps; route: HomeRouteProps }> = ({
   navigation,
@@ -17,12 +18,11 @@ const Home: FC<{ navigation: HomeNavigationProps; route: HomeRouteProps }> = ({
   const tailwind = useTailwind()
   const { t } = useTranslation()
 
-  // eventStore.destroy(eventStore.events[0])
-
   return (
     <SafeAreaView
       testID="home_screen"
       style={tailwind('flex-1 mx-10 justify-between')}>
+      <EmailLinkHandler />
       <P style={tailwind('text-blue-600')}>EnumeDate</P>
       <View style={tailwind('flex flex-grow my-10')}>
         <EventList key={eventStore.events.length} events={eventStore.events} />

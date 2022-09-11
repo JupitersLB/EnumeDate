@@ -1,4 +1,7 @@
 apply plugin: "com.android.application"
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle" // react native config
+apply plugin: 'com.google.gms.google-services' // firebase
+apply plugin: 'com.google.firebase.crashlytics'
 apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
 
 import com.android.build.OutputFile
@@ -252,6 +255,11 @@ android {
             signingConfig signingConfigs.release
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+
+            firebaseCrashlytics {
+                nativeSymbolUploadEnabled true
+                unstrippedNativeLibsDir 'build/intermediates/merged_native_libs/release/out/lib'
+            }
         }
         // keeps rn code unminifed and unobfuscated for tests
         releaseE2E {
@@ -290,6 +298,8 @@ dependencies {
     implementation "com.facebook.react:react-native:+"  // From node_modules
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
+
+    implementation 'com.google.firebase:firebase-analytics' // firebase analytics
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
         exclude group:'com.facebook.fbjni'

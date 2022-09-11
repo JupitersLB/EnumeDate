@@ -75,3 +75,6 @@
 # suggestions
 -keep class com.facebook.react.modules.systeminfo.ReactNativeVersion {*;}
 -keep class com.facebook.react.modules.** { *; }
+
+# react native config
+-keep class com.enumedate.BuildConfig { *; }

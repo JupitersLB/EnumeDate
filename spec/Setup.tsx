@@ -2,6 +2,7 @@ import 'react-native'
 import React from 'react'
 import 'react-native-gesture-handler/jestSetup'
 import mockAsyncStorage from '@react-native-async-storage/async-storage/jest/async-storage-mock'
+import * as ReactNative from 'react-native'
 
 jest.mock('react-native-reanimated', () => {
   const Reanimated = require('react-native-reanimated/mock')
@@ -97,7 +98,7 @@ jest.mock('tailwind-rn', () => {
 
   const useTailwind = () => (str: string) => {
     const strs = str.split(' ')
-    const styles = strs.map((s) => s && tsStyles[s]['style'])
+    const styles = strs.map((s) => s && tsStyles[s]?.['style'])
     const styleObject = styles.reduce((r, c) => Object.assign(r, c), {})
     const cleanedStyles = Object.keys(styleObject).map((k) =>
       cleanObject(styleObject, k)
@@ -112,4 +113,31 @@ jest.mock('react-native/Libraries/Modal/Modal', () => {
   const Modal = jest.requireActual('react-native/Libraries/Modal/Modal')
   // @ts-ignore
   return (props) => <Modal {...props} />
+})
+
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter')
+
+jest.mock('@react-native-firebase/crashlytics', () =>
+  jest.fn().mockImplementation(() => ({
+    log: jest.fn(),
+    recordError: jest.fn(),
+  }))
+)
+
+jest.mock('@react-native-firebase/dynamic-links', () => {
+  return () => {
+    return {
+      getInitialLink: jest.fn(() => Promise.resolve()),
+      onLink: jest.fn(),
+    }
+  }
+})
+
+jest.mock('@react-native-firebase/auth', () => {
+  return () => ({
+    onAuthStateChanged: jest.fn((cb) =>
+      cb({ name: 'Shaun', getIdToken: () => Promise.resolve('245632514353') })
+    ),
+    signInAnonymously: jest.fn(),
+  })
 })

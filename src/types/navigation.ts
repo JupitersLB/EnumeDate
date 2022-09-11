@@ -16,6 +16,7 @@ export type SettingsParamList = {
   Settings: undefined
   Preferences: undefined
   About: undefined
+  Login: undefined
 }
 
 export type HomeNavigationProps = StackNavigationProp<HomeParamList, 'Home'>
@@ -58,4 +59,9 @@ export type PreferencesScreenNavigationProps = StackNavigationProp<
 export type AboutNavigationProps = StackNavigationProp<
   SettingsParamList,
   'About'
+>
+
+export type LoginNavigationProps = StackNavigationProp<
+  SettingsParamList,
+  'Login'
 >

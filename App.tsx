@@ -1,7 +1,9 @@
-import React, { FC } from 'react'
+import React, { FC, useContext, useEffect, useState } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { TailwindProvider } from 'tailwind-rn'
+import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth'
+import crashlytics from '@react-native-firebase/crashlytics'
 
 import utilities from './tailwind.json'
 import RootStoreContext, { rootStore } from './src/stores/rootStore'
@@ -13,6 +15,7 @@ import {
 import main from './src/screens/main'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import { observer } from 'mobx-react-lite'
+import { tailwindExtensions } from './src/config/tailwindExtensions'
 
 const Stack = createNativeStackNavigator()
 
@@ -21,10 +24,52 @@ eventStorePersist()
 userStorePersist()
 
 const App: FC<{}> = () => {
+  const { userStore } = useContext(RootStoreContext)
+  const [initializing, setInitializing] = useState(true) // show loading placeholder screen of somesort
+
+  const setupCrashlytics = () => {
+    crashlytics().log('User signed in.')
+    if (userStore.user) {
+      crashlytics().setUserId(userStore.user.id)
+    }
+  }
+
+  const fetchApiToken = () => {
+    userStore
+      .fetchApiToken()
+      .catch((error) => {
+        if (error.response.status === 404)
+          userStore.createUser().then(() => userStore.fetchApiToken())
+      })
+      .finally(() => setupCrashlytics())
+  }
+
+  const handleUser = (user: FirebaseAuthTypes.User | null) => {
+    user?.getIdToken().then((id) => {
+      if (!userStore.user?.email) {
+        userStore.setAnonFirebaseToken(id)
+      } else {
+        userStore.setFirebaseToken(id)
+      }
+      fetchApiToken()
+    })
+  }
+
+  useEffect(() => {
+    const subscriber = auth().onAuthStateChanged((user) => {
+      handleUser(user)
+      if (initializing) setInitializing(false)
+    })
+    if (!userStore.anonFirebaseToken && !userStore.firebaseToken) {
+      auth().signInAnonymously()
+    }
+    return subscriber // unsubscribe on unmount
+  }, [])
+
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <RootStoreContext.Provider value={rootStore}>
-        <TailwindProvider utilities={utilities}>
+        <TailwindProvider utilities={{ ...utilities, ...tailwindExtensions }}>
           <NavigationContainer>
             <Stack.Navigator
               screenOptions={{ headerShown: false }}
