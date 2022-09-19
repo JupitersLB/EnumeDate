@@ -16,6 +16,7 @@ import main from './src/screens/main'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import { observer } from 'mobx-react-lite'
 import { tailwindExtensions } from './src/config/tailwindExtensions'
+import { useToast } from './src/hooks/useToast'
 
 const Stack = createNativeStackNavigator()
 
@@ -26,6 +27,18 @@ userStorePersist()
 const App: FC<{}> = () => {
   const { userStore } = useContext(RootStoreContext)
   const [initializing, setInitializing] = useState(true) // show loading placeholder screen of somesort
+  useToast()
+
+  useEffect(() => {
+    const subscriber = auth().onAuthStateChanged((user) => {
+      handleUser(user)
+      if (initializing) setInitializing(false)
+    })
+    if (!userStore.anonFirebaseToken && !userStore.firebaseToken) {
+      auth().signInAnonymously()
+    }
+    return subscriber // unsubscribe on unmount
+  }, [])
 
   const setupCrashlytics = () => {
     crashlytics().log('User signed in.')
@@ -46,7 +59,7 @@ const App: FC<{}> = () => {
 
   const handleUser = (user: FirebaseAuthTypes.User | null) => {
     user?.getIdToken().then((id) => {
-      if (!userStore.user?.email) {
+      if (user?.isAnonymous) {
         userStore.setAnonFirebaseToken(id)
       } else {
         userStore.setFirebaseToken(id)
@@ -54,17 +67,6 @@ const App: FC<{}> = () => {
       fetchApiToken()
     })
   }
-
-  useEffect(() => {
-    const subscriber = auth().onAuthStateChanged((user) => {
-      handleUser(user)
-      if (initializing) setInitializing(false)
-    })
-    if (!userStore.anonFirebaseToken && !userStore.firebaseToken) {
-      auth().signInAnonymously()
-    }
-    return subscriber // unsubscribe on unmount
-  }, [])
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>

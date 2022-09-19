@@ -17,6 +17,13 @@ export interface LoginResponse extends UserResponse {
   }
 }
 
+export interface EventResponse {
+  id: string
+  title: string
+  start_date: string
+  unit: SupportedUnits // defaults to days
+}
+
 export const Transformers = {
   userLogin: (data: LoginResponse) => {
     const user = {
@@ -36,4 +43,10 @@ export const Transformers = {
     }
     return { user, token }
   },
+  event: (data: EventResponse) => ({
+    id: data.id,
+    title: data.title,
+    startDate: data.start_date,
+    unit: data.unit,
+  }),
 }
