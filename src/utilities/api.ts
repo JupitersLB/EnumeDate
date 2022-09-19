@@ -7,7 +7,7 @@ import { readConfig } from '../config/secureStorage'
 export function callApi<T>(
   path: string,
   method: 'GET' | 'POST' | 'PATCH' | 'DELETE',
-  data = {},
+  data?: {},
   token?: string
 ): AxiosPromise<T> {
   let baseUrl = Config.API_HOST

@@ -45,6 +45,7 @@
     "react-native-screens": "^3.15.0",
     "react-native-vector-icons": "^9.2.0",
     "react-native-version-number": "^0.3.6",
+    "react-query": "^3.39.2",
     "tailwind-rn": "^4.2.0",
     "uuid": "^8.3.2"
   },

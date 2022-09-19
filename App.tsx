@@ -17,12 +17,15 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import { observer } from 'mobx-react-lite'
 import { tailwindExtensions } from './src/config/tailwindExtensions'
 import { useToast } from './src/hooks/useToast'
+import { QueryClient, QueryClientProvider } from 'react-query'
 
 const Stack = createNativeStackNavigator()
 
 uiStorePersist()
 eventStorePersist()
 userStorePersist()
+
+const queryClient = new QueryClient()
 
 const App: FC<{}> = () => {
   const { userStore } = useContext(RootStoreContext)
@@ -71,15 +74,17 @@ const App: FC<{}> = () => {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <RootStoreContext.Provider value={rootStore}>
-        <TailwindProvider utilities={{ ...utilities, ...tailwindExtensions }}>
-          <NavigationContainer>
-            <Stack.Navigator
-              screenOptions={{ headerShown: false }}
-              initialRouteName="Main">
-              <Stack.Screen name="Main" component={main} />
-            </Stack.Navigator>
-          </NavigationContainer>
-        </TailwindProvider>
+        <QueryClientProvider client={queryClient}>
+          <TailwindProvider utilities={{ ...utilities, ...tailwindExtensions }}>
+            <NavigationContainer>
+              <Stack.Navigator
+                screenOptions={{ headerShown: false }}
+                initialRouteName="Main">
+                <Stack.Screen name="Main" component={main} />
+              </Stack.Navigator>
+            </NavigationContainer>
+          </TailwindProvider>
+        </QueryClientProvider>
       </RootStoreContext.Provider>
     </GestureHandlerRootView>
   )

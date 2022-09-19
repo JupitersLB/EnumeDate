@@ -9,21 +9,28 @@ import { useTranslation } from 'react-i18next'
 import EventList from '../../components/home/eventList'
 import { observer } from 'mobx-react-lite'
 import EmailLinkHandler from '../../components/home/emailLinkHandler'
+import { useQuery } from 'react-query'
 
 const Home: FC<{ navigation: HomeNavigationProps; route: HomeRouteProps }> = ({
   navigation,
   route,
 }) => {
-  const { eventStore, uiStore } = useContext(RootStoreContext)
+  const { eventStore, uiStore, userStore } = useContext(RootStoreContext)
   const tailwind = useTailwind()
   const { t } = useTranslation()
+
+  const { isLoading } = useQuery(`events.${userStore.user.id}`, () =>
+    eventStore.fetchEvents()
+  )
 
   return (
     <SafeAreaView
       testID="home_screen"
-      style={tailwind('flex-1 mx-10 justify-between')}>
+      style={tailwind('flex-1 mx-8 justify-between')}>
       <EmailLinkHandler />
+
       <P style={tailwind('text-blue-600')}>EnumeDate</P>
+
       <View style={tailwind('flex flex-grow my-10')}>
         <EventList key={eventStore.events.length} events={eventStore.events} />
       </View>
