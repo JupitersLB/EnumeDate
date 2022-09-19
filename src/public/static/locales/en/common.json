@@ -36,5 +36,7 @@
   "noUser": "No User Found!",
   "betterExperience": "To have a better experience, make sure to log in!",
   "email": "Email",
-  "enter email": "Enter Email"
+  "enter email": "Enter Email",
+  "errorReceived": "{{message}}",
+  "eventCreated": "{{title}} added for you to remember!"
 }

@@ -16,9 +16,11 @@ import {
 } from '../../types/navigation'
 import HeaderDelete from '../../components/header/headerDelete'
 import { useTranslation } from 'react-i18next'
+import { useToast } from '../../hooks/useToast'
+import Toast from 'react-native-root-toast'
 
 interface FormData {
-  name: string
+  title: string
   unit: { label: SupportedUnits; value: SupportedUnits }
   date: { label: string; value: string }
 }
@@ -27,15 +29,17 @@ const EventForm: FC<{
   navigation: EventFormNavigationProps
   route: EventFormRouteProps
 }> = ({ navigation, route }) => {
-  const { eventStore } = useContext(RootStoreContext)
+  const { eventStore, toastStore } = useContext(RootStoreContext)
   const {
     control,
     handleSubmit,
     formState: { errors },
     setValue,
+    watch,
   } = useForm<FormData>()
   const tailwind = useTailwind()
   const { t } = useTranslation()
+  useToast()
 
   const id = route?.params?.id
 
@@ -50,10 +54,10 @@ const EventForm: FC<{
           // @ts-ignore
           headerRight: () => <HeaderDelete event={eventStore.selectedEvent} />,
         })
-        setValue('name', eventStore.selectedEvent?.name)
+        setValue('title', eventStore.selectedEvent?.title)
         setValue('date', {
           label: eventStore.selectedEvent?.dateLabel,
-          value: eventStore.selectedEvent?.datetime,
+          value: eventStore.selectedEvent?.startDate,
         })
       }
     }
@@ -61,21 +65,46 @@ const EventForm: FC<{
 
   const onSubmit = (data: FormData) => {
     eventStore.selectedEvent ? updateEvent(data) : addEvent(data)
-    navigation.goBack()
   }
 
   const addEvent = (data: FormData) => {
-    eventStore.pushToEvents({
-      name: data.name,
-      datetime: data.date.value,
-      unit: data.unit.value,
-    })
+    eventStore
+      .create({
+        title: data.title,
+        start_date: data.date.value,
+        unit: data.unit.value,
+      })
+      .then((event) => {
+        navigation.goBack()
+        toastStore.setToast({
+          locKey: 'eventCreated',
+          locArgs: { title: event.title },
+          toastParams: {
+            backgroundColor: '#89f4a9',
+            textColor: '#000',
+            duration: Toast.durations.LONG,
+            opacity: 1,
+          },
+        })
+      })
+      .catch((err) => {
+        toastStore.setToast({
+          locKey: 'errorReceived',
+          locArgs: { message: err.response.data.message },
+          toastParams: {
+            backgroundColor: '#F4899E',
+            textColor: '#000',
+            duration: Toast.durations.LONG,
+            opacity: 1,
+          },
+        })
+      })
   }
 
   const updateEvent = (data: FormData) => {
     eventStore.selectedEvent?.update({
-      name: data.name,
-      datetime: data.date.value,
+      title: data.title,
+      startDate: data.date.value,
       unit: data.unit.value,
     })
   }
@@ -83,7 +112,7 @@ const EventForm: FC<{
   const defaultDate = eventStore.selectedEvent
     ? {
         label: eventStore.selectedEvent.dateLabel,
-        value: eventStore.selectedEvent.datetime,
+        value: eventStore.selectedEvent.startDate,
       }
     : null
 
@@ -101,13 +130,13 @@ const EventForm: FC<{
     <SafeAreaView style={tailwind('flex-1 mx-10 justify-between')}>
       <View>
         <JLBInput
-          label="name"
+          label="title"
           control={control}
           errors={errors}
           placeholder="enter name"
           required
         />
-        {errors.name && (
+        {errors.title && (
           <ErrorText>{t('Required', { field: t('name') })}</ErrorText>
         )}
 
@@ -141,6 +170,7 @@ const EventForm: FC<{
         testID="save_button"
         color="primary"
         style={'mt-6 mb-12'}
+        disabled={!watch('title') || watch('title').length < 1}
         onPress={handleSubmit(onSubmit)}>
         {t('Save')}
       </JLBButton>

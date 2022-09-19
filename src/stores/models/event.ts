@@ -7,17 +7,17 @@ import { IRootStore } from '../rootStore'
 export const Event = types
   .model('Event', {
     id: types.optional(types.identifier, generateId()),
-    name: types.string,
-    datetime: types.string,
+    title: types.string,
+    startDate: types.string,
     unit: types.maybeNull(types.frozen<SupportedUnits>()),
   })
   .actions((self) => ({
     setDatetime(newDate: string) {
-      self.datetime = newDate
+      self.startDate = newDate
     },
     update(event: IEventSnapshotIn) {
-      self.name = event.name
-      self.datetime = event.datetime
+      self.title = event.title
+      self.startDate = event.startDate
       self.unit = event.unit
     },
   }))
@@ -30,21 +30,21 @@ export const Event = types
     get dateLabel() {
       const { userStore } = getRoot<IRootStore>(self)
 
-      return DateTime.fromISO(self.datetime)
+      return DateTime.fromISO(self.startDate)
         .setLocale(userStore?.user?.settings.lang || SupportedLangs.EN)
         .toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY)
     },
     get dateShort() {
       const { userStore } = getRoot<IRootStore>(self)
 
-      return DateTime.fromISO(self.datetime)
+      return DateTime.fromISO(self.startDate)
         .setLocale(userStore?.user?.settings.lang || SupportedLangs.EN)
         .toLocaleString(DateTime.DATE_SHORT)
     },
     get timeSince() {
       return Math.floor(
         Math.abs(
-          DateTime.fromISO(self.datetime).diffNow([this.eventUnit]).toObject()[
+          DateTime.fromISO(self.startDate).diffNow([this.eventUnit]).toObject()[
             this.eventUnit
           ]
         )

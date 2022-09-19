@@ -7,16 +7,17 @@ import { IUserSnapshotIn, User } from './models/user'
 import { actionCodeSettings } from '../config/firebase'
 import { callApi } from '../utilities/api'
 import { LoginResponse, Transformers } from '../utilities/transformers'
+import { clearAll, saveConfig } from '../config/secureStorage'
 
 const locales = RNLocalize.getLocales()
 const deviceLanguage = locales[0].languageCode
 
 export const UserStore = types
   .model('UserStore', {
-    firebaseToken: types.maybe(types.late(() => types.string)),
-    anonFirebaseToken: types.maybe(types.late(() => types.string)),
-    apiToken: types.maybeNull(
-      types.late(() => types.model({ id: types.string, value: types.string }))
+    firebaseToken: types.maybe(types.string),
+    anonFirebaseToken: types.maybe(types.string),
+    apiToken: types.maybe(
+      types.model({ id: types.string, value: types.string })
     ),
     user: types.optional(User, () =>
       User.create({
@@ -34,7 +35,7 @@ export const UserStore = types
     setFirebaseToken(token: string) {
       self.firebaseToken = token
     },
-    setApiToken(token: { id: string; value: string } | null) {
+    setApiToken(token: { id: string; value: string } | undefined) {
       self.apiToken = token
     },
   }))
@@ -52,8 +53,9 @@ export const UserStore = types
     },
     logout() {
       auth().signOut()
-      self.setApiToken(null)
+      self.setApiToken(undefined)
       self.setFirebaseToken('')
+      clearAll()
     },
     fetchApiToken() {
       return callApi<LoginResponse>(
@@ -65,6 +67,7 @@ export const UserStore = types
         const { user, token } = Transformers.userLogin(data)
         self.setUser(user)
         self.setApiToken(token)
+        saveConfig('token', token.value)
         return data
       })
     },

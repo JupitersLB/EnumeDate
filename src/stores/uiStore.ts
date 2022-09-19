@@ -8,7 +8,7 @@ export const UiStore = types
   .views((self) => ({
     get addEventDisabled() {
       const { eventStore, userStore } = getRoot<IRootStore>(self)
-      return eventStore.events.length > 2 && !userStore.user?.token
+      return eventStore.events.length > 2 && !userStore.firebaseToken
     },
   }))
 

@@ -19,6 +19,9 @@ module.exports = {
         gray: {
           DEFAULT: '#868383',
         },
+        success: {
+          DEFAULT: '#89f4a9',
+        },
       },
       width: {
         '1/7': '14.285714%',

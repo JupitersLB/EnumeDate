@@ -29,7 +29,7 @@ const EventCard: FC<{ event: IEvent; drag: () => void; isActive: boolean }> = ({
         <JLBText
           testID="event_card_title"
           style={tailwind('text-2xl capitalize font-semibold')}>
-          {event?.name}
+          {event?.title}
         </JLBText>
         <TouchableOpacity onLongPress={drag} disabled={isActive}>
           <Icon name="dots-vertical" size={32} color="#f4a989" />
