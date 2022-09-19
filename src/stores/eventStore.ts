@@ -33,10 +33,12 @@ export const EventStore = types
         self.pushToEvents(Transformers.event(data))
       )
     },
-    fetch() {
-      return callApi<EventResponse[]>(`/events`, 'GET').then(({ data }) =>
-        data.map((d) => self.pushToEvents(Transformers.event(d)))
-      )
+    fetchEvents() {
+      return callApi<EventResponse[]>(`/events`, 'GET').then((response) => {
+        return response.data.map((d) =>
+          self.pushToEvents(Transformers.event(d))
+        )
+      })
     },
   }))
 

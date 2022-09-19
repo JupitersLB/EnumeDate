@@ -23,7 +23,9 @@ const EventCard: FC<{ event: IEvent; drag: () => void; isActive: boolean }> = ({
       onPress={() => navigation.push('EventForm', { id: event.id })}
       disabled={isActive}
       style={tailwind(
-        `border-b border-secondary py-4 ${isActive ? 'bg-primary-light' : ''}`
+        `border-b border-secondary mx-2 py-4 ${
+          isActive ? 'bg-primary-light' : ''
+        }`
       )}>
       <View style={tailwind('flex-row justify-between items-center')}>
         <JLBText
