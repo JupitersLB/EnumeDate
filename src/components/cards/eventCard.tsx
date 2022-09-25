@@ -66,7 +66,6 @@ export const EventCardPlaceholder: FC = () => {
   const tailwind = useTailwind()
   return (
     <Placeholder Animation={Fade}>
-      <PlaceholderLine height={2} style={tailwind('mb-4')} />
       <View style={tailwind('flex flex-row justify-between pr-6')}>
         <PlaceholderLine width={40} height={20} />
         <View>
@@ -76,7 +75,7 @@ export const EventCardPlaceholder: FC = () => {
         </View>
       </View>
       <PlaceholderLine width={80} />
-      <PlaceholderLine height={2} style={tailwind('mt-2')} />
+      <PlaceholderLine height={2} style={tailwind('mt-2 mb-4')} />
     </Placeholder>
   )
 }

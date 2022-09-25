@@ -17,14 +17,12 @@ const Home: FC<{ navigation: HomeNavigationProps; route: HomeRouteProps }> = ({
   navigation,
   route,
 }) => {
-  const { eventStore, uiStore, userStore } = useContext(RootStoreContext)
+  const { eventStore, uiStore } = useContext(RootStoreContext)
   const tailwind = useTailwind()
   const { t } = useTranslation()
   useToast()
 
-  const { isLoading } = useQuery(`events.${userStore.user.id}`, () =>
-    eventStore.fetchEvents()
-  )
+  const { isLoading } = useQuery(`events`, () => eventStore.fetchEvents())
 
   return (
     <SafeAreaView
@@ -36,9 +34,9 @@ const Home: FC<{ navigation: HomeNavigationProps; route: HomeRouteProps }> = ({
       <View style={tailwind('h-2/3 my-10')}>
         {isLoading ? (
           <>
-            <EventCardPlaceholder />
-            <EventCardPlaceholder />
-            <EventCardPlaceholder />
+            {[...Array(3)].map((_e, i) => (
+              <EventCardPlaceholder key={`placeholder-${i}`} />
+            ))}
           </>
         ) : (
           <EventList
