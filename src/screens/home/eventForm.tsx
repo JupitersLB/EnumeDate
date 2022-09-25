@@ -110,11 +110,37 @@ const EventForm: FC<{
   }
 
   const updateEvent = (data: FormData) => {
-    eventStore.selectedEvent?.update({
-      title: data.title,
-      startDate: data.date.value,
-      unit: data.unit.value,
-    })
+    eventStore.selectedEvent
+      ?.update({
+        title: data.title,
+        start_date: data.date.value,
+        unit: data.unit.value,
+      })
+      .then((event) => {
+        navigation.goBack()
+        toastStore.setToast({
+          locKey: 'eventUpdated',
+          locArgs: { title: event.title },
+          toastParams: {
+            backgroundColor: '#89f4a9',
+            textColor: '#000',
+            duration: Toast.durations.LONG,
+            opacity: 1,
+          },
+        })
+      })
+      .catch((err) => {
+        toastStore.setToast({
+          locKey: 'errorReceived',
+          locArgs: { message: err.response.data.message },
+          toastParams: {
+            backgroundColor: '#F4899E',
+            textColor: '#000',
+            duration: Toast.durations.LONG,
+            opacity: 1,
+          },
+        })
+      })
   }
 
   const defaultDate = eventStore.selectedEvent
