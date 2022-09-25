@@ -11,19 +11,18 @@ import { observer } from 'mobx-react-lite'
 import EmailLinkHandler from '../../components/home/emailLinkHandler'
 import { useQuery } from 'react-query'
 import { useToast } from '../../hooks/useToast'
+import { EventCardPlaceholder } from '../../components/cards/eventCard'
 
 const Home: FC<{ navigation: HomeNavigationProps; route: HomeRouteProps }> = ({
   navigation,
   route,
 }) => {
-  const { eventStore, uiStore, userStore } = useContext(RootStoreContext)
+  const { eventStore, uiStore } = useContext(RootStoreContext)
   const tailwind = useTailwind()
   const { t } = useTranslation()
   useToast()
 
-  const { isLoading } = useQuery(`events.${userStore.user.id}`, () =>
-    eventStore.fetchEvents()
-  )
+  const { isLoading } = useQuery(`events`, () => eventStore.fetchEvents())
 
   return (
     <SafeAreaView
@@ -32,8 +31,19 @@ const Home: FC<{ navigation: HomeNavigationProps; route: HomeRouteProps }> = ({
       <EmailLinkHandler />
       <P style={tailwind('text-blue-600')}>EnumeDate</P>
 
-      <View style={tailwind('h-3/4 my-10')}>
-        <EventList key={eventStore.events.length} events={eventStore.events} />
+      <View style={tailwind('h-2/3 my-10')}>
+        {isLoading ? (
+          <>
+            {[...Array(3)].map((_e, i) => (
+              <EventCardPlaceholder key={`placeholder-${i}`} />
+            ))}
+          </>
+        ) : (
+          <EventList
+            key={eventStore.events.length}
+            events={eventStore.events}
+          />
+        )}
       </View>
 
       <View style={tailwind('mb-10')}>
