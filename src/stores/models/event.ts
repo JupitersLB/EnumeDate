@@ -1,7 +1,9 @@
 import { DateTime } from 'luxon'
 import { types, Instance, SnapshotIn, getRoot } from 'mobx-state-tree'
 import { SupportedLangs, SupportedUnits } from '../../config/i18n'
+import { callApi } from '../../utilities/api'
 import { generateId } from '../../utilities/generateId'
+import { EventResponse, Transformers } from '../../utilities/transformers'
 import { IRootStore } from '../rootStore'
 
 export const Event = types
@@ -15,11 +17,24 @@ export const Event = types
     setDatetime(newDate: string) {
       self.startDate = newDate
     },
-    update(event: IEventSnapshotIn) {
+    updateFromResponse(event: IEventSnapshotIn) {
       self.title = event.title
       self.startDate = event.startDate
       self.unit = event.unit
       return self
+    },
+  }))
+  .actions((self) => ({
+    update(event: {
+      title: string
+      start_date: string
+      unit?: SupportedUnits
+    }): Promise<IEventSnapshotIn> {
+      return callApi<EventResponse>(`/events/${self.id}`, 'PATCH', event).then(
+        (response) => {
+          return self.updateFromResponse(Transformers.event(response.data))
+        }
+      )
     },
   }))
   .views((self) => ({

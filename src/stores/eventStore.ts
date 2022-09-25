@@ -15,7 +15,7 @@ export const EventStore = types
       if (!event) {
         self.events.push(eventResponse)
       } else {
-        event.update(eventResponse)
+        event.updateFromResponse(eventResponse)
       }
       return eventResponse
     },
