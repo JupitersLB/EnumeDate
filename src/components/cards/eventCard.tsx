@@ -8,12 +8,18 @@ import { useTailwind } from 'tailwind-rn/dist'
 import { IEvent } from '../../stores/models/event'
 import { HomeNavigationProps } from '../../types/navigation'
 import { JLBText } from '../texts'
+import {
+  Placeholder,
+  PlaceholderMedia,
+  PlaceholderLine,
+  Fade,
+} from 'rn-placeholder'
 
-const EventCard: FC<{ event: IEvent; drag: () => void; isActive: boolean }> = ({
-  event,
-  drag,
-  isActive,
-}) => {
+export const EventCard: FC<{
+  event: IEvent
+  drag: () => void
+  isActive: boolean
+}> = observer(({ event, drag, isActive }) => {
   const tailwind = useTailwind()
   const { t } = useTranslation()
   const navigation: HomeNavigationProps = useNavigation()
@@ -54,6 +60,23 @@ const EventCard: FC<{ event: IEvent; drag: () => void; isActive: boolean }> = ({
       </JLBText>
     </TouchableOpacity>
   )
-}
+})
 
-export default observer(EventCard)
+export const EventCardPlaceholder: FC = () => {
+  const tailwind = useTailwind()
+  return (
+    <Placeholder Animation={Fade}>
+      <PlaceholderLine height={2} style={tailwind('mb-4')} />
+      <View style={tailwind('flex flex-row justify-between pr-6')}>
+        <PlaceholderLine width={40} height={20} />
+        <View>
+          <PlaceholderMedia isRound size={6} />
+          <PlaceholderMedia isRound size={6} style={tailwind('my-1')} />
+          <PlaceholderMedia isRound size={6} />
+        </View>
+      </View>
+      <PlaceholderLine width={80} />
+      <PlaceholderLine height={2} style={tailwind('mt-2')} />
+    </Placeholder>
+  )
+}

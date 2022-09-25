@@ -11,6 +11,7 @@ import { observer } from 'mobx-react-lite'
 import EmailLinkHandler from '../../components/home/emailLinkHandler'
 import { useQuery } from 'react-query'
 import { useToast } from '../../hooks/useToast'
+import { EventCardPlaceholder } from '../../components/cards/eventCard'
 
 const Home: FC<{ navigation: HomeNavigationProps; route: HomeRouteProps }> = ({
   navigation,
@@ -32,8 +33,19 @@ const Home: FC<{ navigation: HomeNavigationProps; route: HomeRouteProps }> = ({
       <EmailLinkHandler />
       <P style={tailwind('text-blue-600')}>EnumeDate</P>
 
-      <View style={tailwind('h-3/4 my-10')}>
-        <EventList key={eventStore.events.length} events={eventStore.events} />
+      <View style={tailwind('h-2/3 my-10')}>
+        {isLoading ? (
+          <>
+            <EventCardPlaceholder />
+            <EventCardPlaceholder />
+            <EventCardPlaceholder />
+          </>
+        ) : (
+          <EventList
+            key={eventStore.events.length}
+            events={eventStore.events}
+          />
+        )}
       </View>
 
       <View style={tailwind('mb-10')}>

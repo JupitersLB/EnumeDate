@@ -5,7 +5,7 @@ import DraggableFlatList, {
 } from 'react-native-draggable-flatlist'
 import { useTailwind } from 'tailwind-rn/dist'
 import { IEvent } from '../../stores/models/event'
-import EventCard from '../cards/eventCard'
+import { EventCard } from '../cards/eventCard'
 
 const EventList: FC<{ events: IEvent[] }> = ({ events }) => {
   const [data, setData] = useState(events)
