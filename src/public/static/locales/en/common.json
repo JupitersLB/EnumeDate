@@ -39,5 +39,6 @@
   "enter email": "Enter Email",
   "errorReceived": "{{message}}",
   "eventCreated": "{{title}} added for you to remember!",
-  "eventUpdated": "{{title}} updated!"
+  "eventUpdated": "{{title}} updated!",
+  "eventDeleted": "{{title}} deleted!"
 }

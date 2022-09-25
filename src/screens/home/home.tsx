@@ -10,6 +10,7 @@ import EventList from '../../components/home/eventList'
 import { observer } from 'mobx-react-lite'
 import EmailLinkHandler from '../../components/home/emailLinkHandler'
 import { useQuery } from 'react-query'
+import { useToast } from '../../hooks/useToast'
 
 const Home: FC<{ navigation: HomeNavigationProps; route: HomeRouteProps }> = ({
   navigation,
@@ -18,6 +19,7 @@ const Home: FC<{ navigation: HomeNavigationProps; route: HomeRouteProps }> = ({
   const { eventStore, uiStore, userStore } = useContext(RootStoreContext)
   const tailwind = useTailwind()
   const { t } = useTranslation()
+  useToast()
 
   const { isLoading } = useQuery(`events.${userStore.user.id}`, () =>
     eventStore.fetchEvents()
