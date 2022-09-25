@@ -10,11 +10,15 @@ export const EventStore = types
     selectedEvent: types.safeReference(Event),
   })
   .actions((self) => ({
-    pushToEvents(event: IEventSnapshotIn) {
-      !self.events.find((e) => e.id === event.id) && self.events.push(event)
-      return event
+    pushToEvents(eventResponse: IEventSnapshotIn) {
+      const event = self.events.find((e) => e.id === eventResponse.id)
+      if (!event) {
+        self.events.push(eventResponse)
+      } else {
+        event.update(eventResponse)
+      }
+      return eventResponse
     },
-
     destroy(event: IEvent) {
       destroy(event)
     },
@@ -40,7 +44,20 @@ export const EventStore = types
         )
       })
     },
+    fetchEvent(id: string) {
+      return callApi<EventResponse>(`/events/${id}`, 'GET').then((response) => {
+        return self.pushToEvents(Transformers.event(response.data))
+      })
+    },
   }))
+  .views((self) => {
+    return {
+      hasEvent(id?: string) {
+        if (!id || !self.events.find((e) => e.id === id)) return false
+        return true
+      },
+    }
+  })
 
 export const eventStore = EventStore.create({
   events: [],
