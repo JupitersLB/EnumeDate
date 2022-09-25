@@ -19,6 +19,7 @@ export const Event = types
       self.title = event.title
       self.startDate = event.startDate
       self.unit = event.unit
+      return self
     },
   }))
   .views((self) => ({

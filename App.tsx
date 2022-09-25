@@ -7,11 +7,7 @@ import crashlytics from '@react-native-firebase/crashlytics'
 
 import utilities from './tailwind.json'
 import RootStoreContext, { rootStore } from './src/stores/rootStore'
-import {
-  eventStorePersist,
-  uiStorePersist,
-  userStorePersist,
-} from './src/config/mstPersist'
+import { uiStorePersist, userStorePersist } from './src/config/mstPersist'
 import main from './src/screens/main'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import { observer } from 'mobx-react-lite'
@@ -22,7 +18,6 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 const Stack = createNativeStackNavigator()
 
 uiStorePersist()
-eventStorePersist()
 userStorePersist()
 
 const queryClient = new QueryClient()

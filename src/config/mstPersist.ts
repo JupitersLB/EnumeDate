@@ -11,14 +11,6 @@ export const uiStorePersist = () => {
   })
 }
 
-export const eventStorePersist = () => {
-  persist('eventStore', rootStore.eventStore, {
-    storage: AsyncStorage,
-    jsonify: true,
-    whitelist: ['events'],
-  })
-}
-
 export const userStorePersist = () => {
   persist('userStore', rootStore.userStore, {
     storage: AsyncStorage,

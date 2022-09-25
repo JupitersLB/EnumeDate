@@ -18,6 +18,7 @@ import HeaderDelete from '../../components/header/headerDelete'
 import { useTranslation } from 'react-i18next'
 import { useToast } from '../../hooks/useToast'
 import Toast from 'react-native-root-toast'
+import { useQuery } from 'react-query'
 
 interface FormData {
   title: string
@@ -37,11 +38,18 @@ const EventForm: FC<{
     setValue,
     watch,
   } = useForm<FormData>()
+  const { userStore } = useContext(RootStoreContext)
   const tailwind = useTailwind()
   const { t } = useTranslation()
   useToast()
 
   const id = route?.params?.id
+
+  const { isLoading } = useQuery(
+    `event.${id}.${userStore.user.id}`,
+    () => eventStore.fetchEvent(id),
+    { enabled: eventStore.hasEvent(id) }
+  )
 
   useEffect(() => {
     eventStore.setSelectedEvent(null)

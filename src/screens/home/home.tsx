@@ -28,10 +28,9 @@ const Home: FC<{ navigation: HomeNavigationProps; route: HomeRouteProps }> = ({
       testID="home_screen"
       style={tailwind('flex-1 mx-8 justify-between')}>
       <EmailLinkHandler />
-
       <P style={tailwind('text-blue-600')}>EnumeDate</P>
 
-      <View style={tailwind('flex flex-grow my-10')}>
+      <View style={tailwind('h-3/4 my-10')}>
         <EventList key={eventStore.events.length} events={eventStore.events} />
       </View>
 
