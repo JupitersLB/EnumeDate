@@ -36,6 +36,9 @@ export const Event = types
         }
       )
     },
+    delete() {
+      return callApi(`/events/${self.id}`, 'DELETE')
+    },
   }))
   .views((self) => ({
     get eventUnit() {
