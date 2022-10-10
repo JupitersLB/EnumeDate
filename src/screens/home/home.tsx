@@ -17,12 +17,16 @@ const Home: FC<{ navigation: HomeNavigationProps; route: HomeRouteProps }> = ({
   navigation,
   route,
 }) => {
-  const { eventStore, uiStore } = useContext(RootStoreContext)
+  const { eventStore, uiStore, userStore } = useContext(RootStoreContext)
   const tailwind = useTailwind()
   const { t } = useTranslation()
   useToast()
 
-  const { isLoading } = useQuery(`events`, () => eventStore.fetchEvents())
+  const { isLoading } = useQuery(
+    `events.${userStore.user.id}.${userStore.apiToken}`,
+    () => eventStore.fetchEvents(),
+    { enabled: userStore.apiToken !== null && userStore.apiToken !== undefined }
+  )
 
   return (
     <SafeAreaView

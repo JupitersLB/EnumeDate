@@ -1,6 +1,5 @@
 import React, { FC, useContext, useEffect, useState } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { TailwindProvider } from 'tailwind-rn'
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth'
 import crashlytics from '@react-native-firebase/crashlytics'
@@ -16,6 +15,7 @@ import { useToast } from './src/hooks/useToast'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import JLBDetachedModal from './src/screens/modals/JLBDetachedModal'
 import { createStackNavigator } from '@react-navigation/stack'
+import Toast from 'react-native-root-toast'
 
 const Stack = createStackNavigator()
 
@@ -25,18 +25,18 @@ userStorePersist()
 const queryClient = new QueryClient()
 
 const App: FC<{}> = () => {
-  const { userStore } = useContext(RootStoreContext)
+  const { userStore, toastStore } = useContext(RootStoreContext)
   const [initializing, setInitializing] = useState(true) // show loading placeholder screen of somesort
   useToast()
 
   useEffect(() => {
     const subscriber = auth().onAuthStateChanged((user) => {
+      if (!userStore.firebaseToken) {
+        auth().signInAnonymously()
+      }
       handleUser(user)
       if (initializing) setInitializing(false)
     })
-    if (!userStore.firebaseToken) {
-      auth().signInAnonymously()
-    }
     return subscriber // unsubscribe on unmount
   }, [])
 
@@ -51,8 +51,20 @@ const App: FC<{}> = () => {
     userStore
       .fetchApiToken()
       .catch((error) => {
-        if (error.response.status === 404)
+        if (error.response.status === 404) {
           userStore.createUser().then(() => userStore.fetchApiToken())
+        }
+        if (error.response.status === 403) {
+          toastStore.setToast({
+            locKey: 'userAccountDisabled',
+            toastParams: {
+              backgroundColor: '#F4899E',
+              textColor: '#000',
+              duration: Toast.durations.LONG,
+              opacity: 1,
+            },
+          })
+        }
       })
       .finally(() => setupCrashlytics())
   }

@@ -25,7 +25,6 @@ const Settings: FC<{
   const { t } = useTranslation()
 
   const onPress = () => {
-    console.log('delete')
     navigation.navigate('DetachedModal', {
       modalType: 'confirmation',
       modalConent: 'confirmDelete',

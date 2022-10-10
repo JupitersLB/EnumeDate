@@ -28,7 +28,7 @@ export const UserStore = types
     setUser(user: IUserSnapshotIn) {
       self.user = user
     },
-    setFirebaseToken(token: string) {
+    setFirebaseToken(token: string | undefined) {
       self.firebaseToken = token
     },
     setApiToken(token: { id: string; value: string } | undefined) {
@@ -43,10 +43,10 @@ export const UserStore = types
       return auth().sendSignInLinkToEmail(email, actionCodeSettings)
     },
     logout() {
-      auth().signOut()
       self.setApiToken(undefined)
-      self.setFirebaseToken('')
+      self.setFirebaseToken(undefined)
       clearAll()
+      auth().signOut()
     },
     fetchApiToken() {
       return callApi<LoginResponse>(
@@ -61,6 +61,12 @@ export const UserStore = types
         saveConfig('token', token.value)
         return data
       })
+    },
+  }))
+  .actions((self) => ({
+    clear() {
+      self.user.clear()
+      self.logout()
     },
   }))
 

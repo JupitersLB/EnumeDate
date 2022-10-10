@@ -47,5 +47,8 @@
   "confirmDelete": {
     "title": "Confirm Deletion",
     "description": "Are you sure you want to continue with deletion?"
-  }
+  },
+  "accountDeleted": "Successfully deleted {{email}}!",
+  "accountDeletionFailed": "Failed to delete {{email}}!",
+  "userAccountDisabled": "Account Disabled. Contact Support."
 }

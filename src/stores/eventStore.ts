@@ -26,6 +26,9 @@ export const EventStore = types
       //@ts-ignore
       self.selectedEvent = eventId || undefined
     },
+    clear() {
+      self.events.clear()
+    },
   }))
   .actions((self) => ({
     create(event: {

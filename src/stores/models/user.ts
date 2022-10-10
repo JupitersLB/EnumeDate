@@ -6,6 +6,7 @@ import i18n, {
   SupportedUnits,
   UnitList,
 } from '../../config/i18n'
+import { callApi } from '../../utilities/api'
 import { generateId } from '../../utilities/generateId'
 import { IRootStore } from '../rootStore'
 
@@ -21,6 +22,9 @@ export const User = types
     }),
   })
   .actions((self) => ({
+    delete() {
+      return callApi('/users/delete_account', 'POST')
+    },
     setLanguage(lang: SupportedLangs) {
       self.settings.lang = lang
       i18n.changeLanguage(lang)
@@ -30,6 +34,13 @@ export const User = types
     },
     setEmail(email: string) {
       self.email = email
+    },
+    clear() {
+      self.id = generateId()
+      self.email = null
+      self.registeredUser = false
+      self.createdAt = null
+      self.settings = { lang: 'en', unit: 'days' }
     },
   }))
   .views((self) => ({
