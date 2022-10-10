@@ -15,7 +15,6 @@ const deviceLanguage = locales[0].languageCode
 export const UserStore = types
   .model('UserStore', {
     firebaseToken: types.maybe(types.string),
-    anonFirebaseToken: types.maybe(types.string),
     apiToken: types.maybe(
       types.model({ id: types.string, value: types.string })
     ),
@@ -29,9 +28,6 @@ export const UserStore = types
     setUser(user: IUserSnapshotIn) {
       self.user = user
     },
-    setAnonFirebaseToken(token: string) {
-      self.anonFirebaseToken = token
-    },
     setFirebaseToken(token: string) {
       self.firebaseToken = token
     },
@@ -41,12 +37,7 @@ export const UserStore = types
   }))
   .actions((self) => ({
     createUser() {
-      return callApi(
-        '/users',
-        'POST',
-        {},
-        self.firebaseToken || self.anonFirebaseToken
-      )
+      return callApi('/users', 'POST', {}, self.firebaseToken)
     },
     login(email: string) {
       return auth().sendSignInLinkToEmail(email, actionCodeSettings)
@@ -62,7 +53,7 @@ export const UserStore = types
         '/users/login',
         'POST',
         {},
-        self.firebaseToken || self.anonFirebaseToken
+        self.firebaseToken
       ).then(({ data }) => {
         const { user, token } = Transformers.userLogin(data)
         self.setUser(user)

@@ -40,5 +40,7 @@
   "errorReceived": "{{message}}",
   "eventCreated": "{{title}} added for you to remember!",
   "eventUpdated": "{{title}} updated!",
-  "eventDeleted": "{{title}} deleted!"
+  "eventDeleted": "{{title}} deleted!",
+  "emailSent": "Email sent to {{address}}. Check email and spam to finish logging in.",
+  "loginFailied": "Login with {{address}} failed."
 }

@@ -32,7 +32,7 @@ const App: FC<{}> = () => {
       handleUser(user)
       if (initializing) setInitializing(false)
     })
-    if (!userStore.anonFirebaseToken && !userStore.firebaseToken) {
+    if (!userStore.firebaseToken) {
       auth().signInAnonymously()
     }
     return subscriber // unsubscribe on unmount
@@ -57,11 +57,7 @@ const App: FC<{}> = () => {
 
   const handleUser = (user: FirebaseAuthTypes.User | null) => {
     user?.getIdToken().then((id) => {
-      if (user?.isAnonymous) {
-        userStore.setAnonFirebaseToken(id)
-      } else {
-        userStore.setFirebaseToken(id)
-      }
+      userStore.setFirebaseToken(id)
       fetchApiToken()
     })
   }

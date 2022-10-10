@@ -15,6 +15,6 @@ export const userStorePersist = () => {
   persist('userStore', rootStore.userStore, {
     storage: AsyncStorage,
     jsonify: true,
-    whitelist: ['firebaseToken', 'anonFirebaseToken', 'apiToken'],
+    whitelist: ['firebaseToken', 'apiToken'],
   })
 }

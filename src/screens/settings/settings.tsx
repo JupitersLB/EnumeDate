@@ -12,6 +12,7 @@ import {
 import VersionNumber from 'react-native-version-number'
 import LoginCard from '../../components/cards/loginCard'
 import RootStoreContext from '../../stores/rootStore'
+import { useToast } from '../../hooks/useToast'
 
 const Settings: FC<{
   navigation: SettingsNavigationProps
@@ -19,6 +20,7 @@ const Settings: FC<{
 }> = ({ navigation, route }) => {
   const { userStore } = useContext(RootStoreContext)
   const tailwind = useTailwind()
+  useToast()
   const { t } = useTranslation()
 
   return (
