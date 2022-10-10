@@ -14,8 +14,10 @@ import { observer } from 'mobx-react-lite'
 import { tailwindExtensions } from './src/config/tailwindExtensions'
 import { useToast } from './src/hooks/useToast'
 import { QueryClient, QueryClientProvider } from 'react-query'
+import JLBDetachedModal from './src/screens/modals/JLBDetachedModal'
+import { createStackNavigator } from '@react-navigation/stack'
 
-const Stack = createNativeStackNavigator()
+const Stack = createStackNavigator()
 
 uiStorePersist()
 userStorePersist()
@@ -71,7 +73,20 @@ const App: FC<{}> = () => {
               <Stack.Navigator
                 screenOptions={{ headerShown: false }}
                 initialRouteName="Main">
-                <Stack.Screen name="Main" component={main} />
+                <Stack.Group>
+                  <Stack.Screen name="Main" component={main} />
+                </Stack.Group>
+                <Stack.Screen
+                  options={{
+                    headerShown: false,
+                    presentation: 'transparentModal',
+                    animationEnabled: true,
+                    cardStyle: { backgroundColor: 'transparent' },
+                    cardOverlayEnabled: true,
+                  }}
+                  name="DetachedModal"
+                  component={JLBDetachedModal}
+                />
               </Stack.Navigator>
             </NavigationContainer>
           </TailwindProvider>

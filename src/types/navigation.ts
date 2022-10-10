@@ -5,11 +5,19 @@ export type StackParamList = {
   Main: undefined
   HomeStackScreen: undefined
   SettingsStackScreen: undefined
+  DetachedModal: {
+    modalType: 'confirmation'
+    modalConent: 'confirmDelete'
+  }
 }
 
 export type HomeParamList = {
   Home: undefined
   EventForm: { id?: string }
+  DetachedModal: {
+    modalType: 'confirmation'
+    modalConent: 'confirmDelete'
+  }
 }
 
 export type SettingsParamList = {
@@ -17,6 +25,10 @@ export type SettingsParamList = {
   Preferences: undefined
   About: undefined
   Login: undefined
+  DetachedModal: {
+    modalType: 'confirmation'
+    modalConent: 'confirmDelete'
+  }
 }
 
 export type HomeNavigationProps = StackNavigationProp<HomeParamList, 'Home'>
@@ -65,3 +77,10 @@ export type LoginNavigationProps = StackNavigationProp<
   SettingsParamList,
   'Login'
 >
+
+export type DetachedModalNavigationProps = StackNavigationProp<
+  StackParamList,
+  'DetachedModal'
+>
+
+export type DetachedModalRouteProps = RouteProp<StackParamList, 'DetachedModal'>

@@ -43,5 +43,9 @@
   "eventDeleted": "{{title}} deleted!",
   "emailSent": "Email sent to {{address}}. Check email and spam to finish logging in.",
   "loginFailied": "Login with {{address}} failed.",
-  "deleteAccount": "Delete Account"
+  "deleteAccount": "Delete Account",
+  "confirmDelete": {
+    "title": "Confirm Deletion",
+    "description": "Are you sure you want to continue with deletion?"
+  }
 }

@@ -26,6 +26,10 @@ const Settings: FC<{
 
   const onPress = () => {
     console.log('delete')
+    navigation.navigate('DetachedModal', {
+      modalType: 'confirmation',
+      modalConent: 'confirmDelete',
+    })
   }
 
   return (
