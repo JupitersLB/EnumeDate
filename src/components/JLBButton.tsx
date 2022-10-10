@@ -64,6 +64,7 @@ const JLBButton: FC<{
     '#f4a989': (type === 'solid' || type === 'outline') && color === 'primary',
     '#89D4F4': type === 'outline' && color === 'secondary',
     '#F4899E': type === 'outline' && color === 'danger',
+    '#FFF': type === 'solid',
   })
 
   return (

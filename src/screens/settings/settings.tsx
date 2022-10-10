@@ -13,6 +13,7 @@ import VersionNumber from 'react-native-version-number'
 import LoginCard from '../../components/cards/loginCard'
 import RootStoreContext from '../../stores/rootStore'
 import { useToast } from '../../hooks/useToast'
+import JLBButton from '../../components/JLBButton'
 
 const Settings: FC<{
   navigation: SettingsNavigationProps
@@ -22,6 +23,10 @@ const Settings: FC<{
   const tailwind = useTailwind()
   useToast()
   const { t } = useTranslation()
+
+  const onPress = () => {
+    console.log('delete')
+  }
 
   return (
     <SafeAreaView style={tailwind('mx-10 flex-1 justify-between')}>
@@ -68,15 +73,28 @@ const Settings: FC<{
           />
         )}
       </View>
-      <View style={tailwind('flex-row justify-around mb-5')}>
-        <Label
-          style={tailwind(
-            'text-xs'
-          )}>{`Version: ${VersionNumber.appVersion}`}</Label>
-        <Label
-          style={tailwind(
-            'text-xs'
-          )}>{`Build: ${VersionNumber.buildVersion}`}</Label>
+
+      <View>
+        {userStore.user?.registeredUser && (
+          <JLBButton
+            iconName="trash-can"
+            style="mt-4"
+            type="solid"
+            color="danger"
+            onPress={onPress}>
+            {t('deleteAccount')}
+          </JLBButton>
+        )}
+        <View style={tailwind('flex-row justify-around my-5')}>
+          <Label
+            style={tailwind(
+              'text-xs'
+            )}>{`Version: ${VersionNumber.appVersion}`}</Label>
+          <Label
+            style={tailwind(
+              'text-xs'
+            )}>{`Build: ${VersionNumber.buildVersion}`}</Label>
+        </View>
       </View>
     </SafeAreaView>
   )

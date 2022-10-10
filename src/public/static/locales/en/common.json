@@ -42,5 +42,6 @@
   "eventUpdated": "{{title}} updated!",
   "eventDeleted": "{{title}} deleted!",
   "emailSent": "Email sent to {{address}}. Check email and spam to finish logging in.",
-  "loginFailied": "Login with {{address}} failed."
+  "loginFailied": "Login with {{address}} failed.",
+  "deleteAccount": "Delete Account"
 }
